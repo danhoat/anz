@@ -47,6 +47,8 @@ require_once( __DIR__ . '/functions/qms4_site_part.php' );
 
 require_once( __DIR__ . '/functions/qms4_extend_queries.php' );
 
+require_once( __DIR__ . '/functions/qms4_taxonomy.php' );
+
 // hooks
 require_once( __DIR__ . '/functions/hooks/qms4_set_item_class.php' );
 require_once( __DIR__ . '/functions/hooks/qms4_list_set_item_class.php' );

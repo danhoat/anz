@@ -49,8 +49,22 @@
           <span class="qms4__block__event-calendar__day-title">
             <?= $calendar_date->date()->format( 'j' ) ?>
           </span>
-<?php } else { ?>
-          <button class="qms4__block__event-calendar__day-title"><?= $calendar_date->date()->format( 'j' ) ?></button>
+<?php } else { 
+  $color_code = $event_id = '';
+  $term = (object) array('color'=>'','slug' => '');
+
+  foreach( $calendar_date->schedules() as $schedule ){
+
+    $event_id   = $schedule->ID;
+    $term   = qms4_get_color($event_id);
+    if($term){  break; } 
+  }
+$color = isset($term->color) ? $term->color : '';
+
+  ?>
+  
+   <button class="qms4__block__event-calendar__day-title yess" style= "background-color:<?= $color ?>"> <?= $calendar_date->date()->format( 'j' ) ?></button>
+
 <?php } ?>
         </div>
         <!-- /.qms4__block__event-calendar__body-cel -->

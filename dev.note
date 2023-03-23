@@ -41,6 +41,7 @@ __experimentalPublishDateTimePicker
 Task2: Calendar
 Render calendar: lugins\qms4\lib\Block\EventCalendar.php
 Template 1 date show: plugins\qms4\blocks\templates\event-calendar__show_posts__false.php
+Câu hỏi: nếu event đầu tiên của ngày A không có set color => sẽ lấy color của ngày tiếp theo hay là để mặc định.
 
 
 Add new file:qms4\functions\qms4_taxonomy.php

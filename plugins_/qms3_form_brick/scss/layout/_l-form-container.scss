@@ -1,0 +1,42 @@
+.l-form-container {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+@media print, screen and (min-width: 741px) {
+/* For PC */
+
+.l-form-container {
+  padding: 60px 80px;
+
+  color: var(--brick--color--light-text);
+  background-color: var(--brick--color--dark-background);
+
+  &__inner {
+    padding: 24px;
+
+    color: var(--brick--color--dark-text);
+    background-color: var(--brick--color--light-background);
+  }
+
+  &__flow {
+    margin-bottom: 24px;
+  }
+}
+
+}
+
+
+@media print, screen and (max-width: 740px) {
+/* For SP */
+
+.l-form-container {
+  &__flow {
+    margin: 0 24px 16px;
+  }
+}
+
+}

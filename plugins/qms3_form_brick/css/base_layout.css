@@ -1,0 +1,24 @@
+.l-form-container *,
+.l-form-container *::before,
+.l-form-container *::after {
+  box-sizing: border-box;
+}
+
+@media print, screen and (min-width: 741px) {
+  /* For PC */
+  .l-form-container {
+    padding: 60px 80px;
+    color: var(--brick--color--light-text);
+    background-color: var(--brick--color--dark-background);
+  }
+  .l-form-container__inner {
+    padding: 24px;
+    color: var(--brick--color--dark-text);
+    background-color: var(--brick--color--light-background);
+  }
+}
+@media print, screen and (max-width: 740px) {
+  /* For SP */
+}
+
+/*# sourceMappingURL=base_layout.css.map */

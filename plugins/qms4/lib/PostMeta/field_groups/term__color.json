@@ -1,0 +1,43 @@
+[
+	{
+		"key": "[__KEY__]",
+		"title": "色",
+		"fields": [
+			{
+				"key": "field_62fb7354562ba",
+				"label": "色",
+				"name": "qms4__term__color",
+				"type": "color_picker",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "",
+				"enable_opacity": 0,
+				"return_format": "string"
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "taxonomy",
+					"operator": "==",
+					"value": "[__SLUG__]"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "[__POSITION__]",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_rest": 0
+	}
+]

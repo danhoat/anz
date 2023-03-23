@@ -1,0 +1,194 @@
+.brick-flow:not(:root) {
+  width: 100%;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+@media print, screen and (min-width: 741px) {
+/* For PC */
+
+.brick-flow {
+  $flow-min-height: 60px;
+  $flow-span: 4px;
+
+
+  counter-reset: step;
+
+  display: flex;
+
+  color: var(--brick--color--flow-text);
+  font-size: var(--brick--font-size--brick-flow);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+
+  overflow: hidden;
+
+  &__step:not(:root) {
+    counter-increment: step;
+
+    flex-grow: 1;
+
+    position: relative;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: $flow-min-height;
+    margin: 0 2.5px;
+    padding: 16px 0;
+
+    &:first-child {
+      margin-left: -16px;
+      padding-left: 16px;
+    }
+
+    &:last-child {
+      margin-right: -16px;
+      padding-right: 16px;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      left: 0;
+      z-index: -1;
+
+      content: "";
+      display: block;
+      width: 100%;
+      height: 50.8%;
+
+      background-color: var(--brick--color--flow-background);
+    }
+
+    &::before {
+      bottom: 0;
+      transform: skew(-30deg);
+    }
+
+    &::after {
+      top: 0;
+      transform: skew(30deg);
+    }
+  }
+
+  &__step--current:not(:root) {
+    color: var(--brick--color--flow-current-text);
+
+    &::before,
+    &::after {
+      background-color: var(--brick--color--flow-current-background);
+    }
+  }
+
+  &__step > span {
+    display: inline-block;
+    padding: 0 2em;
+
+    &::before {
+      content: counter(step) ".";
+      margin-right: .2em;
+    }
+  }
+}
+
+}
+
+
+@media print, screen and (max-width: 740px) {
+/* For SP */
+
+.brick-flow {
+  $flow-min-height: 40px;
+  $flow-span: 4px;
+
+
+  counter-reset: step;
+
+  display: flex;
+
+  color: var(--brick--color--flow-text);
+  font-size: calc(var(--brick--font-size--brick-flow) * .77);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+
+  overflow: hidden;
+
+  &__step:not(:root) {
+    counter-increment: step;
+
+    flex-grow: 1;
+
+    position: relative;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: $flow-min-height;
+    margin: 0 2.5px;
+    padding: 8px 0;
+
+    &:first-child {
+      margin-left: -16px;
+      padding-left: 16px;
+    }
+
+    &:last-child {
+      margin-right: -16px;
+      padding-right: 16px;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      left: 0;
+      z-index: -1;
+
+      content: "";
+      display: block;
+      width: 100%;
+      height: 50%;
+
+      background-color: var(--brick--color--flow-background);
+    }
+
+    &::before {
+      bottom: 0;
+      transform: skew(-30deg);
+    }
+
+    &::after {
+      top: 0;
+      transform: skew(30deg);
+    }
+  }
+
+  &__step--current:not(:root) {
+    color: var(--brick--color--flow-current-text);
+
+    &::before,
+    &::after {
+      background-color: var(--brick--color--flow-current-background);
+    }
+  }
+
+  &__step > span {
+    display: inline-block;
+    padding: 0 1em;
+
+    &::before {
+      content: counter(step) ".";
+      margin-right: .2em;
+    }
+  }
+}
+
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+  "apiVersion": 2,
+  "name": "qms4/post-list-post-excerpt",
+  "version": "0.1.0",
+  "title": "抜粋文",
+  "parent": [
+    "qms4/post-list"
+  ],
+  "icon": "pets",
+  "attributes": {
+    "numLinesPc": {
+      "type": "integer",
+      "default": 2
+    },
+    "numLinesSp": {
+      "type": "integer",
+      "default": 2
+    }
+  },
+  "supports": {},
+  "textdomain": "qms4",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

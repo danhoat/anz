@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+  "apiVersion": 2,
+  "name": "qms4/restricted-area",
+  "category": "design",
+  "title": "制限エリア",
+  "icon": "pets",
+  "attributes": {
+    "screen": {
+      "type": "string",
+      "enum": [
+        "pc",
+        "sp"
+      ],
+      "default": "pc"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

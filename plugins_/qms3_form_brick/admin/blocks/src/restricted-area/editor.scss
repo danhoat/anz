@@ -1,0 +1,31 @@
+[data-type="brick/restricted-area"] {
+  &::before {
+    content: attr(data-screen);
+
+    position: absolute;
+    top: -14px;
+    left: 0;
+    z-index: 1000;
+
+    padding: .3em .46em .3em .6em;
+
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: .14em;
+    line-height: 1;
+
+    background-color: #f3dfc7;
+
+    border-radius: 2px;
+  }
+
+  &::after {
+    bottom: -6px !important;
+    left: -6px !important;
+    right: -6px !important;
+    top: -6px !important;
+
+    border: 1px dashed #f3dfc7;
+  }
+}

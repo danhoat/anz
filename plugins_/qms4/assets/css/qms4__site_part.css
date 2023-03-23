@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.qms4__site_part__post_id {
+	display: flex;
+	align-items: center;
+}
+
+.qms4__site_part__post_id__shortcode {
+	display: none;
+
+	margin: 0;
+	margin-left: .5em;
+	padding: 0;
+
+	color: #666;
+	font-weight: 700;
+
+	border: none;
+	background: none;
+
+	cursor: pointer;
+}
+
+tr:hover .qms4__site_part__post_id__shortcode {
+	display: block;
+}

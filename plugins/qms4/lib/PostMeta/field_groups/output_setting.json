@@ -1,0 +1,234 @@
+[
+	{
+		"key": "group_626a60babfe23",
+		"title": "アウトプット設定",
+		"fields": [
+			{
+				"key": "field_6326af200aa4c",
+				"label": "リストのレイアウト",
+				"name": "qms4__output__archive_layout",
+				"type": "select",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"default": "デフォルト",
+					"card": "カード型",
+					"list": "リスト型",
+					"text": "テキスト型"
+				},
+				"default_value": "default",
+				"allow_null": 0,
+				"multiple": 0,
+				"ui": 0,
+				"return_format": "value",
+				"ajax": 0,
+				"placeholder": ""
+			},
+			{
+				"key": "field_626a60c99bc32",
+				"label": "ソート基準",
+				"name": "qms4__output__orderby",
+				"type": "radio",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"menu_order": "管理画面順",
+					"post_date": "公開日時順",
+					"post_modified": "更新日時順",
+					"post_title": "タイトル順",
+					"rand": "ランダム"
+				},
+				"allow_null": 0,
+				"other_choice": 0,
+				"default_value": "menu_order",
+				"layout": "horizontal",
+				"return_format": "value",
+				"save_other_choice": 0
+			},
+			{
+				"key": "field_626a611c18e91",
+				"label": "ソート順",
+				"name": "qms4__output__order",
+				"type": "radio",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"ASC": "昇順 \"ASC\" (上 → 下, 過去 → 未来)",
+					"DESC": "降順 \"DESC\" (下 → 上, 未来 → 過去)"
+				},
+				"allow_null": 0,
+				"other_choice": 0,
+				"default_value": "ASC",
+				"layout": "horizontal",
+				"return_format": "value",
+				"save_other_choice": 0
+			},
+			{
+				"key": "field_626a618118e92",
+				"label": "「NEW」アイコン表示期間",
+				"name": "qms4__output__new_date",
+				"type": "number",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": 7,
+				"placeholder": "",
+				"prepend": "",
+				"append": "日",
+				"min": "",
+				"max": "",
+				"step": ""
+			},
+			{
+				"key": "field_626a639a18e93",
+				"label": "「NEW」クラス指定",
+				"name": "qms4__output__new_class",
+				"type": "text",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "new",
+				"placeholder": "",
+				"prepend": "",
+				"append": "",
+				"maxlength": ""
+			},
+			{
+				"key": "field_631c1bc840117",
+				"label": "一覧ページ サイドバー表示",
+				"name": "qms4__output__show_sidebar_archive",
+				"type": "radio",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"true": "表示する",
+					"false": "表示しない",
+					"default": "デフォルト"
+				},
+				"allow_null": 0,
+				"other_choice": 0,
+				"default_value": "default",
+				"layout": "horizontal",
+				"return_format": "value",
+				"save_other_choice": 0
+			},
+			{
+				"key": "field_631c1e4b44709",
+				"label": "詳細ページ サイドバー表示",
+				"name": "qms4__output__show_sidebar_single",
+				"type": "radio",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"true": "表示する",
+					"false": "表示しない",
+					"default": "デフォルト"
+				},
+				"allow_null": 0,
+				"other_choice": 0,
+				"default_value": "default",
+				"layout": "horizontal",
+				"return_format": "value",
+				"save_other_choice": 0
+			},
+			{
+				"key": "field_6288dd3cb6954",
+				"label": "1ページの表示件数",
+				"name": "qms4__output__posts_per_page",
+				"type": "number",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "",
+				"placeholder": "",
+				"prepend": "",
+				"append": "件",
+				"min": 1,
+				"max": "",
+				"step": ""
+			},
+			{
+				"key": "field_626a648118e94",
+				"label": "アイコン フォーマット",
+				"name": "qms4__output__term_html",
+				"type": "text",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "<li class=\"icon\" style=\"background-color:[color]\">[name]</li>",
+				"placeholder": "<li class=\"icon\" style=\"background-color:[color]\">[name]</li>",
+				"prepend": "",
+				"append": "",
+				"maxlength": ""
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "qms4"
+				}
+			]
+		],
+		"menu_order": 100,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "left",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_rest": 0
+	}
+]

@@ -1,0 +1,39 @@
+.qms4__area-list {
+	a:not(:root) {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	li {
+		list-style: none;
+	}
+
+	&__list,
+	&__sub-list {
+		&[data-max-depth="1"] {
+			display: flex;
+			gap: 4px;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__list-item,
+	&__sub-list-item {
+		> a {
+			display: inline-block;
+			padding: .2em .6em;
+			line-height: 1.4;
+			border: 1px solid var(--tailor--color--border--light, #999);
+		}
+
+		&[data-active] > a {
+			color: #fff;
+			background-color: #d38776;
+			border-color: #d38776;
+		}
+	}
+}
+
+ul.qms4__area-list__list.qms4__area-list__list:not(:root) {
+	padding: 0;
+}

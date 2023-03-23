@@ -1,0 +1,21 @@
+{
+  "name": "comvex-jp/digima-php-client",
+  "description": "Digima PHP Client",
+  "keywords": ["digima", "comvex"],
+  "license": "proprietary",
+  "type": "library",
+  "authors": [
+    {
+      "name": "COMVEX Co., Ltd.",
+      "email": "contact@comvex.co.jp"
+    }
+  ],
+  "require": {
+    "php": ">=5.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Digima\\": "src/"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.qms3_form__meta_box__notification_master__app {
+  width: 100%;
+}
+
+.qms3_form__meta_box__notification_master__slug dl {
+  display: flex;
+  margin: 0;
+}
+.qms3_form__meta_box__notification_master__slug dt {
+  flex-basis: 100px;
+  display: flex;
+  align-items: center;
+}
+.qms3_form__meta_box__notification_master__slug dt::after {
+  content: ":";
+}
+.qms3_form__meta_box__notification_master__slug dd {
+  margin: 0;
+  flex-grow: 1;
+}
+.qms3_form__meta_box__notification_master__slug input {
+  width: calc( 100% - 4px );
+  width: min(842px, calc( 100% - 4px ));
+}
+
+.qms3_form__meta_box__notification_master__thanks_setting,
+.qms3_form__meta_box__notification_master__notification_setting {
+  margin-top: 16px;
+}
+
+.qms3_form__meta_box__notification_master__thanks_setting_table,
+.qms3_form__meta_box__notification_master__notification_setting_table {
+  width: 100%;
+}
+
+/*# sourceMappingURL=qms3_form__meta_box__notification_master.css.map */

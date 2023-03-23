@@ -1,0 +1,1 @@
+[2023-03-23 15:56:30]	core	NOTICE	login_failed	{"username":"admin","remote_addr":"127.0.0.1"}	{"uid":"615489d","current_user_id":0,"current_user_login":false}

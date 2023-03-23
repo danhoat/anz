@@ -1,0 +1,51 @@
+dev.note
+add version to file index.
+plugins/qms4/blocks/build/timetable/index.asset.php
+
+add version to view.js in frontend load.
+qms4/blocks/build/timetable/view.asset.php
+
+Load file js for block : plugins/qms4/blocks/build/timetable/index.js
+
+
+Removerow: removeRow
+Json define:
+plugins/qms4/blocks/build/timetable/block.json
+json load:
+{
+  "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+  "apiVersion": 2,
+  "name": "qms4/timetable",
+  "version": "0.1.0",
+  "title": "タイムテーブル",
+  "category": "text",
+  "icon": "pets",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "qms4",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
+
+
+#1 demo view: https://www.corridor-court.com/fair/detail.php?id=2337
+
+ưpw block.js /Applications/MAMP/htdocs/tut/wp-includes/js/dist/block-editor.jsdateTime
+
+__experimentalPublishDateTimePicker
+
+
+Task2: Calendar
+Render calendar: lugins\qms4\lib\Block\EventCalendar.php
+Template 1 date show: plugins\qms4\blocks\templates\event-calendar__show_posts__false.php
+
+
+Add new file:qms4\functions\qms4_taxonomy.php
+define new method:  qms4_get_color  để get mã color của từng category.
+Step2:
+mở file qms4\blocks\templates\event-calendar__show_posts__false.php => gọi hàm qms4_get_color và xuất ra css  inline trong file này.
+
+Task2: đổi bằng css trong theme - có sẵn.

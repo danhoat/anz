@@ -1,0 +1,111 @@
+{
+    "version": "5.7.3",
+    "title": "フォーム",
+    "type": "brick",
+    "id": "62cac96ea9e42",
+    "updated": 1657457006,
+    "columns": {
+        "title": {
+            "type": "title",
+            "label": "タイトル",
+            "width": "",
+            "width_unit": "%",
+            "export": "off",
+            "sort": "on",
+            "edit": "off",
+            "bulk_edit": "on",
+            "search": "on",
+            "name": "title"
+        },
+        "62cac9259f3b64": {
+            "type": "column-slug",
+            "label": "スラッグ",
+            "width": "10",
+            "width_unit": "%",
+            "export": "on",
+            "sort": "on",
+            "edit": "on",
+            "bulk_edit": "on",
+            "search": "on",
+            "name": "62cac9259f3b64"
+        },
+        "qms3_form_thanks_from": {
+            "type": "qms3_form_thanks_from",
+            "label": "サンクスメール送信元",
+            "width": "",
+            "width_unit": "%",
+            "export": "off",
+            "name": "qms3_form_thanks_from"
+        },
+        "qms3_form_notification_tos": {
+            "type": "qms3_form_notification_tos",
+            "label": "先方通知メール送信先",
+            "width": "",
+            "width_unit": "%",
+            "export": "off",
+            "name": "qms3_form_notification_tos"
+        },
+        "qms3_form_bcc_notification_tos": {
+            "type": "qms3_form_bcc_notification_tos",
+            "label": "社内通知メール送信先",
+            "width": "",
+            "width_unit": "%",
+            "export": "off",
+            "name": "qms3_form_bcc_notification_tos"
+        },
+        "62cac938b1a9fc": {
+            "type": "column-meta",
+            "label": "メモ",
+            "width": "",
+            "width_unit": "%",
+            "field": "brick_memo",
+            "field_type": "excerpt",
+            "string_limit": "character_limit",
+            "character_limit": "20",
+            "before": "",
+            "after": "",
+            "edit": "on",
+            "editable_type": "textarea",
+            "export": "off",
+            "sort": "off",
+            "bulk_edit": "on",
+            "search": "on",
+            "filter": "off",
+            "filter_label": "",
+            "name": "62cac938b1a9fc"
+        },
+        "date": {
+            "type": "date",
+            "label": "日付",
+            "width": "",
+            "width_unit": "%",
+            "export": "off",
+            "sort": "on",
+            "edit": "off",
+            "bulk_edit": "on",
+            "search": "on",
+            "filter": "off",
+            "filter_label": "",
+            "filter_format": "",
+            "name": "date"
+        }
+    },
+    "settings": {
+      "hide_inline_edit": "off",
+      "hide_bulk_edit": "off",
+      "hide_filters": "off",
+      "hide_filter_post_date": "off",
+      "hide_smart_filters": "off",
+      "hide_segments": "off",
+      "hide_export": "off",
+      "hide_new_inline": "on",
+      "hide_submenu": "off",
+      "hide_search": "off",
+      "hide_bulk_actions": "off",
+      "resize_columns": "off",
+      "hide_row_actions": "off",
+      "horizontal_scrolling": "off",
+      "sorting": "0",
+      "sorting_order": "asc"
+    }
+}

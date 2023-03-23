@@ -1,0 +1,1 @@
+{"version":3,"file":"form/index.css","mappings":";;;AAAA;EACE;AACF;;AAGE;;;EAGE;AAAJ,C","sources":["webpack://qms3_form_brick/./admin/blocks/src/form/editor.scss"],"sourcesContent":[".l-form-container__buttons {\n  margin-top: 2rem;\n}\n\n.brick-form {\n  input,\n  textarea,\n  select {\n    pointer-events: none;\n  }\n}\n"],"names":[],"sourceRoot":""}

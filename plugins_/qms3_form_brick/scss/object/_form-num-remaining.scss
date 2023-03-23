@@ -1,0 +1,21 @@
+.brick-form-num-remaining {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 1000;
+
+  display: block;
+  padding: 8px 16px;
+
+  color: var(--brick--color--num-remaining-text);
+  font-size: 16px;
+  line-height: 1.2;
+
+  background: var(--brick--color--num-remaining-background);
+  border-radius: 4px;
+
+  var {
+    font-size: 1.25em;
+    font-style: normal;
+  }
+}

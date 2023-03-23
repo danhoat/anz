@@ -1,0 +1,14 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./admin/blocks/src/form/editor.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+.l-form-container__buttons {
+  margin-top: 2rem;
+}
+
+.brick-form input,
+.brick-form textarea,
+.brick-form select {
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=index.css.map*/

@@ -1,0 +1,11 @@
+block,label,type,name,default,prepend,append,header_notice,body_notice,options,placeholder,for_bcc,thanks_to,required,attributes
+form_block1,会社名,text,company,,,,,,,例）株式会社あつまる,1,,1,
+form_block1,お名前,text,name01,,,,,,,例）集客　太郎,,,1,
+form_block1,部署名,text,dept,,,,,,,例）営業部,1,,1,
+form_block1,メールアドレス,email,email,,,,,ドメイン指定受信をされている方は「@atsu-maru.co.jp」から受信できるよう設定をお願いいたします。,,例）yourname@yourdomain.com,,1,1,
+form_block1,携帯電話,tel,tel,,,,,※お持ちでない方は固定番号をご記入下さい,,例）09012345678,,,1,
+form_block1,お問合せ内容,checkbox,content,,,,,,"集客
+採用
+CI
+DX",,1,,1,
+form_block1,今のお困りごと,textarea,contact,,,,,,,,1,,,

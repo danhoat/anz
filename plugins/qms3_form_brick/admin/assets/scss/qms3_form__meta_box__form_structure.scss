@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.qms3_form__meta_box__form_structure__app {
+  width: 100%;
+
+  .jexcel_content {
+    input[type=checkbox] {
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+  }
+}
+
+.qms3_form__meta_box__form_structure__table {
+  width: 100%;
+}
+
+.qms3_form__meta_box__form_structure__buttons {
+  margin-bottom: 12px;
+
+  .add_fields_button {
+    appearance: none;
+    border: none;
+    background: none;
+
+    width: 100%;
+    height: 40px;
+
+    color: #999;
+
+    border: 2px dashed #aaa;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    &::before {
+      content: "+";
+      margin-right: .4em;
+    }
+
+    &:hover {
+      color: #666;
+      background-color: #eee;
+    }
+  }
+
+  dt {
+    margin-bottom: 2px;
+    font-size: 10px;
+    color: #999;
+
+    &:not(:first-child) { margin-top: 6px; }
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 0;
+
+    font-size: 11px;
+  }
+
+  li {
+    min-width: 12em;
+    height: 24px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    line-height: 1.5;
+
+    button {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

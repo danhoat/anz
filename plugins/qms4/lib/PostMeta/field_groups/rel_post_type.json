@@ -1,0 +1,46 @@
+[
+	{
+		"key": "group_62d903a8e651e",
+		"title": "投稿タイプとの紐付け",
+		"fields": [
+			{
+				"key": "field_62d903b514b0a",
+				"label": "",
+				"name": "qms4__rel_post_type",
+				"type": "post_object",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"post_type": [ "qms4" ],
+				"taxonomy": "",
+				"allow_null": 0,
+				"multiple": 0,
+				"return_format": "object",
+				"ui": 1
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "qms4__block_template"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "side",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_rest": 0
+	}
+]

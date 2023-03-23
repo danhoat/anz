@@ -184,7 +184,7 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
-
+			console.log('current: ', current);
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
@@ -194,6 +194,8 @@ jQuery( function ( $ ) {
 
 		$next.on( 'click.nextMonth', async function ( event ) {
 			event.preventDefault();
+			console.log('current: ', current);
+			alert('1');
 			current.setMonth( current.getMonth() + 1 );
 
 			calendar_month = await fetch_calendar_month(

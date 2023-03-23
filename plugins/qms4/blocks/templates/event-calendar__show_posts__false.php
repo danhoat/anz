@@ -11,7 +11,7 @@
       </div>
       <!-- /.qms4__block__event-calendar__month-title -->
 
-      <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next">
+      <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next hide ">
         次の月
       </button>
     </div>
@@ -71,9 +71,9 @@ $color = isset($term->color) ? $term->color : '';
         前の月
       </button>
 
-      <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next">
+      <!-- <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next">
         次の月
-      </button>
+      </button> -->
     </div>
     <!-- /.qms4__block__event-calendar__month-footer -->
   </div>

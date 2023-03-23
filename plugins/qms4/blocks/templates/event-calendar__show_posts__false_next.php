@@ -1,6 +1,6 @@
 <div class="qms4__block__event-calendar__container">
     <div class="qms4__block__event-calendar__month-header">
-      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev">
+      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev hide hidden">
         前の月
       </button>
 
@@ -10,10 +10,11 @@
         <div class="qms4__block__event-calendar__month-title__month-name js__qms4__block__event-calendar__month-title__month-name"><?= $base_date->format( 'F' ) ?></div>
       </div>
       <!-- /.qms4__block__event-calendar__month-title -->
-
+  <!--
       <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next">
         次の月
       </button>
+      !-->
     </div>
     <!-- /.qms4__block__event-calendar__month-header -->
 
@@ -67,9 +68,9 @@ $color = isset($term->color) ? $term->color : '';
     <!-- /.qms4__block__event-calendar__calendar -->
 
     <div class="qms4__block__event-calendar__month-footer">
-      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev">
+      <!-- <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev">
         前の月
-      </button>
+      </button> -->
 
       <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next">
         次の月

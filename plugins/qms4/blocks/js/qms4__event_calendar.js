@@ -7,6 +7,7 @@ jQuery( function ( $ ) {
 	 * @returns {Promise<{ date: string, date_class: string[], schedules: { id: number, title: string }[] }[]>}
 	 */
 	function fetch_calendar_month( endpoint, param, current ) {
+		console.log('call fetch_calendar_month:');
 		return fetch(
 			endpoint
 				.replace( '%year%', current.getFullYear() )

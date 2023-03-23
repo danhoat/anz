@@ -30,20 +30,14 @@
 			(0,t.createElement)("td",null,(0,t.createElement)(n.RichText,{tagName:"p",className:"comment",value:c,placeholder:"備考を入力",onChange:i}),(0,t.createElement)(n.RichText,{tagName:"p",className:"reserve_time--dummy",value:s,placeholder:"この時間で予約する",onChange:p})),
 
 
-			//coppy comment field
+			//create select 1->23h.
+			/*
 			(0,t.createElement)("td",null,(0,t.createElement)(o.SelectControl,{value:et,options:
 				time, onChange:ec})),
 
-			// (0,t.createElement)("td",null,(0,t.createElement)(n.RichText,{tagName:"p",className:"phone",value:ph,placeholder:"Select time",
-
-			// 	onClick:function(Event){
-			// 		// 9999
+				*/
 
 
-			// 		//(0,t.createElement)(n.__experimentalPublishDateTimePicker);
-
-
-			// }})),
 
 			// Add new phone number fi
 			//coppy comment field

@@ -14,14 +14,14 @@
  * Author:      Team Yoast
  * Author URI:  https://yoa.st/1uk
  * Text Domain: wordpress-seo
- * Domain Path: /languages/  a s111
+ * Domain Path: /languages/  a s111 asdf
  * License:     GPL v3
  * Requires at least: 6.0 a
  * Requires PHP: 5.6.20
  *
  * WC requires at least: 3.0
  * WC tested up to: 6.1a sd
- *
+ *as
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or

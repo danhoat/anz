@@ -14,7 +14,7 @@
  * Author:      Team Yoast
  * Author URI:  https://yoa.st/1uk
  * Text Domain: wordpress-seo
- * Domain Path: /languages/  a
+ * Domain Path: /languages/  a s
  * License:     GPL v3
  * Requires at least: 6.0 a
  * Requires PHP: 5.6.20

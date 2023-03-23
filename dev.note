@@ -52,3 +52,17 @@ mở file qms4\blocks\templates\event-calendar__show_posts__false.php => gọi h
 Task2: đổi bằng css trong theme - có sẵn.
 define( 'WP_HOME', 'http://dev.roseun-charme.local' );
 define( 'WP_SITEURL', 'http://dev.roseun-charme.local' );
+
+Task 6:
+
+register_rest_route(
+			'qms4/v1',
+			'/admin-url/',
+			array(
+				'methods' => 'GET',
+				'callback' => array( $this, 'get' ),
+				'permission_callback' => array( $this, 'permission' ),
+			)
+		);
+
+    

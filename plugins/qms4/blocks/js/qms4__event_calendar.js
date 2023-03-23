@@ -8,11 +8,15 @@ jQuery( function ( $ ) {
 	 */
 	function fetch_calendar_month( endpoint, param, current ) {
 		console.log('call fetch_calendar_month:');
+		console.log('current: ', current);
+
+		let api_url = endpoint
+		.replace( '%year%', current.getFullYear() )
+		.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`;
+		console.log('api_url: ', api_url);
 		return fetch(
-			endpoint
-				.replace( '%year%', current.getFullYear() )
-				.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`
-		).then( ( response ) => response.json() );
+			api_url
+		).then(  ( response ) => response.json() );
 	}
 
 	/**
@@ -140,6 +144,11 @@ jQuery( function ( $ ) {
 		const $calendar_body = $unit.find(
 			'.js__qms4__block__event-calendar__calendar-body'
 		);
+
+		const $calendar_body_n = $unit.find(
+			'.js__qms4__block__event-calendar__calendar-body-next'
+		);
+
 		const $display_header = $unit.find(
 			'.js__qms4__block__event-calendar__display-header'
 		);
@@ -159,6 +168,7 @@ jQuery( function ( $ ) {
 		param.set( 'fields[taxonomies]', taxonomies.join( ',' ) );
 
 		const endpoint = $unit.data( 'endpoint' );
+		console.log('endpoint: ', endpoint);
 
 		/**
 		 * 月初日を返す
@@ -178,7 +188,8 @@ jQuery( function ( $ ) {
 		$prev.on( 'click.prevMonth', async function ( event ) {
 			event.preventDefault();
 			current.setMonth( current.getMonth() - 1 );
-
+				endpoint,
+				console.log('endpoint: ', endpoint);
 			calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
@@ -195,15 +206,16 @@ jQuery( function ( $ ) {
 		$next.on( 'click.nextMonth', async function ( event ) {
 			event.preventDefault();
 			console.log('current: ', current);
-			alert('1');
-			current.setMonth( current.getMonth() + 1 );
 
+			current.setMonth( current.getMonth() + 1 );
+			console.log('endpoint: ', endpoint);
+			console.log('param: ', param);
 			calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
 			);
-
+			console.log(' line 215 calendar_month: ', calendar_month );
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );

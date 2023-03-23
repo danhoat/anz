@@ -1,4 +1,4 @@
-<div class="qms4__block__event-calendar__container">
+<div class="qms4__block__event-calendar__container calendar_next_month_container">
     <div class="qms4__block__event-calendar__month-header">
       <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev hide hidden">
         前の月

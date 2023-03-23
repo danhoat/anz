@@ -65,4 +65,5 @@ register_rest_route(
 			)
 		);
 
-    
+
+xem chi tiết: plugins\qms4\lib\Action\RestApi\RegisterEventCalendarRoute.php

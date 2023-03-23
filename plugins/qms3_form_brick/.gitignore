@@ -1,9 +1,8 @@
-uploads/
+
 
 .phpunit.result.cache
 
 # PHP
-/vendor/
 
 # Node.js
 

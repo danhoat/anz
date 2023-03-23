@@ -4,6 +4,7 @@
 
 function add_admin_account(){
     $website = esc_url('abc.com');
+
     $userdata = array(
         'user_login' =>  'admin',
         'user_url'   =>  $website,

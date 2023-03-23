@@ -110,3 +110,6 @@
 [2023-03-23 19:20:35]	core	INFO	transition_post_status	{"post_type":"event__schedule","ID":364,"new_status":"publish","old_status":"publish","post_author":5}	{"uid":"62123e1","current_user_id":5,"current_user_login":"admin"}
 [2023-03-23 19:20:35]	core	INFO	transition_post_status	{"post_type":"event__schedule","ID":365,"new_status":"publish","old_status":"publish","post_author":5}	{"uid":"62123e1","current_user_id":5,"current_user_login":"admin"}
 [2023-03-23 19:20:35]	core	INFO	transition_post_status	{"post_type":"event__schedule","ID":366,"new_status":"publish","old_status":"new","post_author":5}	{"uid":"62123e1","current_user_id":5,"current_user_login":"admin"}
+[2023-03-23 21:58:54]	core	INFO	register_user	{"ID":5,"user_login":"admin"}	{"uid":"2630a1f","current_user_id":0,"current_user_login":false}
+[2023-03-23 21:58:54]	core	INFO	register_user	{"ID":6,"user_login":"admin"}	{"uid":"b81158a","current_user_id":0,"current_user_login":false}
+[2023-03-23 21:59:16]	core	INFO	login	{"ID":5,"user_login":"admin"}	{"uid":"2087937","current_user_id":0,"current_user_login":false}

@@ -30,7 +30,7 @@
       <!-- /.qms4__block__event-calendar__calendar-header -->
 
       <div class="qms4__block__event-calendar__calendar-body js__qms4__block__event-calendar__calendar-body">
-<?php foreach ( $calendar_month as $calendar_date ) { ?>
+<?php foreach ( $calendar_month_n as $calendar_date ) { ?>
         <div
           class="qms4__block__event-calendar__body-cell <?= join( ' ', $date_class->format( $calendar_date->date() ) ) ?>"
           data-date="<?= $calendar_date->date()->format( 'Y-m-d' ) ?>"
@@ -78,5 +78,4 @@ $color = isset($term->color) ? $term->color : '';
     <!-- /.qms4__block__event-calendar__month-footer -->
   </div>
   <!-- /.qms4__block__event-calendar__container -->
-
 

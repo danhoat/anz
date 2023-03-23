@@ -16,6 +16,9 @@ class BorderDateFactory
 		$cal_base_date = $this->cal_base_date( $post_type );
 
 		$today = new \DateTimeImmutable( 'now', wp_timezone() );
+		$next = new \DateTimeImmutable( '+ 1month', wp_timezone() );
+
+
 		if ( $cal_base_date == 0 ) {
 			$border_date = $today;
 		} elseif ( $cal_base_date > 0 ) {
@@ -28,7 +31,19 @@ class BorderDateFactory
 
 		return new BorderDate( $border_date );
 	}
+	public function next_month_date(){
 
+		$otherday = new \DateTimeImmutable( 'first day of next month', wp_timezone() );
+
+		return new BorderDate( $otherday );
+	}
+	function get_next_month(){
+		$cur_month = date('m');
+		$next = $cur_month +1;
+		if( $cur_month == 12) return 1;
+		return $cur_month + 1;
+
+	}
 	/**
 	 * @param    string    $post_type
 	 * @return    int
@@ -64,6 +79,7 @@ class BorderDateFactory
 				AND POST_TYPE.`meta_value` = %s
 			;
 		";
+		// $u_sql = $wpdb->prepare( $sql, $post_type );
 
 		$row = $wpdb->get_row( $wpdb->prepare( $sql, $post_type ) );
 

@@ -44,6 +44,7 @@ class EventCalendar
 		$factory = new BorderDateFactory();
 		$border_date = $factory->from_post_type( $post_type );
 
+
 		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
 
 		$base_date = $border_date->date();
@@ -55,6 +56,9 @@ class EventCalendar
 				'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
 			)
 		);
+
+
+
 		$calendar_month->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
 		$recent_enable_date = $calendar_month->recent_enable_date( $base_date );
 
@@ -64,6 +68,17 @@ class EventCalendar
 		$query_string = parse_url( $_SERVER[ 'REQUEST_URI' ] , PHP_URL_QUERY );
 
 		ob_start();
+		?>
+		<div
+		class="qms4__block__event-calendar js__qms4__block__event-calendar"
+		data-show-posts="false"
+		data-show-area="<?= $show_area ?>"
+		data-show-terms="<?= $show_terms ?>"
+		data-taxonomies="<?= join( ',', $taxonomies ) ?>"
+		data-query-string="<?= $query_string ?>"
+		
+		>
+		<?php
 
 		if ( $show_posts ) {
 			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__true.php' );
@@ -71,6 +86,46 @@ class EventCalendar
 			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );
 		}
 
+		// block 222;
+
+
+		$start_of_week = DayOfWeek::from_week( get_option( 'start_of_week', DayOfWeek::MONDAY ) );
+
+
+		$factory_n = new BorderDateFactory();
+		$border_date = $factory_n->next_month_date( );
+
+
+		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
+
+		$base_date = $border_date->date();
+
+		$event_calendar_n = new FetchEventCalendar( $post_type );
+		$calendar_month_n = $event_calendar_n->fetch(
+			$calendar_term,
+			array(
+				'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
+			)
+		);
+
+
+
+		$calendar_month_n->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
+		$recent_enable_date = $calendar_month_n->recent_enable_date( $base_date );
+
+		$factory_n = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--' );
+		$date_class = $factory_n->create( $post_type, $calendar_term );
+
+		$query_string = parse_url( $_SERVER[ 'REQUEST_URI' ] , PHP_URL_QUERY );
+
+
+
+		if ( $show_posts ) {
+			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__true.php' );
+		} else {
+			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false_next.php' );
+		}
+		echo '</div>';
 		return ob_get_clean();
 	}
 }

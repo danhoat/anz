@@ -72,3 +72,14 @@ Custom code: qms4\lib\Action\RestApi\RegisterEventCalendarRoute.php
 Custom code: qms4\lib\Block\EventCalendar.php
 
 Thay đổi lại giá trị trong method:  DateClassFormatterFactory
+
+Task 3: ac_notice_dismiss_activation
+kiểm tra 1 activation => có thêm field color hay không
+keyword: _acf_validation   acf_validation
+
+
+qms4\lib\Action\Columns\DisplayColumnTermColor.php
+
+DisplayColumnTermColor 
+
+$color = TermColor::get_post_meta( $term_id );

@@ -31,12 +31,12 @@
   </nav>
   <!-- /.qms4__block__timetable__button -->
 
-  <dl class="qms4__block__timetable__example">
-    <dt><img src="/wp-content/themes/fabric/images/icon_possible.png" alt="" /></dt>
+  <dl class="qms4__block__timetable__example clendar-exp-icon">
+    <dt><img src="<?php echo home_url(); ?>/wp-content/themes/fabric/images/icon_possible.png" alt="" /></dt>
     <dd>予約可</dd>
-    <dt><img src="/wp-content/themes/fabric/images/icon_few.png" alt="△" /></dt>
+    <dt><img src="<?php echo home_url(); ?>/wp-content/themes/fabric/images/icon_few.png" alt="△" /></dt>
     <dd>残りわずか</dd>
-    <dt><img src="/wp-content/themes/fabric/images/icon_vacant.png" alt="×" /></dt>
+    <dt><img src="<?php echo home_url(); ?>/wp-content/themes/fabric/images/icon_vacant.png" alt="×" /></dt>
     <dd>満席</dd>
   </dl>
   <!-- /.qms4__block__timetable__example -->

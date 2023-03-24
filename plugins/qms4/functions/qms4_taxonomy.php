@@ -28,6 +28,5 @@ function debug_fc(){
 	$event_id = 220;
 	$term 	= get_the_terms($event_id, 'fair__special' );
 	$term = qms4_get_color($event_id);
-	var_dump($term->color);
 }
-add_action('wp_footer','debug_fc');
+// add_action('wp_footer','debug_fc');

@@ -65,7 +65,6 @@ function debug_qms(){
     $factory_n = new BorderDateFactory();
 
     $border_date_event = $factory_n->fist_date_of_next_month( );
-    var_dump($border_date_event);
-    die();
+
 }
 // add_action('wp_head','debug_qms');

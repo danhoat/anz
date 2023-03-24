@@ -3984,15 +3984,15 @@ a:hover {
   }
 }
 
-.single-event .qms4__block__timetable__example {
+.single-fair .qms4__block__timetable__example {
   margin-top: 10px;
 }
-.single-event .qms4__block__timetable__example dt img {
+.single-fair .qms4__block__timetable__example dt img {
   width: 14px;
   margin-right: 5px;
   margin-top: 4px;
 }
-.single-event .qms4__block__timetable__example dt::after {
+.single-fair .qms4__block__timetable__example dt::after {
   vertical-align: top;
 }
 

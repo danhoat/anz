@@ -16,8 +16,6 @@ class BorderDateFactory
 		$cal_base_date = $this->cal_base_date( $post_type );
 
 		$today = new \DateTimeImmutable( 'now', wp_timezone() );
-		$next = new \DateTimeImmutable( '+ 1month', wp_timezone() );
-
 
 		if ( $cal_base_date == 0 ) {
 			$border_date = $today;
@@ -31,19 +29,33 @@ class BorderDateFactory
 
 		return new BorderDate( $border_date );
 	}
-	public function next_month_date(){
+	public function fist_date_of_next_month(){
 
 		$otherday = new \DateTimeImmutable( 'first day of next month', wp_timezone() );
 
 		return new BorderDate( $otherday );
 	}
-	function get_next_month(){
-		$cur_month = date('m');
-		$next = $cur_month +1;
-		if( $cur_month == 12) return 1;
-		return $cur_month + 1;
 
+	public function fist_date_of_next_2month(){
+
+		$otherday = new \DateTimeImmutable( 'first day of +2 months', wp_timezone() );
+
+		return new BorderDate( $otherday );
 	}
+	public function fist_date_of_next_3month(){
+
+		$otherday = new \DateTimeImmutable( 'first day of +3 months', wp_timezone() );
+
+		return new BorderDate( $otherday );
+	}
+
+	public function frist_prev_month_date(){
+
+		$otherday = new \DateTimeImmutable( 'first day of previous month', wp_timezone() );
+
+		return new BorderDate( $otherday );
+	}
+
 	/**
 	 * @param    string    $post_type
 	 * @return    int

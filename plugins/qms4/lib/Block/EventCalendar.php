@@ -68,13 +68,13 @@ class EventCalendar
 		$query_string = parse_url( $_SERVER[ 'REQUEST_URI' ] , PHP_URL_QUERY );
 
 		ob_start();
-		
+
 
 		if ( $show_posts ) {
 			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__true.php' );
 		} else {
-			
-			
+
+
 			require( QMS4_DIR . '/blocks/templates/event_calendar-header.php' );
 			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );
 		}
@@ -86,7 +86,7 @@ class EventCalendar
 
 
 		$factory_n = new BorderDateFactory();
-		$border_date = $factory_n->next_month_date( );
+		$border_date = $factory_n->fist_date_of_next_month( );
 
 
 		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );

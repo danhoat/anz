@@ -67,3 +67,8 @@ register_rest_route(
 
 
 xem chi tiết: plugins\qms4\lib\Action\RestApi\RegisterEventCalendarRoute.php
+
+Custom code: qms4\lib\Action\RestApi\RegisterEventCalendarRoute.php
+Custom code: qms4\lib\Block\EventCalendar.php
+
+Thay đổi lại giá trị trong method:  DateClassFormatterFactory

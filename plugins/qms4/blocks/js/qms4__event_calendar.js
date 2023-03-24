@@ -6,7 +6,8 @@ jQuery( function ( $ ) {
 	 * @param {Date} current
 	 * @returns {Promise<{ date: string, date_class: string[], schedules: { id: number, title: string }[] }[]>}
 	 */
-	function fetch_calendar_month( endpoint, param, current ) {
+
+	async  function fetch_calendar_month( endpoint, param, current ) {
 		console.log('call fetch_calendar_month:');
 		console.log('current: ', current);
 
@@ -14,9 +15,14 @@ jQuery( function ( $ ) {
 		.replace( '%year%', current.getFullYear() )
 		.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`;
 		console.log('api_url: ', api_url);
-		return fetch(
+		var result = await fetch(
 			api_url
-		).then(  ( response ) => response.json() );
+		).then(  ( response ) => {
+        	var result =    response.json();
+			return result;
+		} );
+		console.log('result:', result);
+		return result;
 	}
 
 	/**
@@ -25,7 +31,8 @@ jQuery( function ( $ ) {
 	 * @returns {string[]}
 	 */
 	function calendar_content( calendar_month ) {
-		return calendar_month.map(
+
+		return calendar_month.data.map(
 			( { date: date_str, date_class, schedules, enable } ) => {
 				const date = new Date( date_str );
 
@@ -145,7 +152,7 @@ jQuery( function ( $ ) {
 			'.js__qms4__block__event-calendar__calendar-body'
 		);
 
-		const $calendar_body_n = $unit.find(
+		const $calendar_body_next = $unit.find(
 			'.js__qms4__block__event-calendar__calendar-body-next'
 		);
 
@@ -166,7 +173,7 @@ jQuery( function ( $ ) {
 
 		param.set( 'fields[area]', showArea ? 1 : 0 );
 		param.set( 'fields[taxonomies]', taxonomies.join( ',' ) );
-
+		console.log('param: ', param);
 		const endpoint = $unit.data( 'endpoint' );
 		console.log('endpoint: ', endpoint);
 
@@ -184,26 +191,33 @@ jQuery( function ( $ ) {
 
 		// カレントの日付を生成
 		const current = getFirstDay( $unit.data( 'current' ) );
-
+		console.log('current: ', current);
 		$prev.on( 'click.prevMonth', async function ( event ) {
+
 			event.preventDefault();
+
 			current.setMonth( current.getMonth() - 1 );
 				endpoint,
-				console.log('endpoint: ', endpoint);
-			calendar_month = await fetch_calendar_month(
+				calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
 			);
-			console.log('current: ', current);
+			console.log('calendar_month: ', calendar_month);
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
+			console.log('calendar_content: ', calendar_content);
 
-			$calendar_body.html( calendar_content( calendar_month ) );
+			$calendar_body.html( calendar_content( calendar_month[0]) );
+			console.log('$calendar_body_next: ', $calendar_body_next);
+			var  html = calendar_content( calendar_month[1] );
+			console.log('next html: ', html);
+			$calendar_body_next.html( html );
 		} );
 
 		$next.on( 'click.nextMonth', async function ( event ) {
+			param.set('event', 'next');
 			event.preventDefault();
 			console.log('current: ', current);
 
@@ -219,8 +233,11 @@ jQuery( function ( $ ) {
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
+			console.log('calendar_content 0: ', calendar_month[0]);
+			console.log('calendar_content 1: ', calendar_month[1]);
+			$calendar_body.html( calendar_content( calendar_month[0]) );
+			$calendar_body_next.html( calendar_content( calendar_month[1] ) );
 
-			$calendar_body.html( calendar_content( calendar_month ) );
 		} );
 
 		$calendar_body.on(

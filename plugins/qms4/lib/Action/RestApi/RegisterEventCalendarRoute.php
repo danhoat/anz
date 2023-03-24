@@ -40,13 +40,18 @@ class RegisterEventCalendarRoute
 		}
 
 		$post_type = $param[ 'post_type' ];
-		$year = $param[ 'year' ];
-		$month = $param[ 'month' ];
+		$year 		= $param[ 'year' ];
+		$month 		= $param[ 'month' ];
 
-		$start_of_week = DayOfWeek::from_week( get_option( 'start_of_week', DayOfWeek::MONDAY ) );
+
+		$event = isset($param['event']) ? $param['event']: '';
+
+
+		 $start_of_week = DayOfWeek::from_week( get_option( 'start_of_week', DayOfWeek::MONDAY ) );
 
 		$factory = new BorderDateFactory();
-		$border_date = $factory->from_post_type( $post_type );
+
+		$border_date = $factory->fist_date_of_next_2month( );
 
 		$calendar_term = CalendarTerm::from_year_month( $start_of_week, $year, $month );
 
@@ -63,10 +68,43 @@ class RegisterEventCalendarRoute
 			empty( $_GET[ 'fields' ] ) ? array() : $_GET[ 'fields' ]
 		);
 
-		return new \WP_REST_Response(
+		$calendar_month =  new \WP_REST_Response(
 			$calendar_month->to_array( $date_class_formatter, $schedule_formatter ),
 			200
 		);
+
+
+		$factory_n = new BorderDateFactory();
+
+		$border_date_event = $factory_n->fist_date_of_next_3month( );
+		if( $event == 'prev'){
+			// $border_date_event = $factory_n->frist_prev_month_date( );
+		}
+
+
+		$calendar_term = CalendarTerm::from_year_month( $start_of_week, $year, $month +1 );
+		//var_dump($calendar_term);
+		$event_calendar = new FetchEventCalendar( $post_type );
+
+		$calendar_next_month = $event_calendar->fetch( $calendar_term, array(
+			'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
+		) );
+
+		$calendar_next_month->set_border_date( $border_date_event );  // TODO: セッターでやるのやめたい
+
+		$factory = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--', $border_date_event );
+		$date_class_formatter = $factory->create( $post_type, $calendar_term );
+
+		$schedule_formatter = new ScheduleFormatter(
+			empty( $_GET[ 'fields' ] ) ? array() : $_GET[ 'fields' ]
+		);
+
+		$calendar_next_month =  new \WP_REST_Response(
+			$calendar_next_month->to_array( $date_class_formatter, $schedule_formatter ),
+			200
+		);
+
+		return array($calendar_month, $calendar_next_month);
 	}
 
 	/**

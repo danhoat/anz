@@ -23,10 +23,3 @@ function qms4_get_color( $post_id)
 
    return (object) array('slug'=>$term->term_id,'color' => $color);
 }
-
-function debug_fc(){
-	$event_id = 220;
-	$term 	= get_the_terms($event_id, 'fair__special' );
-	$term = qms4_get_color($event_id);
-}
-// add_action('wp_footer','debug_fc');

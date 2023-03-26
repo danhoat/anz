@@ -441,3 +441,4 @@
 [2023-03-24 16:14:55]	core	INFO	transition_post_status	{"post_type":"qms4","ID":5,"new_status":"publish","old_status":"publish","post_author":1}	{"uid":"b1bd140","current_user_id":5,"current_user_login":"admin"}
 [2023-03-24 16:15:38]	core	INFO	transition_post_status	{"post_type":"fair","ID":578,"new_status":"auto-draft","old_status":"new","post_author":5}	{"uid":"674b5dd","current_user_id":5,"current_user_login":"admin"}
 [2023-03-24 16:17:50]	core	INFO	transition_post_status	{"post_type":"qms4","ID":5,"new_status":"publish","old_status":"publish","post_author":1}	{"uid":"ad00563","current_user_id":5,"current_user_login":"admin"}
+[2023-03-27 00:55:21]	core	INFO	login	{"ID":5,"user_login":"admin"}	{"uid":"4c9679b","current_user_id":0,"current_user_login":false}

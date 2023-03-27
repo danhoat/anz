@@ -80,6 +80,13 @@ keyword: _acf_validation   acf_validation
 
 qms4\lib\Action\Columns\DisplayColumnTermColor.php
 
-DisplayColumnTermColor 
+DisplayColumnTermColor
 
 $color = TermColor::get_post_meta( $term_id );
+
+
+chmod -R 777 /var/www/laravel-api/storage/logs/laravel.log
+
+// run fix
+wp-content % chmod -R 777 /Applications/XAMPP/xamppfiles/htdocs/roseun-charme.jp/
+// fix done.

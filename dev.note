@@ -87,6 +87,9 @@ $color = TermColor::get_post_meta( $term_id );
 
 chmod -R 777 /var/www/laravel-api/storage/logs/laravel.log
 
+
+uploads/qms_logger/user_action_2023-03.log
+
 // run fix
 wp-content % chmod -R 777 /Applications/XAMPP/xamppfiles/htdocs/roseun-charme.jp/
 // fix done.

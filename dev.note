@@ -53,6 +53,24 @@ Task2: đổi bằng css trong theme - có sẵn.
 define( 'WP_HOME', 'http://dev.roseun-charme.local' );
 define( 'WP_SITEURL', 'http://dev.roseun-charme.local' );
 
+Task 5: 
+
+fabric/template-parts/event/start_content_after.php
+
+list categpories
+
+ qms4_site_part( 4025 ) ?>
+
+Add new file:qms4\functions\qms4_taxonomy.php
+define new method:  qms4_get_color  để get mã color của từng category.
+Step2:
+mở file qms4\blocks\templates\event-calendar__show_posts__false.php => gọi hàm qms4_get_color và xuất ra css  inline trong file này.
+
+
+
+
+
+
 Task 6:
 
 register_rest_route(
@@ -65,6 +83,13 @@ register_rest_route(
 			)
 		);
 
+
+
+
+Add new file:qms4\functions\qms4_taxonomy.php
+define new method:  qms4_get_color  để get mã color của từng category.
+Step2:
+mở file qms4\blocks\templates\event-calendar__show_posts__false.php => gọi hàm qms4_get_color và xuất ra css  inline trong file này.
 
 xem chi tiết: plugins\qms4\lib\Action\RestApi\RegisterEventCalendarRoute.php
 

@@ -14,7 +14,7 @@ $the_query = new \WP_Query( $query_args );
 
 if ( $the_query->have_posts() ) :
 ?>
-	<ul class="p-postList -type-<?=esc_attr( $list_type )?>">
+	<ul class="p-postList -type-<?=esc_attr( $list_type )?> page_List.php">
 	<?php
 	while ( $the_query->have_posts() ) :
 		$the_query->the_post();
@@ -22,7 +22,7 @@ if ( $the_query->have_posts() ) :
 		$the_id = get_the_ID();
 		$url    = get_permalink( $the_id );
 		?>
-			<li class="p-postList__item">
+			<li class="p-postList__item page__List.php">
 				<a href="<?php the_permalink( $the_id ); ?>" class="p-postList__link">
 					<?php
 						if ( 'simple' !== $list_type ) :

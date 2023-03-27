@@ -12,17 +12,17 @@
 			const _=a[i],c=_.title,
 			o=(0,l.dateI18n)("Y年n月j日（D）",_.date);
 			console.log('check date: ', _.date);
-
+			const homeUrl = window.arkheVars.homeUrl || '';
 			var now = new Date().getTime();
 			let tl= new Date().toLocaleString();
 
 			const s=_.timetable.map((t=>{const a=(()=>{
 				switch(t.capacity){
 				case"○":
-				default: return'<img src="/wp-content/themes/fabric/images/icon_possible.png" alt="○" />';
+				default: return '<img src="'+homeUrl+'/wp-content/themes/fabric/images/icon_possible.png" alt="○" />';
 				case"△":
-					return'<img src="/wp-content/themes/fabric/images/icon_few.png" alt="△" />';
-				case"×":return'<img src="/wp-content/themes/fabric/images/icon_vacant.png" alt="×" />'}
+					return'<img src="'+homeUrl+'/wp-content/themes/fabric/images/icon_few.png" alt="△" />';
+				case"×":return'<img src="'+homeUrl+'/wp-content/themes/fabric/images/icon_vacant.png" alt="×" />'}
 				})();
 
 				var today = new Date().setHours(0, 0, 0, 0);

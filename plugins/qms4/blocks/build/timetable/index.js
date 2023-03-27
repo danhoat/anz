@@ -34,14 +34,11 @@
 			/*
 			(0,t.createElement)("td",null,(0,t.createElement)(o.SelectControl,{value:et,options:
 				time, onChange:ec})),
-
-				*/
-
-
+			*/
 
 			// Add new phone number fi
 			//coppy comment field
-			(0,t.createElement)("td",null,(0,t.createElement)(n.RichText,{tagName:"p",className:"phone",value:ph,placeholder:"Phone Numer",onChange:phc})),
+			(0,t.createElement)("td",null,(0,t.createElement)(n.RichText,{tagName:"p",className:"phone",value:ph,placeholder:"電話",onChange:phc})),
 
 
 			// (0,t.createElement)(n.RichText,{tagName:"td",value:ph, onChange:phc,placeholder:"Phone number"}),
@@ -55,7 +52,7 @@
 	let{isSelected:o}=e;const m=(0,l.useSelect)((e=>e("core/editor").getCurrentPostType()),[]),
 
 			[i,u]=function(e){ console.log('init row');
-			return function(e){const[t,n]=(0,a.useEntityProp)("postType",e,"qms4__timetable__button_text");return t?[t,n]:["この時間で予約する 555",n]}(e)
+			return function(e){const[t,n]=(0,a.useEntityProp)("postType",e,"qms4__timetable__button_text");return t?[t,n]:["この時間で予約する",n]}(e)
 		}(m),[s,p,d,b]=function(e){
 
 			const[t,n]=function(e){

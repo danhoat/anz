@@ -9,8 +9,6 @@
 	t=window.wp.element,n=(window.React,window.wp.blockEditor),
 	l=window.wp.data,a=window.wp.coreData;
 
-
-
 	const c=[
 		{label:"",capacity:"○",available:!0,comment:"", phone:""},
 		{label:"",capacity:"○",available:!0,comment:"", phone:""}];

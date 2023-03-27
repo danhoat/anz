@@ -33,7 +33,7 @@
 				var btn_html = "×"!==t.capacity?`<a href="${n}?event_name=${c}&event_time=${o}%20${t.label}">${e}</a>`:"";
 				if( now > setDate ){
 					var phone = t.phone.replace(/\D/g, '');
-					phone =  phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1-$2-$3");
+					phone =  phone.replace(/(\d{4})(\d{2})(\d{4})/, "$1-$2-$3");
 
 					btn_html = `<a href="tel:=${t.phone}">${phone}</a>`;
 				}

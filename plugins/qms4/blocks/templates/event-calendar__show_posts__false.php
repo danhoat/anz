@@ -53,7 +53,7 @@ $color = isset($term->color) ? $term->color : '';
 
   ?>
 
-   <a href="#" class="qms4__block__event-calendar__day-title yess" style= "background-color:<?= $color ?>"> <?= $calendar_date->date()->format( 'j' ) ?></a>
+   <a href="#" class="qms4__block__event-calendar__day-title " style= "background-color:<?= $color ?>"> <?= $calendar_date->date()->format( 'j' ) ?></a>
 
 <?php } ?>
         </div>

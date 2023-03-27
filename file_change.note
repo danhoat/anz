@@ -1,10 +1,18 @@
 Task 1:
+Edit Files:
 plugins/qms4/blocks/build/timetable/view.js
 plugins/qms4/blocks/build/timetable/index.js
 qms4/blocks/build/timetable/style-index.css
 
-Task 6:
+Task 2:
+Add file: qms4/functions/qms4_taxonomy.php
+Edit file:
+qms4/blocks/templates/event-calendar__show_posts__false_next.php
+qms4/blocks/templates/event-calendar__show_posts__false.php
 
+
+Task 6:
+Edit Files:
 qms4/lib/Event/BorderDateFactory.php
 qms4\lib\Block\EventCalendar.php
 qms4\blocks\templates\event-calendar__show_posts__false.php

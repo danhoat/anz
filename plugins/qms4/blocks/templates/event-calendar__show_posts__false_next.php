@@ -51,10 +51,13 @@
     if($term){  break; }
   }
   $color = isset($term->color) ? $term->color : '';
-
+  $link = get_post_type_archive_link('fair');
+   $link = add_query_arg( array(
+    'ymd' => $calendar_date->date()->format( 'ymd' ),
+  ), $link);
   ?>
 
-   <a href="#" class="qms4__block__event-calendar__day-title " style= "background-color:<?= $color ?>"> <?= $calendar_date->date()->format( 'j' ) ?></a>
+   <a href="<?php echo $link;?>" class="qms4__block__event-calendar__day-title " style= "background-color:<?= $color ?>"> <?= $calendar_date->date()->format( 'j' ) ?></a>
 
 <?php } ?>
         </div>

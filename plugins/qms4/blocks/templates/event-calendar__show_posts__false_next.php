@@ -50,7 +50,7 @@
     $term   = qms4_get_color($event_id);
     if($term){  break; }
   }
-$color = isset($term->color) ? $term->color : '';
+  $color = isset($term->color) ? $term->color : '';
 
   ?>
 

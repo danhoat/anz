@@ -18,3 +18,4 @@ plugins/wordpress-seo/
 plugins/qms_logger/
 qms_logger/
 wordpress-seo/debug.log
+debug.log

@@ -101,8 +101,6 @@ class EventCalendar
 			)
 		);
 
-
-
 		$calendar_month_n->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
 		$recent_enable_date = $calendar_month_n->recent_enable_date( $base_date );
 

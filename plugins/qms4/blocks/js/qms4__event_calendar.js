@@ -212,9 +212,11 @@ jQuery( function ( $ ) {
 			console.log('click Prev');
 			console.log('update left & right');
 			event.preventDefault();
-			left 	= left - 2;
-			console.log('right: ', right);
-			right = right - 2;
+			right = right -2;
+			var month = left -1;
+			left = left - 2;
+
+
 
 			current.setMonth( current.getMonth() - 1 );
 				endpoint,
@@ -225,7 +227,7 @@ jQuery( function ( $ ) {
 			);
 			console.log('calendar_month: ', calendar_month);
 			$year.text( current.getFullYear() );
-			$month.text( current.getMonth() + 1 );
+			$month.text( left );
 			$month_name.text( month_names[ current.getMonth() ] );
 			console.log('calendar_content: ', calendar_content);
 
@@ -233,7 +235,8 @@ jQuery( function ( $ ) {
 			$calendar_body.html( calendar_content( calendar_month[0]) );
 			console.log('$calendar_body_next: ', $calendar_body_next);
 
-			$next_month.text( right+1 );
+
+			$next_month.text( right );
 
 			var  html = calendar_content( calendar_month[1] );
 			console.log('next html: ', html);
@@ -251,7 +254,6 @@ jQuery( function ( $ ) {
 			right = right+ 2;
 			var month = left + 1;
 			left = left + 2;
-
 
 			console.log(' Left', left);
 			console.log('right:', right);

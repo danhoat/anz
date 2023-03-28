@@ -35,7 +35,6 @@ function qms4_list_events_by_date(){
 		while($list->have_posts() ){
 			$list->the_post();
 			global $post;
-			//sample_html($post);
 		}
 	} else{
 		_e('Not post found.');

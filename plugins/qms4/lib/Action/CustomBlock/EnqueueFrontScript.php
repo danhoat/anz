@@ -31,6 +31,13 @@ class EnqueueFrontScript
 				filemtime( QMS4_DIR . '/blocks/js/qms4__event_calendar.js' ),
 				true
 			);
+
+			wp_localize_script( 'qms4__event_calendar', 'qms4__event_calendar',
+				array(
+					'event_link' => get_post_type_archive_link('fair')
+				)
+			);
+
 		}
 
 		if ( BlockUtil::used( 'qms4/panel-menu' ) ) {

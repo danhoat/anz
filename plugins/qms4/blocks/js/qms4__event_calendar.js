@@ -31,21 +31,21 @@ jQuery( function ( $ ) {
 	 * @returns {string[]}
 	 */
 	function calendar_content( calendar_month ) {
-
+		var event_link = qms4__event_calendar.event_link;
 		return calendar_month.data.map(
 			( { date: date_str, date_class, schedules, enable } ) => {
 				const date = new Date( date_str );
-
+				console.log('date:', date_str);
 				return `<div
 				class="qms4__block__event-calendar__body-cell ${ date_class.join( ' ' ) }"
 				data-date="${ date_str }"
 			>
 					${
 						! enable || schedules.length === 0
-							? `<span class="qms4__block__event-calendar__day-title js__qms4__block__event-calendar__display-header">
+							? `<span class="qms4__block__event-calendar__day-title 1 js__qms4__block__event-calendar__display-header">
 									${ date.getDate() }
 								</span>`
-							: `<button class="qms4__block__event-calendar__day-title" >
+							: `<a href= "${event_link}?ymd=${date_str}"class="qms4__block__event-calendar__day-title 2" >
 									${ date.getDate() }
 								</button>`
 					}

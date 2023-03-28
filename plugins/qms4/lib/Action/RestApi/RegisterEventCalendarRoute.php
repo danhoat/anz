@@ -57,8 +57,7 @@ class RegisterEventCalendarRoute
 		$cur_date = $year.'-0'.$month.'-01';
 
 		$border_date = $factory->fist_date_of_left_month($ymd);
-		//var_dump($border_date);
-		//ed:left = 5=>  get list of 6&7
+
 
 
 		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );

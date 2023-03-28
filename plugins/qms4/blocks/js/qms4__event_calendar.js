@@ -126,15 +126,35 @@ jQuery( function ( $ ) {
 		'November',
 		'December',
 	];
-	console.log('set left & right');
+
 
 	var left = new Date().getMonth() +1  ; // 0 -> 11
 
 
-	console.log('left: ', left);
 	var right = left +1;
-	console.log('right: ', right);
 
+	function valiate_pre_month(month){
+		if( month > 2){
+			month = month - 2;
+		} else if(month == 2 ){
+			month = 12;
+		} else if(month == 1) {
+			month = 11;
+
+		}
+		return month;
+	}
+	function valiate_next_month(month){
+		if( month < 11 ){
+			month = month + 2;
+		} else if(month == 11 ){
+			month = 1;
+		} else if(month == 12) {
+			month = 2;
+
+		}
+		return month;
+	}
 
 	const dows = [ '日', '月', '火', '水', '木', '金', '土' ];
 
@@ -188,9 +208,8 @@ jQuery( function ( $ ) {
 
 		param.set( 'fields[area]', showArea ? 1 : 0 );
 		param.set( 'fields[taxonomies]', taxonomies.join( ',' ) );
-		console.log('param: ', param);
 		const endpoint = $unit.data( 'endpoint' );
-		console.log('endpoint: ', endpoint);
+
 
 		/**
 		 * 月初日を返す
@@ -206,21 +225,24 @@ jQuery( function ( $ ) {
 
 		// カレントの日付を生成
 		const current = getFirstDay( $unit.data( 'current' ) );
-		console.log('current: ', current);
+
 		$prev.on( 'click.prevMonth', async function ( event ) {
 
-			console.log('click Prev');
-			console.log('update left & right');
+
 			event.preventDefault();
-			right = right -2;
-			var month = left -1;
-			left = left - 2;
+			if( left == 1 || left == 2){
+				current.setFullYear(current.getFullYear()-1);
+			}
+
+			left = valiate_pre_month(left);
+
+			right = valiate_pre_month(right);
+
+			month = left-1;
+			current.setMonth(month);
 
 
-
-			current.setMonth( current.getMonth() - 1 );
-				endpoint,
-				calendar_month = await fetch_calendar_month(
+			var	calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
@@ -249,16 +271,17 @@ jQuery( function ( $ ) {
 			console.log('click Next');
 			event.preventDefault();
 
+			if( right >10 )
+				current.setFullYear( current.getFullYear()+1 );
 
+			left = valiate_next_month(left);
 
-			right = right+ 2;
-			var month = left + 1;
-			left = left + 2;
+			right = valiate_next_month(right);
 
-			console.log(' Left', left);
-			console.log('right:', right);
+			 var month = left + 1;
+
 			current.setMonth( month );
-			console.log(' currentbeforecallfetch:', current);
+
 
 			calendar_month = await fetch_calendar_month(
 				endpoint,
@@ -270,12 +293,10 @@ jQuery( function ( $ ) {
 			$month.text( left );
 
 			$month_name.text( month_names[ current.getMonth() ] );
-			console.log('calendar_content 0: ', calendar_month[0]);
-			console.log('calendar_content 1: ', calendar_month[1]);
 
 			$calendar_body.html( calendar_content( calendar_month[0]) );
 
-			console.log('set body next month');
+
 			$year.text( current.getFullYear() );
 
 
@@ -283,9 +304,7 @@ jQuery( function ( $ ) {
 
 			$month_name.text( month_names[ current.getMonth() ] );
 
-
 			$calendar_body_next.html( calendar_content( calendar_month[1] ) );
-
 
 
 		} );

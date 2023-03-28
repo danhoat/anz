@@ -43,7 +43,7 @@ class RegisterEventCalendarRoute
 		$year 		= $param[ 'year' ];
 		$month 		= $param[ 'month' ];
 
-		$left_month = $month;
+
 		$ymd = $year.'-'.$month.'-01';
 
 		$event = isset($param['event']) ? $param['event']: '';
@@ -58,11 +58,7 @@ class RegisterEventCalendarRoute
 
 		$border_date = $factory->fist_date_of_left_month($ymd);
 
-
-
 		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
-
-
 		$event_calendar = new FetchEventCalendar( $post_type );
 
 		$calendar_month = $event_calendar->fetch( $calendar_term, array(

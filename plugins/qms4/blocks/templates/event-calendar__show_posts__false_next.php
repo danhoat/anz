@@ -6,7 +6,7 @@
 
       <div class="qms4__block__event-calendar__month-title">
         <div class="qms4__block__event-calendar__month-title__year js__qms4__block__event-calendar__month-title__year"><?= $base_date->format( 'Y' ) ?></div>
-        <div class="qms4__block__event-calendar__month-title__month js__qms4__block__event-calendar__month-title__month"><?= $base_date->format( 'n' ) ?></div>
+        <div class="qms4__block__event-calendar__month-title__month js-next-month-title js__qms4__block__event-calendar__month-title__month"><?= $base_date->format( 'n' ) ?></div>
         <div class="qms4__block__event-calendar__month-title__month-name js__qms4__block__event-calendar__month-title__month-name"><?= $base_date->format( 'F' ) ?></div>
       </div>
       <!-- /.qms4__block__event-calendar__month-title -->
@@ -30,7 +30,7 @@
       </div>
       <!-- /.qms4__block__event-calendar__calendar-header -->
 
-      <div class="qms4__block__event-calendar__calendar-body js__qms4__block__event-calendar__calendar-body">
+      <div class="qms4__block__event-calendar__calendar-body js__qms4__block__event-calendar__calendar-body-next">
 <?php foreach ( $calendar_month_n as $calendar_date ) { ?>
         <div
           class="qms4__block__event-calendar__body-cell <?= join( ' ', $date_class->format( $calendar_date->date() ) ) ?>"

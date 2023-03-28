@@ -43,23 +43,34 @@ class RegisterEventCalendarRoute
 		$year 		= $param[ 'year' ];
 		$month 		= $param[ 'month' ];
 
+		var_dump($month);
 
 		$event = isset($param['event']) ? $param['event']: '';
 
 
-		 $start_of_week = DayOfWeek::from_week( get_option( 'start_of_week', DayOfWeek::MONDAY ) );
+		$start_of_week = DayOfWeek::from_week( get_option( 'start_of_week', DayOfWeek::MONDAY ) );
 
 		$factory = new BorderDateFactory();
 
 		$border_date = $factory->fist_date_of_next_2month( );
 
-		$calendar_term = CalendarTerm::from_year_month( $start_of_week, $year, $month );
+
+		//$calendar_term = CalendarTerm::from_year_month( $start_of_week, $year, $month );
+
+		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
+
+
+
 
 		$event_calendar = new FetchEventCalendar( $post_type );
+
 		$calendar_month = $event_calendar->fetch( $calendar_term, array(
 			'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
 		) );
+
 		$calendar_month->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
+
+
 
 		$factory = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--' );
 		$date_class_formatter = $factory->create( $post_type, $calendar_term );
@@ -73,26 +84,27 @@ class RegisterEventCalendarRoute
 			200
 		);
 
-
 		$factory_n = new BorderDateFactory();
 
-		$border_date_event = $factory_n->fist_date_of_next_3month( );
+		$border_date_right = $factory_n->fist_date_of_next_3month( );
 		if( $event == 'prev'){
 			// $border_date_event = $factory_n->frist_prev_month_date( );
 		}
 
 
-		$calendar_term = CalendarTerm::from_year_month( $start_of_week, $year, $month +1 );
-		//var_dump($calendar_term);
+
+		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
+
 		$event_calendar = new FetchEventCalendar( $post_type );
 
 		$calendar_next_month = $event_calendar->fetch( $calendar_term, array(
 			'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
 		) );
 
-		$calendar_next_month->set_border_date( $border_date_event );  // TODO: セッターでやるのやめたい
+		$calendar_next_month->set_border_date( $border_date_right );  // TODO: セッターでやるのやめたい
 
-		$factory = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--', $border_date_event );
+
+		$factory = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--', $border_date_right );
 		$date_class_formatter = $factory->create( $post_type, $calendar_term );
 
 		$schedule_formatter = new ScheduleFormatter(

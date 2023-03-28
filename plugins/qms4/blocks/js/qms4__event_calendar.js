@@ -126,6 +126,10 @@ jQuery( function ( $ ) {
 		'November',
 		'December',
 	];
+	console.log('set left & right');
+	var left = new Date().getMonth() + 1; // 0 -> 11
+	var right = left + 1;
+
 	const dows = [ '日', '月', '火', '水', '木', '金', '土' ];
 
 	$( '.js__qms4__block__event-calendar' ).each( function () {
@@ -155,6 +159,11 @@ jQuery( function ( $ ) {
 		const $calendar_body_next = $unit.find(
 			'.js__qms4__block__event-calendar__calendar-body-next'
 		);
+		const $next_month = $unit.find(
+			'.js-next-month-title'
+		);
+
+
 
 		const $display_header = $unit.find(
 			'.js__qms4__block__event-calendar__display-header'
@@ -194,6 +203,8 @@ jQuery( function ( $ ) {
 		console.log('current: ', current);
 		$prev.on( 'click.prevMonth', async function ( event ) {
 
+			console.log('click Prev');
+			console.log('update left & right');
 			event.preventDefault();
 
 			current.setMonth( current.getMonth() - 1 );
@@ -209,6 +220,7 @@ jQuery( function ( $ ) {
 			$month_name.text( month_names[ current.getMonth() ] );
 			console.log('calendar_content: ', calendar_content);
 
+			console.log('next month body:');
 			$calendar_body.html( calendar_content( calendar_month[0]) );
 			console.log('$calendar_body_next: ', $calendar_body_next);
 			var  html = calendar_content( calendar_month[1] );
@@ -217,26 +229,59 @@ jQuery( function ( $ ) {
 		} );
 
 		$next.on( 'click.nextMonth', async function ( event ) {
+			console.log('update left & right');
 			param.set('event', 'next');
+			console.log('click Next');
 			event.preventDefault();
-			console.log('current: ', current);
+			console.log('Current: ', current);
+			console.log('current Month: ', current.getMonth());
+			var nextMont =  current.getMonth() + 2;
+			console.log('nextMont:', nextMont);
 
-			current.setMonth( current.getMonth() + 1 );
+
 			console.log('endpoint: ', endpoint);
 			console.log('param: ', param);
+
+			left = left + 2;
+			right = right +2;
+			current.setMonth( left );
+
+
 			calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
 			);
 			console.log(' line 215 calendar_month: ', calendar_month );
+
+
 			$year.text( current.getFullYear() );
-			$month.text( current.getMonth() + 1 );
+			console.log('set left month: ');
+			$month.text( left );
+
 			$month_name.text( month_names[ current.getMonth() ] );
 			console.log('calendar_content 0: ', calendar_month[0]);
 			console.log('calendar_content 1: ', calendar_month[1]);
+
 			$calendar_body.html( calendar_content( calendar_month[0]) );
+
+			console.log('set body next month');
+			$year.text( current.getFullYear() );
+
+			console.log('set right month: ');
+			console.log('left: ', left);
+			console.log('right: ', right);
+
+
+
+			$next_month.text( right );
+
+			$month_name.text( month_names[ current.getMonth() ] );
+
+
 			$calendar_body_next.html( calendar_content( calendar_month[1] ) );
+
+
 
 		} );
 

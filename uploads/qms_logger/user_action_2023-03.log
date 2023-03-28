@@ -780,3 +780,16 @@
 [2023-03-27 16:51:48]	core	INFO	transition_post_status	{"post_type":"customize_changeset","ID":834,"new_status":"publish","old_status":"new","post_author":5}	{"uid":"8dabe68","current_user_id":5,"current_user_login":"admin"}
 [2023-03-27 16:52:01]	core	INFO	transition_post_status	{"post_type":"customize_changeset","ID":835,"new_status":"trash","old_status":"publish","post_author":5}	{"uid":"7801a51","current_user_id":5,"current_user_login":"admin"}
 [2023-03-27 16:52:01]	core	INFO	transition_post_status	{"post_type":"customize_changeset","ID":835,"new_status":"publish","old_status":"new","post_author":5}	{"uid":"7801a51","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:00:29]	core	INFO	login	{"ID":5,"user_login":"admin"}	{"uid":"5934126","current_user_id":0,"current_user_login":false}
+[2023-03-29 03:00:45]	core	INFO	transition_post_status	{"post_type":"fair","ID":587,"new_status":"auto-draft","old_status":"new","post_author":5}	{"uid":"1914c80","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:03]	core	INFO	transition_post_status	{"post_type":"fair","ID":587,"new_status":"publish","old_status":"auto-draft","post_author":5}	{"uid":"220c226","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:04]	core	INFO	transition_post_status	{"post_type":"fair","ID":587,"new_status":"publish","old_status":"publish","post_author":5}	{"uid":"2fff39b","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:08]	core	INFO	profile_update	{"ID":5,"user_login":"admin"}	{"uid":"4fdcc19","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:26]	core	INFO	transition_post_status	{"post_type":"fair","ID":587,"new_status":"publish","old_status":"publish","post_author":5}	{"uid":"8a6e93c","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:27]	core	INFO	transition_post_status	{"post_type":"fair","ID":587,"new_status":"publish","old_status":"publish","post_author":5}	{"uid":"6375b91","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:27]	core	INFO	transition_post_status	{"post_type":"fair__schedule","ID":588,"new_status":"publish","old_status":"new","post_author":5}	{"uid":"6375b91","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:41]	core	INFO	transition_post_status	{"post_type":"fair","ID":587,"new_status":"publish","old_status":"publish","post_author":5}	{"uid":"4dcebb1","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:43]	core	INFO	transition_post_status	{"post_type":"fair","ID":587,"new_status":"publish","old_status":"publish","post_author":5}	{"uid":"c35ebde","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:43]	core	INFO	transition_post_status	{"post_type":"fair__schedule","ID":589,"new_status":"publish","old_status":"new","post_author":5}	{"uid":"c35ebde","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:01:55]	core	INFO	transition_post_status	{"post_type":"revision","ID":590,"new_status":"inherit","old_status":"new","post_author":5}	{"uid":"a6dc431","current_user_id":5,"current_user_login":"admin"}
+[2023-03-29 03:02:49]	core	INFO	profile_update	{"ID":5,"user_login":"admin"}	{"uid":"f505bea","current_user_id":5,"current_user_login":"admin"}

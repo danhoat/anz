@@ -1,0 +1,37 @@
+.qms4__post-list__area.qms4__post-list__area:not(:root) {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px 4px;
+
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	margin-top: 8px;
+
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+.qms4__post-list__area {
+	&__icon {
+		margin: 0 !important;
+		padding: .25em .6em;
+		font-size: 12px;
+		line-height: 1.2;
+
+		color: #fff;
+		background-color: #666;
+		border: 1px solid #666;
+	}
+
+	&[data-color=background] &__icon {
+		color: #fff;
+		background-color: #666;
+	}
+	&[data-color=text] &__icon {
+		color: #666;
+		background-color: transparent;
+	}
+}

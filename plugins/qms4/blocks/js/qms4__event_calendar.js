@@ -6,21 +6,12 @@ jQuery( function ( $ ) {
 	 * @param {Date} current
 	 * @returns {Promise<{ date: string, date_class: string[], schedules: { id: number, title: string }[] }[]>}
 	 */
-
-	async  function fetch_calendar_month( endpoint, param, current ) {
-
-		let api_url = endpoint
-		.replace( '%year%', current.getFullYear() )
-		.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`;
-		console.log('api_url: ', api_url);
-		var result = await fetch(
-			api_url
-		).then(  ( response ) => {
-        	var result =    response.json();
-			return result;
-		} );
-		console.log('result:', result);
-		return result;
+	function fetch_calendar_month( endpoint, param, current ) {
+		return fetch(
+			endpoint
+				.replace( '%year%', current.getFullYear() )
+				.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`
+		).then( ( response ) => response.json() );
 	}
 
 	/**
@@ -29,21 +20,20 @@ jQuery( function ( $ ) {
 	 * @returns {string[]}
 	 */
 	function calendar_content( calendar_month ) {
-		var event_link = qms4__event_calendar.event_link;
-		return calendar_month.data.map(
+		return calendar_month.map(
 			( { date: date_str, date_class, schedules, enable } ) => {
 				const date = new Date( date_str );
-				console.log('date:', date_str);
+
 				return `<div
 				class="qms4__block__event-calendar__body-cell ${ date_class.join( ' ' ) }"
 				data-date="${ date_str }"
 			>
 					${
 						! enable || schedules.length === 0
-							? `<span class="qms4__block__event-calendar__day-title 1 js__qms4__block__event-calendar__display-header">
+							? `<span class="qms4__block__event-calendar__day-title js__qms4__block__event-calendar__display-header">
 									${ date.getDate() }
 								</span>`
-							: `<a href= "${event_link}?ymd=${date_str}"class="qms4__block__event-calendar__day-title 2" >
+							: `<button class="qms4__block__event-calendar__day-title" >
 									${ date.getDate() }
 								</button>`
 					}
@@ -124,35 +114,6 @@ jQuery( function ( $ ) {
 		'November',
 		'December',
 	];
-
-	var left = new Date().getMonth() +1  ; // 0 -> 11
-
-
-	var right = left +1;
-
-	function valiate_pre_month(month){
-		if( month > 2){
-			month = month - 2;
-		} else if(month == 2 ){
-			month = 12;
-		} else if(month == 1) {
-			month = 11;
-
-		}
-		return month;
-	}
-	function valiate_next_month(month){
-		if( month < 11 ){
-			month = month + 2;
-		} else if(month == 11 ){
-			month = 1;
-		} else if(month == 12) {
-			month = 2;
-
-		}
-		return month;
-	}
-
 	const dows = [ '日', '月', '火', '水', '木', '金', '土' ];
 
 	$( '.js__qms4__block__event-calendar' ).each( function () {
@@ -178,19 +139,6 @@ jQuery( function ( $ ) {
 		const $calendar_body = $unit.find(
 			'.js__qms4__block__event-calendar__calendar-body'
 		);
-
-		const $calendar_body_next = $unit.find(
-			'.js__qms4__block__event-calendar__calendar-body-next'
-		);
-		const $next_year = $unit.find(
-			'.js__qms4__block__event-calendar__month-title__next-year'
-		);
-		const $next_month = $unit.find(
-			'.js-next-month-title'
-		);
-
-
-
 		const $display_header = $unit.find(
 			'.js__qms4__block__event-calendar__display-header'
 		);
@@ -208,8 +156,8 @@ jQuery( function ( $ ) {
 
 		param.set( 'fields[area]', showArea ? 1 : 0 );
 		param.set( 'fields[taxonomies]', taxonomies.join( ',' ) );
-		const endpoint = $unit.data( 'endpoint' );
 
+		const endpoint = $unit.data( 'endpoint' );
 
 		/**
 		 * 月初日を返す
@@ -227,96 +175,37 @@ jQuery( function ( $ ) {
 		const current = getFirstDay( $unit.data( 'current' ) );
 
 		$prev.on( 'click.prevMonth', async function ( event ) {
-
-
 			event.preventDefault();
-			// if( left == 1 || left == 2){
-			// 	current.setFullYear(current.getFullYear()-1);
-			// }
-
-			left = valiate_pre_month(left);
-
-			right = valiate_pre_month(right);
-
-			month = left-1;
-			current.setMonth(month);
-
-
-			var	calendar_month = await fetch_calendar_month(
-				endpoint,
-				param,
-				current
-			);
-
-			$year.text( current.getFullYear() );
-			$month.text( left );
-			$month_name.text( month_names[ current.getMonth() ] );
-			console.log('calendar_content: ', calendar_content);
-
-			console.log('next month body:');
-			$calendar_body.html( calendar_content( calendar_month[0]) );
-			console.log('$calendar_body_next: ', $calendar_body_next);
-
-
-			$next_month.text( right );
-			$next_year.text( current.getFullYear() );
-			// if(right == 1){
-			// 	$next_year.text( current.getFullYear() +1 );
-			// }
-
-			var  html = calendar_content( calendar_month[1] );
-
-			$calendar_body_next.html( html );
-		} );
-
-		$next.on( 'click.nextMonth', async function ( event ) {
-			console.log('update left & right');
-			param.set('event', 'next');
-			console.log('click Next');
-			event.preventDefault();
-
-			// if( right >10 )
-			// 	current.setFullYear( current.getFullYear()+1 );
-
-			left = valiate_next_month(left);
-
-			right = valiate_next_month(right);
-
-			var month = left + 1;
-
-			current.setMonth( month );
-
+			current.setMonth( current.getMonth() - 1 );
 
 			calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
 			);
-			$year.text( current.getFullYear() );
-
-			if(left == 12){
-				$year.text( current.getFullYear() -1 );
-			}
-
-
-			$month.text( left );
-
-			$month_name.text( month_names[ current.getMonth() ] );
-
-			$calendar_body.html( calendar_content( calendar_month[0]) );
-
 
 			$year.text( current.getFullYear() );
-
-
-			$next_month.text( right  );
-			$next_year.text( current.getFullYear() );
-
+			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
 
-			$calendar_body_next.html( calendar_content( calendar_month[1] ) );
+			$calendar_body.html( calendar_content( calendar_month ) );
+		} );
 
+		$next.on( 'click.nextMonth', async function ( event ) {
+			event.preventDefault();
+			current.setMonth( current.getMonth() + 1 );
 
+			calendar_month = await fetch_calendar_month(
+				endpoint,
+				param,
+				current
+			);
+
+			$year.text( current.getFullYear() );
+			$month.text( current.getMonth() + 1 );
+			$month_name.text( month_names[ current.getMonth() ] );
+
+			$calendar_body.html( calendar_content( calendar_month ) );
 		} );
 
 		$calendar_body.on(

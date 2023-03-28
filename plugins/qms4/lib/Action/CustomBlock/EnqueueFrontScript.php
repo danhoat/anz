@@ -24,20 +24,28 @@ class EnqueueFrontScript
 		}
 
 		if ( BlockUtil::used( 'qms4/event-calendar' ) ) {
-			wp_enqueue_script(
-				'qms4__event_calendar',
-				plugins_url( '../../../blocks/js/qms4__event_calendar.js', __FILE__ ),
-				array( 'jquery' ),
-				filemtime( QMS4_DIR . '/blocks/js/qms4__event_calendar.js' ),
-				true
-			);
-
-			wp_localize_script( 'qms4__event_calendar', 'qms4__event_calendar',
-				array(
-					'event_link' => get_post_type_archive_link('fair')
-				)
-			);
-
+			if( qms4_calendar_style()  !== 'custom' ){
+				wp_enqueue_script(
+					'qms4__event_calendar',
+					plugins_url( '../../../blocks/js/qms4__event_calendar.js', __FILE__ ),
+					array( 'jquery' ),
+					filemtime( QMS4_DIR . '/blocks/js/qms4__event_calendar.js' ),
+					true
+				);
+			} else{
+				wp_enqueue_script(
+					'qms4__event_calendar',
+					plugins_url( '../../../blocks/js/qms4__event_calendar_custom_style.js', __FILE__ ),
+					array( 'jquery' ),
+					filemtime( QMS4_DIR . '/blocks/js/qms4__event_calendar_custom_style.js' ),
+					true
+				);
+				wp_localize_script( 'qms4__event_calendar', 'qms4__event_calendar',
+					array(
+						'event_link' => get_post_type_archive_link('fair')
+					)
+				);
+			}
 		}
 
 		if ( BlockUtil::used( 'qms4/panel-menu' ) ) {

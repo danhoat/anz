@@ -16,7 +16,6 @@ class BorderDateFactory
 		$cal_base_date = $this->cal_base_date( $post_type );
 
 		$today = new \DateTimeImmutable( 'now', wp_timezone() );
-
 		if ( $cal_base_date == 0 ) {
 			$border_date = $today;
 		} elseif ( $cal_base_date > 0 ) {
@@ -29,6 +28,7 @@ class BorderDateFactory
 
 		return new BorderDate( $border_date );
 	}
+
 	public function fist_date_of_next_month(){
 
 		$otherday = new \DateTimeImmutable( 'first day of next month', wp_timezone() );
@@ -36,12 +36,6 @@ class BorderDateFactory
 		return new BorderDate( $otherday );
 	}
 
-	public function fist_date_of_next_2month(){
-
-		$otherday = new \DateTimeImmutable( 'first day of +2 months', wp_timezone() );
-
-		return new BorderDate( $otherday );
-	}
 	function fist_date_of_left_month($ymd){
 
 		$date = new \DateTimeImmutable($ymd);
@@ -57,21 +51,6 @@ class BorderDateFactory
 
 		return new BorderDate( $new_date );
 
-	}
-
-
-	public function fist_date_of_next_3month(){
-
-		$otherday = new \DateTimeImmutable( 'first day of +3 months', wp_timezone() );
-
-		return new BorderDate( $otherday );
-	}
-
-	public function frist_prev_month_date(){
-
-		$otherday = new \DateTimeImmutable( 'first day of previous month', wp_timezone() );
-
-		return new BorderDate( $otherday );
 	}
 
 	/**
@@ -109,11 +88,11 @@ class BorderDateFactory
 				AND POST_TYPE.`meta_value` = %s
 			;
 		";
-		// $u_sql = $wpdb->prepare( $sql, $post_type );
 
 		$row = $wpdb->get_row( $wpdb->prepare( $sql, $post_type ) );
 
 		if ( is_null( $row ) ) {
+			return 0;
 			throw new \LogicException();
 		}
 

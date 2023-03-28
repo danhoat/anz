@@ -32,6 +32,48 @@ class RegisterEventCalendarRoute
 	 */
 	public function get( \WP_REST_Request $request )
 	{
+		if(qms4_calendar_style()  !== 'custom')
+			return $this->get_default($request);
+		return $this->get_custom($request);
+	}
+	function getdefault($request){
+		$param = $request->get_params();
+
+		$validation_result = $this->validate( $param );
+		if ( is_wp_error( $validation_result ) ) {
+			return $validation_result;
+		}
+
+		$post_type = $param[ 'post_type' ];
+		$year = $param[ 'year' ];
+		$month = $param[ 'month' ];
+
+		$start_of_week = DayOfWeek::from_week( get_option( 'start_of_week', DayOfWeek::MONDAY ) );
+
+		$factory = new BorderDateFactory();
+		$border_date = $factory->from_post_type( $post_type );
+
+		$calendar_term = CalendarTerm::from_year_month( $start_of_week, $year, $month );
+
+		$event_calendar = new FetchEventCalendar( $post_type );
+		$calendar_month = $event_calendar->fetch( $calendar_term, array(
+			'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
+		) );
+		$calendar_month->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
+
+		$factory = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--' );
+		$date_class_formatter = $factory->create( $post_type, $calendar_term );
+
+		$schedule_formatter = new ScheduleFormatter(
+			empty( $_GET[ 'fields' ] ) ? array() : $_GET[ 'fields' ]
+		);
+
+		return new \WP_REST_Response(
+			$calendar_month->to_array( $date_class_formatter, $schedule_formatter ),
+			200
+		);
+	}
+	function get_custom($request){
 		$param = $request->get_params();
 
 		$validation_result = $this->validate( $param );
@@ -113,7 +155,6 @@ class RegisterEventCalendarRoute
 
 		return array($calendar_month, $calendar_next_month);
 	}
-
 	/**
 	 * @param    array<string,mixed>    $param
 	 * @return    true|\WP_Error

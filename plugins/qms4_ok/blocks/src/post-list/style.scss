@@ -1,0 +1,124 @@
+.qms4__post-list {
+	&__list {
+		display: grid;
+	}
+
+	&__list-item a:not(:root) {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+// カラム数 設定
+.qms4__post-list {
+	&[data-layout=card][data-num-columns-pc="1"] &__list {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 24px;
+	}
+	&[data-layout=card][data-num-columns-pc="2"] &__list {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
+	}
+	&[data-layout=card][data-num-columns-pc="3"] &__list {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+	}
+	&[data-layout=card][data-num-columns-pc="4"] &__list {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+	}
+	&[data-layout=card][data-num-columns-pc="5"] &__list {
+		grid-template-columns: repeat(5, 1fr);
+		gap: 16px;
+	}
+}
+
+// 表示数 設定
+.qms4__post-list {
+	&[data-num-posts-pc="1"] &__list-item:nth-child(n + 2) { display: none; }
+	&[data-num-posts-pc="2"] &__list-item:nth-child(n + 3) { display: none; }
+	&[data-num-posts-pc="3"] &__list-item:nth-child(n + 4) { display: none; }
+	&[data-num-posts-pc="4"] &__list-item:nth-child(n + 5) { display: none; }
+	&[data-num-posts-pc="5"] &__list-item:nth-child(n + 6) { display: none; }
+	&[data-num-posts-pc="6"] &__list-item:nth-child(n + 7) { display: none; }
+	&[data-num-posts-pc="7"] &__list-item:nth-child(n + 8) { display: none; }
+	&[data-num-posts-pc="8"] &__list-item:nth-child(n + 9) { display: none; }
+	&[data-num-posts-pc="9"] &__list-item:nth-child(n + 10) { display: none; }
+	&[data-num-posts-pc="10"] &__list-item:nth-child(n + 11) { display: none; }
+	&[data-num-posts-pc="11"] &__list-item:nth-child(n + 12) { display: none; }
+	&[data-num-posts-pc="12"] &__list-item:nth-child(n + 13) { display: none; }
+	&[data-num-posts-pc="13"] &__list-item:nth-child(n + 14) { display: none; }
+	&[data-num-posts-pc="14"] &__list-item:nth-child(n + 15) { display: none; }
+	&[data-num-posts-pc="15"] &__list-item:nth-child(n + 16) { display: none; }
+	&[data-num-posts-pc="16"] &__list-item:nth-child(n + 17) { display: none; }
+	&[data-num-posts-pc="17"] &__list-item:nth-child(n + 18) { display: none; }
+	&[data-num-posts-pc="18"] &__list-item:nth-child(n + 19) { display: none; }
+	&[data-num-posts-pc="19"] &__list-item:nth-child(n + 20) { display: none; }
+	&[data-num-posts-pc="20"] &__list-item:nth-child(n + 21) { display: none; }
+	&[data-num-posts-pc="21"] &__list-item:nth-child(n + 22) { display: none; }
+	&[data-num-posts-pc="22"] &__list-item:nth-child(n + 23) { display: none; }
+	&[data-num-posts-pc="23"] &__list-item:nth-child(n + 24) { display: none; }
+	&[data-num-posts-pc="24"] &__list-item:nth-child(n + 25) { display: none; }
+	&[data-num-posts-pc="25"] &__list-item:nth-child(n + 26) { display: none; }
+	&[data-num-posts-pc="26"] &__list-item:nth-child(n + 27) { display: none; }
+	&[data-num-posts-pc="27"] &__list-item:nth-child(n + 28) { display: none; }
+	&[data-num-posts-pc="28"] &__list-item:nth-child(n + 29) { display: none; }
+	&[data-num-posts-pc="29"] &__list-item:nth-child(n + 30) { display: none; }
+	&[data-num-posts-pc="30"] &__list-item:nth-child(n + 31) { display: none; }
+}
+
+@media ( max-width: 599px ) {
+	.qms4__post-list {
+		&[data-layout=card][data-num-columns-sp="1"] &__list {
+			grid-template-columns: repeat(1, 1fr);
+			gap: 24px;
+		}
+		&[data-layout=card][data-num-columns-sp="2"] &__list {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 24px;
+		}
+		&[data-layout=card][data-num-columns-sp="3"] &__list {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 24px;
+		}
+		&[data-layout=card][data-num-columns-sp="4"] &__list {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 20px;
+		}
+		&[data-layout=card][data-num-columns-sp="5"] &__list {
+			grid-template-columns: repeat(5, 1fr);
+			gap: 16px;
+		}
+
+		&[data-num-posts-sp="1"] &__list-item:nth-child(n + 2) { display: none; }
+		&[data-num-posts-sp="2"] &__list-item:nth-child(n + 3) { display: none; }
+		&[data-num-posts-sp="3"] &__list-item:nth-child(n + 4) { display: none; }
+		&[data-num-posts-sp="4"] &__list-item:nth-child(n + 5) { display: none; }
+		&[data-num-posts-sp="5"] &__list-item:nth-child(n + 6) { display: none; }
+		&[data-num-posts-sp="6"] &__list-item:nth-child(n + 7) { display: none; }
+		&[data-num-posts-sp="7"] &__list-item:nth-child(n + 8) { display: none; }
+		&[data-num-posts-sp="8"] &__list-item:nth-child(n + 9) { display: none; }
+		&[data-num-posts-sp="9"] &__list-item:nth-child(n + 10) { display: none; }
+		&[data-num-posts-sp="10"] &__list-item:nth-child(n + 11) { display: none; }
+		&[data-num-posts-sp="11"] &__list-item:nth-child(n + 12) { display: none; }
+		&[data-num-posts-sp="12"] &__list-item:nth-child(n + 13) { display: none; }
+		&[data-num-posts-sp="13"] &__list-item:nth-child(n + 14) { display: none; }
+		&[data-num-posts-sp="14"] &__list-item:nth-child(n + 15) { display: none; }
+		&[data-num-posts-sp="15"] &__list-item:nth-child(n + 16) { display: none; }
+		&[data-num-posts-sp="16"] &__list-item:nth-child(n + 17) { display: none; }
+		&[data-num-posts-sp="17"] &__list-item:nth-child(n + 18) { display: none; }
+		&[data-num-posts-sp="18"] &__list-item:nth-child(n + 19) { display: none; }
+		&[data-num-posts-sp="19"] &__list-item:nth-child(n + 20) { display: none; }
+		&[data-num-posts-sp="20"] &__list-item:nth-child(n + 21) { display: none; }
+		&[data-num-posts-sp="21"] &__list-item:nth-child(n + 22) { display: none; }
+		&[data-num-posts-sp="22"] &__list-item:nth-child(n + 23) { display: none; }
+		&[data-num-posts-sp="23"] &__list-item:nth-child(n + 24) { display: none; }
+		&[data-num-posts-sp="24"] &__list-item:nth-child(n + 25) { display: none; }
+		&[data-num-posts-sp="25"] &__list-item:nth-child(n + 26) { display: none; }
+		&[data-num-posts-sp="26"] &__list-item:nth-child(n + 27) { display: none; }
+		&[data-num-posts-sp="27"] &__list-item:nth-child(n + 28) { display: none; }
+		&[data-num-posts-sp="28"] &__list-item:nth-child(n + 29) { display: none; }
+		&[data-num-posts-sp="29"] &__list-item:nth-child(n + 30) { display: none; }
+		&[data-num-posts-sp="30"] &__list-item:nth-child(n + 31) { display: none; }
+		}
+}

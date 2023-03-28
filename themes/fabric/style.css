@@ -2213,6 +2213,10 @@ a:hover {
 * カレンダー
 *
 ========================================================================== **/
+.qms4__block__event-calendar-custom-style{
+  width: 45%;
+  display: inline-block;
+}
 .qms4__block__event-calendar__display-list .qms4__block__event-calendar__display-list-item__thumbnail img {
   border: 1px solid #C9C9C9;
 }

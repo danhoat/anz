@@ -47,10 +47,7 @@ require_once( __DIR__ . '/functions/qms4_site_part.php' );
 
 require_once( __DIR__ . '/functions/qms4_extend_queries.php' );
 
-
-require_once( __DIR__ . '/functions/qms4_taxonomy.php' );
 require_once( __DIR__ . '/functions/qms4_calendar.php' );
-
 
 // hooks
 require_once( __DIR__ . '/functions/hooks/qms4_set_item_class.php' );
@@ -58,13 +55,3 @@ require_once( __DIR__ . '/functions/hooks/qms4_list_set_item_class.php' );
 require_once( __DIR__ . '/functions/hooks/qms4_detail_set_item_class.php' );
 require_once( __DIR__ . '/functions/hooks/qms4_list_add_query_part.php' );
 require_once( __DIR__ . '/functions/hooks/qms4_list_debug_mode.php' );
-
-
-
-function debug_qms(){
-    $factory_n = new BorderDateFactory();
-
-    $border_date_event = $factory_n->fist_date_of_next_month( );
-
-}
-// add_action('wp_head','debug_qms');

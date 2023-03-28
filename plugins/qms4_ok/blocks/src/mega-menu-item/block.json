@@ -1,0 +1,34 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+	"apiVersion": 2,
+	"name": "qms4/mega-menu-item",
+	"version": "0.1.0",
+	"title": "メガメニュー > サブメニュー",
+	"parent": [ "qms4/mega-menu" ],
+	"icon": "pets",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "メニュー"
+		},
+		"url": {
+			"type": "string",
+			"default": ""
+		},
+		"targetBlank": {
+			"type": "boolean",
+			"default": false
+		},
+		"showSubmenu": {
+			"type": "boolean",
+			"default": "true"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "qms4",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

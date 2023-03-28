@@ -44,7 +44,6 @@ class EventCalendar
 		$factory = new BorderDateFactory();
 		$border_date = $factory->from_post_type( $post_type );
 
-
 		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
 
 		$base_date = $border_date->date();
@@ -56,9 +55,6 @@ class EventCalendar
 				'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
 			)
 		);
-
-
-
 		$calendar_month->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
 		$recent_enable_date = $calendar_month->recent_enable_date( $base_date );
 
@@ -69,54 +65,45 @@ class EventCalendar
 
 		ob_start();
 
-
 		if ( $show_posts ) {
 			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__true.php' );
 		} else {
+			if( qms4_calendar_style()  !== 'custom'){
+				require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );
+			}else {
+
+				require( QMS4_DIR . '/blocks/templates/event-calendar__show_left_month.php' );
+
+				// variable for right block
+				$factory_n = new BorderDateFactory();
+				$border_date = $factory_n->fist_date_of_next_month( );
 
 
-			require( QMS4_DIR . '/blocks/templates/event_calendar-header.php' );
-			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );
-		}
+				$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
 
-		// block 222;
+				$base_date = $border_date->date();
 
+				$event_calendar_n = new FetchEventCalendar( $post_type );
+				$calendar_month_n = $event_calendar_n->fetch(
+					$calendar_term,
+					array(
+						'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
+					)
+				);
 
-		$start_of_week = DayOfWeek::from_week( get_option( 'start_of_week', DayOfWeek::MONDAY ) );
+				$calendar_month_n->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
+				$recent_enable_date = $calendar_month_n->recent_enable_date( $base_date );
 
+				$factory_n = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--' );
+				$date_class = $factory_n->create( $post_type, $calendar_term );
 
-		$factory_n = new BorderDateFactory();
-		$border_date = $factory_n->fist_date_of_next_month( );
-
-
-		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
-
-		$base_date = $border_date->date();
-
-		$event_calendar_n = new FetchEventCalendar( $post_type );
-		$calendar_month_n = $event_calendar_n->fetch(
-			$calendar_term,
-			array(
-				'area' => empty( $_GET[ 'area' ] ) ? null : $_GET[ 'area' ],
-			)
-		);
-
-		$calendar_month_n->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
-		$recent_enable_date = $calendar_month_n->recent_enable_date( $base_date );
-
-		$factory_n = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--' );
-		$date_class = $factory_n->create( $post_type, $calendar_term );
-
-		$query_string = parse_url( $_SERVER[ 'REQUEST_URI' ] , PHP_URL_QUERY );
+				$query_string = parse_url( $_SERVER[ 'REQUEST_URI' ] , PHP_URL_QUERY );
 
 
+				require( QMS4_DIR . '/blocks/templates/event-calendar__show_right_month.php' );
+				}
+			}
 
-		if ( $show_posts ) {
-			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__true.php' );
-		} else {
-			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false_next.php' );
-			echo '</div>';
-		}
 		return ob_get_clean();
 	}
 }

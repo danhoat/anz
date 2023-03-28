@@ -1,4 +1,32 @@
 <?php
+/**
+ * define style of block calendar.
+ * 1 : defalt - 1 show 1month + block list event of date selected.
+ * 2:  custom - show 2 months and hidden the list event in the right site.
+ **/
+function qms4_calendar_style()
+{
+
+	return apply_filters('block_canlendar_style', 'custom');
+
+}
+
+
+function qms4_get_color( $post_id)
+{
+	$color_term_name = apply_filters('get_color_term_name', 'fair__special'); //event__category
+	$terms 	= get_the_terms($post_id, $color_term_name );
+	if( !$terms  || is_wp_error($terms) ){
+		return 0;
+	}
+
+	$term 	= $terms[0];
+
+	$color = get_field( 'field_62fb7354562ba', $term->taxonomy . '_' . $term->term_id );
+	if( empty($color) ) return 0;
+
+   return (object) array('slug'=>$term->term_id,'color' => $color);
+}
 
 function qms4_list_events_by_date(){
 

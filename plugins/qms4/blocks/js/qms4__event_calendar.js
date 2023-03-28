@@ -185,6 +185,9 @@ jQuery( function ( $ ) {
 		const $calendar_body_next = $unit.find(
 			'.js__qms4__block__event-calendar__calendar-body-next'
 		);
+		const $next_year = $unit.find(
+			'.js__qms4__block__event-calendar__month-title__next-year'
+		);
 		const $next_month = $unit.find(
 			'.js-next-month-title'
 		);
@@ -259,6 +262,11 @@ jQuery( function ( $ ) {
 
 
 			$next_month.text( right );
+			$next_year.text( current.getFullYear() );
+			if(right == 1){
+				$next_year.text( current.getFullYear() +1 );
+			}
+
 
 			var  html = calendar_content( calendar_month[1] );
 			console.log('next html: ', html);
@@ -278,7 +286,7 @@ jQuery( function ( $ ) {
 
 			right = valiate_next_month(right);
 
-			 var month = left + 1;
+			var month = left + 1;
 
 			current.setMonth( month );
 
@@ -289,6 +297,11 @@ jQuery( function ( $ ) {
 				current
 			);
 			$year.text( current.getFullYear() );
+
+			if(left == 12){
+				$year.text( current.getFullYear() -1 );
+			}
+
 
 			$month.text( left );
 
@@ -301,6 +314,7 @@ jQuery( function ( $ ) {
 
 
 			$next_month.text( right  );
+			$next_year.text( current.getFullYear() );
 
 			$month_name.text( month_names[ current.getMonth() ] );
 

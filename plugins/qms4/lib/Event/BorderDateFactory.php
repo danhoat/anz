@@ -42,6 +42,24 @@ class BorderDateFactory
 
 		return new BorderDate( $otherday );
 	}
+	function fist_date_of_left_month($ymd){
+
+		$date = new \DateTimeImmutable($ymd);
+		//$new_date = $date->modify('+ 2 months');
+
+		return new BorderDate( $date );
+
+	}
+	function fist_date_of_right_month($ymd){
+
+		$date = new \DateTimeImmutable($ymd);
+		$new_date = $date->modify('+1 month');
+
+		return new BorderDate( $new_date );
+
+	}
+
+
 	public function fist_date_of_next_3month(){
 
 		$otherday = new \DateTimeImmutable( 'first day of +3 months', wp_timezone() );

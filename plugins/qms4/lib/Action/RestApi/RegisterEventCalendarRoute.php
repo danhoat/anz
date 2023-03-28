@@ -43,7 +43,8 @@ class RegisterEventCalendarRoute
 		$year 		= $param[ 'year' ];
 		$month 		= $param[ 'month' ];
 
-		var_dump($month);
+		$left_month = $month;
+		$ymd = $year.'-'.$month.'-01';
 
 		$event = isset($param['event']) ? $param['event']: '';
 
@@ -52,14 +53,15 @@ class RegisterEventCalendarRoute
 
 		$factory = new BorderDateFactory();
 
-		$border_date = $factory->fist_date_of_next_2month( );
+		//$border_date = $factory->fist_date_of_next_2month( );
+		$cur_date = $year.'-0'.$month.'-01';
 
+		$border_date = $factory->fist_date_of_left_month($ymd);
+		//var_dump($border_date);
+		//ed:left = 5=>  get list of 6&7
 
-		//$calendar_term = CalendarTerm::from_year_month( $start_of_week, $year, $month );
 
 		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
-
-
 
 
 		$event_calendar = new FetchEventCalendar( $post_type );
@@ -69,7 +71,6 @@ class RegisterEventCalendarRoute
 		) );
 
 		$calendar_month->set_border_date( $border_date );  // TODO: セッターでやるのやめたい
-
 
 
 		$factory = new DateClassFormatterFactory( 'qms4__block__event-calendar__body-cell--' );
@@ -86,14 +87,13 @@ class RegisterEventCalendarRoute
 
 		$factory_n = new BorderDateFactory();
 
-		$border_date_right = $factory_n->fist_date_of_next_3month( );
+		$border_date_right = $factory_n->fist_date_of_right_month($ymd );
+
 		if( $event == 'prev'){
 			// $border_date_event = $factory_n->frist_prev_month_date( );
 		}
 
-
-
-		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date->date() );
+		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date_right->date() );
 
 		$event_calendar = new FetchEventCalendar( $post_type );
 

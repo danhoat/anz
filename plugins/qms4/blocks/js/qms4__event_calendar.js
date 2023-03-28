@@ -127,8 +127,12 @@ jQuery( function ( $ ) {
 		'December',
 	];
 	console.log('set left & right');
-	var left = new Date().getMonth() + 1; // 0 -> 11
-	var right = left + 1;
+
+	var left = new Date().getMonth()  ; // 0 -> 11
+
+
+	console.log('left: ', left);
+
 
 	const dows = [ '日', '月', '火', '水', '木', '金', '土' ];
 
@@ -206,6 +210,9 @@ jQuery( function ( $ ) {
 			console.log('click Prev');
 			console.log('update left & right');
 			event.preventDefault();
+			left 	= left - 2;
+			console.log('right: ', right);
+			right = right - 2;
 
 			current.setMonth( current.getMonth() - 1 );
 				endpoint,
@@ -223,6 +230,9 @@ jQuery( function ( $ ) {
 			console.log('next month body:');
 			$calendar_body.html( calendar_content( calendar_month[0]) );
 			console.log('$calendar_body_next: ', $calendar_body_next);
+
+			$next_month.text( right+1 );
+
 			var  html = calendar_content( calendar_month[1] );
 			console.log('next html: ', html);
 			$calendar_body_next.html( html );
@@ -235,29 +245,24 @@ jQuery( function ( $ ) {
 			event.preventDefault();
 			console.log('Current: ', current);
 			console.log('current Month: ', current.getMonth());
-			var nextMont =  current.getMonth() + 2;
-			console.log('nextMont:', nextMont);
-
 
 			console.log('endpoint: ', endpoint);
 			console.log('param: ', param);
 
-			left = left + 2;
-			right = right +2;
-			current.setMonth( left );
+			left = left + 1;
 
+			console.log(' Left', left);
+			current.setMonth( left );
+			console.log(' currentbeforecallfetch:', current);
 
 			calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
 			);
-			console.log(' line 215 calendar_month: ', calendar_month );
-
-
 			$year.text( current.getFullYear() );
-			console.log('set left month: ');
-			$month.text( left );
+			console.log('left:', left);
+			$month.text( left+1 );
 
 			$month_name.text( month_names[ current.getMonth() ] );
 			console.log('calendar_content 0: ', calendar_month[0]);
@@ -268,13 +273,8 @@ jQuery( function ( $ ) {
 			console.log('set body next month');
 			$year.text( current.getFullYear() );
 
-			console.log('set right month: ');
-			console.log('left: ', left);
-			console.log('right: ', right);
 
-
-
-			$next_month.text( right );
+			$next_month.text( left+2 );
 
 			$month_name.text( month_names[ current.getMonth() ] );
 

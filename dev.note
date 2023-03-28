@@ -121,3 +121,23 @@ wp-content % chmod -R 777 /Applications/XAMPP/xamppfiles/htdocs/roseun-charme.jp
 
 
 task 6: Tarkhe-blocks-pro/block-parts/page_list.php
+
+$meta_query = array(
+      array(
+        'key' => ParentEventId::KEY,
+        'value' => $parent_ids,
+        'compare' => 'IN',
+      ),
+      array(
+        'key' => EventDate::KEY,
+        'value' => $start->format( 'Y-m-d' ),
+        'compare' => '>=',
+        'type' => 'DATE',
+      ),
+      array(
+        'key' => EventDate::KEY,
+        'value' => $end->format( 'Y-m-d' ),
+        'compare' => '<=',
+        'type' => 'DATE',
+      ),
+    );

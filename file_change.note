@@ -20,3 +20,4 @@ qms4\blocks\templates\event-calendar__show_posts__false.php.
 qms4/lib/Action/RestApi/RegisterEventCalendarRoute.php
 qms4/lib/Block/EventCalendar.php
 qms4/lib/Event/BorderDateFactory.php
+ms4/lib/Action/CustomBlock/EnqueueFrontScript.php

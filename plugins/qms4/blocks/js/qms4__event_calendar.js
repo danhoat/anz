@@ -8,8 +8,6 @@ jQuery( function ( $ ) {
 	 */
 
 	async  function fetch_calendar_month( endpoint, param, current ) {
-		console.log('call fetch_calendar_month:');
-		console.log('current: ', current);
 
 		let api_url = endpoint
 		.replace( '%year%', current.getFullYear() )
@@ -126,7 +124,6 @@ jQuery( function ( $ ) {
 		'November',
 		'December',
 	];
-
 
 	var left = new Date().getMonth() +1  ; // 0 -> 11
 

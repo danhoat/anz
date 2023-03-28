@@ -231,3 +231,10 @@ function change_posts_per_page($query) {
 	}
 }
 add_action( 'pre_get_posts', 'change_posts_per_page' );
+
+add_filter( 'body_class', function( $classes ) {
+	if( is_singular('fair') )
+		return array_merge( $classes, array( 'single-event' ) );
+	return $classes;
+} );
+

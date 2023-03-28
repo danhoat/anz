@@ -229,15 +229,15 @@ jQuery( function ( $ ) {
 		$prev.on( 'click.prevMonth', async function ( event ) {
 
 			event.preventDefault();
-
-
 			left = valiate_pre_month(left);
-
 			right = valiate_pre_month(right);
 
 			month = left-1;
 			current.setMonth(month);
 
+			if(left == 11){
+				current.setFullYear(current.getFullYear() - 1);
+			}
 
 			var	calendar_month = await fetch_calendar_month(
 				endpoint,
@@ -248,18 +248,17 @@ jQuery( function ( $ ) {
 			$year.text( current.getFullYear() );
 			$month.text( left );
 			$month_name.text( month_names[ current.getMonth() ] );
-			console.log('calendar_content: ', calendar_content);
 
-			console.log('next month body:');
 			$calendar_body.html( calendar_content( calendar_month[0]) );
-			console.log('$calendar_body_next: ', $calendar_body_next);
+
 
 
 			$next_month.text( right );
 			$next_year.text( current.getFullYear() );
-			// if(right == 1){
-			// 	$next_year.text( current.getFullYear() +1 );
-			// }
+
+			if(right == 12){
+				$next_year.text( current.getFullYear() +1 );
+			}
 
 			var  html = calendar_content( calendar_month[1] );
 
@@ -282,15 +281,22 @@ jQuery( function ( $ ) {
 
 			current.setMonth( left -1 );
 
+			if(right <= 2){
+				current.setFullYear(current.getFullYear() + 1);
+
+			}
+			$next_year.text( current.getFullYear() );
+
 
 			calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
 			);
+
 			$year.text( current.getFullYear() );
 
-			if(left == 12){
+			if(left == 12 ){
 				$year.text( current.getFullYear() -1 );
 			}
 

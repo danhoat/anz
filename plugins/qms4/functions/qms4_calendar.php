@@ -61,9 +61,9 @@ function filter_events_by_select_date($query){
 		      			WHERE   m.meta_key = %s AND m.meta_value = %s
 		      					AND s.meta_key = %s GROUP BY s.meta_value
 		      			",
-				      $meta_key,
-				      $meta_value,
-				      'qms4__parent_event_id'
+				      	$meta_key,
+				      	$meta_value,
+				      	'qms4__parent_event_id'
 		   );
 
 			$parent_ids = $wpdb->get_results($sql, ARRAY_A);

@@ -2,7 +2,7 @@
 
 function sample_html($post){ ?>
 	<li class="p-postList__item">
-	<a href="#" class="p-postList__link">
+	<a href="<?php the_permalink();?>" class="p-postList__link">
 		<div class="p-postList__thumb c-postThumb" data-has-thumb="1">
 	<figure class="c-postThumb__figure">
 		<img width="1024" height="683" src="https://www.eidai-house.co.jp/wp-content/uploads/2023/01/7a4f161d18c42b6563072ee86095cc94-1024x683.jpg" alt="" class="c-postThumb__img" srcset="https://www.eidai-house.co.jp/wp-content/uploads/2023/01/7a4f161d18c42b6563072ee86095cc94-1024x683.jpg 1024w, https://www.eidai-house.co.jp/wp-content/uploads/2023/01/7a4f161d18c42b6563072ee86095cc94-300x200.jpg 300w, https://www.eidai-house.co.jp/wp-content/uploads/2023/01/7a4f161d18c42b6563072ee86095cc94-768x513.jpg 768w, https://www.eidai-house.co.jp/wp-content/uploads/2023/01/7a4f161d18c42b6563072ee86095cc94.jpg 1536w" sizes="(min-width: 600px) 400px, 40vw" loading="lazy">	</figure>
@@ -12,7 +12,7 @@ function sample_html($post){ ?>
             <div class="qms4__post-list__post-date">3/17-4/30</div>
 
 							<div class="p-postList__excerpt">
-					<p>Information モデルハウス完成見学会‼︎ 佐世保港を一望できる好立地の分譲地 高梨町にてモデルハウス見学会開催中！「眺望を楽しめる立地を活かした家に住みたい」そんなオーナー様のご要望を形にしました。また、キッチンはホームパーティーも楽しめるアイランドキッチン。 是非この機会に実物大の建売住宅を見に来てください。 事前来場予約さらに、アンケートをお答…</p>
+					<p>Sample static text モデルハウス完成見学会‼︎ 佐世保港を一望できる好立地の分譲地 高梨町にてモデルハウス見学会開催中！「眺望を楽しめる立地を活かした家に住みたい」そんなオーナー様のご要望を形にしました。また、キッチンはホームパーティーも楽しめるアイランドキッチン。 是非この機会に実物大の建売住宅を見に来てください。 事前来場予約さらに、アンケートをお答…</p>
 				</div>
 						<div class="p-postList__meta c-postMetas u-flex--aicw">
 	<div class="p-postList__times c-postTimes u-color-thin u-flex--aic">
@@ -34,7 +34,6 @@ function sample_html($post){ ?>
 function qms4_list_events_by_date(){
 
 	$ymd = isset($_GET['ymd']) ? $_GET['ymd']: date('Y-m-d');
-	//$meta_value = '2023-03-27';
 	$meta_value = $ymd;
 	$meta_key = 'qms4__event_date';
 	global $wpdb;
@@ -78,3 +77,37 @@ function qms4_list_events_by_date(){
 }
 
 add_shortcode( 'events_date', 'qms4_list_events_by_date' );
+function filter_events_by_select_date($query){
+	if( is_post_type_archive() && $query->is_main_query() ){
+		$ymd = isset($_GET['ymd']) ? $_GET['ymd']: date('Y-m-d');
+		if( !empty($ymd) ){
+
+			$meta_value = $ymd;
+			$meta_key = 'qms4__event_date';
+			global $wpdb;
+
+			$sql =  $wpdb->prepare(
+		      	"SELECT s.meta_value as id FROM $wpdb->postmeta m
+		      		LEFT JOIN $wpdb->postmeta s ON m.post_id = s.post_id
+		      			WHERE   m.meta_key = %s AND m.meta_value = %s
+		      					AND s.meta_key = %s GROUP BY s.meta_value
+		      			",
+				      $meta_key,
+				      $meta_value,
+				      'qms4__parent_event_id'
+		   );
+
+			$parent_ids = $wpdb->get_results($sql, ARRAY_A);
+			$ids = array();
+			foreach( $parent_ids as $key=>$value){
+				$ids[] = (int) $value['id'];
+			}
+
+			$query->set('post__in',$ids);
+
+		}
+	}
+
+}
+
+add_action( 'pre_get_posts', 'filter_events_by_select_date' );

@@ -51,7 +51,7 @@
     if($term){  break; }
   }
   $color = isset($term->color) ? $term->color : '';
-  $link = home_url('event-date');
+  $link = get_post_type_archive_link('fair');
   $link = add_query_arg( array(
     'ymd' => $calendar_date->date()->format( 'Y-m-d' ),
   ), $link);

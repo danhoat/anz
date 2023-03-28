@@ -2245,6 +2245,12 @@ a:hover {
 * TOP
 *
 ========================================================================== **/
+.qms4__block__event-calendar__custom {
+  padding: 30px 0;
+}
+.qms4__block__event-calendar__custom .qms4__block__event-calendar__container{
+
+}
 .qms4__block__event-calendar__container {
   background: rgba(255, 255, 255, 0.95);
   color: var(--dark-text);

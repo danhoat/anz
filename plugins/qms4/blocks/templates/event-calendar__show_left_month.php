@@ -1,6 +1,6 @@
 
 <div
-  class="qms4__block__event-calendar js__qms4__block__event-calendar"
+  class="qms4__block__event-calendar js__qms4__block__event-calendar qms4__block__event-calendar__custom"
   data-show-posts="false"
   data-show-area="<?= $show_area ?>"
   data-show-terms="<?= $show_terms ?>"
@@ -23,9 +23,7 @@
       </div>
       <!-- /.qms4__block__event-calendar__month-title -->
 
-      <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next hide ">
-        次の月
-      </button>
+
     </div>
     <!-- /.qms4__block__event-calendar__month-header -->
 

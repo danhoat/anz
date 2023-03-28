@@ -233,9 +233,9 @@ jQuery( function ( $ ) {
 
 
 			event.preventDefault();
-			if( left == 1 || left == 2){
-				current.setFullYear(current.getFullYear()-1);
-			}
+			// if( left == 1 || left == 2){
+			// 	current.setFullYear(current.getFullYear()-1);
+			// }
 
 			left = valiate_pre_month(left);
 
@@ -250,7 +250,7 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
-			console.log('calendar_month: ', calendar_month);
+
 			$year.text( current.getFullYear() );
 			$month.text( left );
 			$month_name.text( month_names[ current.getMonth() ] );
@@ -263,13 +263,12 @@ jQuery( function ( $ ) {
 
 			$next_month.text( right );
 			$next_year.text( current.getFullYear() );
-			if(right == 1){
-				$next_year.text( current.getFullYear() +1 );
-			}
-
+			// if(right == 1){
+			// 	$next_year.text( current.getFullYear() +1 );
+			// }
 
 			var  html = calendar_content( calendar_month[1] );
-			console.log('next html: ', html);
+
 			$calendar_body_next.html( html );
 		} );
 
@@ -279,8 +278,8 @@ jQuery( function ( $ ) {
 			console.log('click Next');
 			event.preventDefault();
 
-			if( right >10 )
-				current.setFullYear( current.getFullYear()+1 );
+			// if( right >10 )
+			// 	current.setFullYear( current.getFullYear()+1 );
 
 			left = valiate_next_month(left);
 

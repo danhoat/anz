@@ -141,3 +141,6 @@ $meta_query = array(
         'type' => 'DATE',
       ),
     );
+
+    fetch 3 => 3=>4.
+    fetch 5: =. 5 6

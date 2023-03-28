@@ -128,10 +128,12 @@ jQuery( function ( $ ) {
 	];
 	console.log('set left & right');
 
-	var left = new Date().getMonth()  ; // 0 -> 11
+	var left = new Date().getMonth() +1  ; // 0 -> 11
 
 
 	console.log('left: ', left);
+	var right = left +1;
+	console.log('right: ', right);
 
 
 	const dows = [ '日', '月', '火', '水', '木', '金', '土' ];
@@ -243,16 +245,17 @@ jQuery( function ( $ ) {
 			param.set('event', 'next');
 			console.log('click Next');
 			event.preventDefault();
-			console.log('Current: ', current);
-			console.log('current Month: ', current.getMonth());
 
-			console.log('endpoint: ', endpoint);
-			console.log('param: ', param);
 
-			left = left + 1;
+
+			right = right+ 2;
+			var month = left + 1;
+			left = left + 2;
+
 
 			console.log(' Left', left);
-			current.setMonth( left );
+			console.log('right:', right);
+			current.setMonth( month );
 			console.log(' currentbeforecallfetch:', current);
 
 			calendar_month = await fetch_calendar_month(
@@ -261,8 +264,8 @@ jQuery( function ( $ ) {
 				current
 			);
 			$year.text( current.getFullYear() );
-			console.log('left:', left);
-			$month.text( left+1 );
+
+			$month.text( left );
 
 			$month_name.text( month_names[ current.getMonth() ] );
 			console.log('calendar_content 0: ', calendar_month[0]);
@@ -274,7 +277,7 @@ jQuery( function ( $ ) {
 			$year.text( current.getFullYear() );
 
 
-			$next_month.text( left+2 );
+			$next_month.text( right  );
 
 			$month_name.text( month_names[ current.getMonth() ] );
 

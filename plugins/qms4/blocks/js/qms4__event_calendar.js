@@ -193,23 +193,18 @@ jQuery( function ( $ ) {
 
 		$next.on( 'click.nextMonth', async function ( event ) {
 			event.preventDefault();
-<<<<<<< HEAD
-			current.setMonth( current.getMonth() + 1 );
-=======
-
 
 
 			left = valiate_next_month(left);
-
 			right = valiate_next_month(right);
+
 			if( right < 2  )
 				current.setFullYear( current.getFullYear()+1 );
 
-			var month = left + 1;
+			var month = right -1 ;
 
 			current.setMonth( month );
 
->>>>>>> d5bcb6e (correct year show)
 
 			calendar_month = await fetch_calendar_month(
 				endpoint,

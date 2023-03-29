@@ -79,7 +79,6 @@
                         : (t.setFullYear(n.getFullYear(), n.getMonth(), _), t);
                 }
 
-
                 const b = window.wp.components,
                     u = window.wp.data,
                     p = (e) => {
@@ -405,20 +404,20 @@
                                             },
                                             e.date.getDate()
                                         ),
-                                        (0, n.createElement)(
-                                            "div",
-                                            {
-                                                className:
-                                                    "qms4__block__event-calendar__schedules-container",
-                                            },
-                                            e.schedules.map((e) =>
-                                                (0, n.createElement)(
-                                                    "a",
-                                                    { href: "#" },
-                                                    e.title
-                                                )
-                                            )
-                                        )
+                                        // (0, n.createElement)(
+                                        //     "div",
+                                        //     {
+                                        //         className:
+                                        //             "qms4__block__event-calendar__schedules-container",
+                                        //     },
+                                        //     e.schedules.map((e) =>
+                                        //         (0, n.createElement)(
+                                        //             "a",
+                                        //             { href: "#" },
+                                        //             e.title
+                                        //         )
+                                        //     )
+                                        // ) // hidden schedules
                                     )
                                 )
                             )

@@ -66,16 +66,9 @@ class EventCalendar
 		ob_start();
 
 		if ( $show_posts ) {
-			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__true.php' );
-		} else {
-			if( qms4_calendar_style()  !== 'custom'){
-				require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );
-			}else {
-
-				require( QMS4_DIR . '/blocks/templates/event-calendar__show_left_month.php' );
-
-				// variable for right block
-				$factory_n = new BorderDateFactory();
+			//require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__true.php' );
+			require( QMS4_DIR . '/blocks/templates/event-calendar__show_left_month.php' );
+			$factory_n = new BorderDateFactory();
 				$border_date = $factory_n->fist_date_of_next_month( );
 
 
@@ -101,8 +94,10 @@ class EventCalendar
 
 
 				require( QMS4_DIR . '/blocks/templates/event-calendar__show_right_month.php' );
-				}
-			}
+		} else {
+
+				require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );
+	}
 
 		return ob_get_clean();
 	}

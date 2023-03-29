@@ -10,7 +10,7 @@
   data-endpoint="<?= home_url( "/wp-json/qms4/v1/event/calendar/{$post_type}/%year%/%month%/" ) ?>"
   data-current="<?= $base_date->format( 'Y-m-d' ) ?>">
 
-<div class="qms4__block__event-calendar__container   ">
+<div class="qms4__block__event-calendar__container   qms4__block__event-calendar_left">
 
     <div class="qms4__block__event-calendar__month-header">
       <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev">

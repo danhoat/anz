@@ -78,6 +78,18 @@ p {
   line-height: 1;
 }
 
+@media print, screen and (max-width: 740px) {
+  .has-text-align-sp-left {
+    text-align: left;
+  }
+}
+
+@media print, screen and (max-width: 740px) {
+  .has-text-align-sp-center {
+    text-align: center;
+  }
+}
+
 /* ------------------------------------
 
 line-clamp
@@ -929,6 +941,13 @@ a:hover {
 }
 
 /**  fill_action01 button  **/
+@media print, screen and (max-width: 1000px) {
+  .is-style-fill_action01.is-style-fill_action01.is-style-fill_action01.is-style-fill_action01.is-style-fill_action01 {
+    width: calc(50% - var(--wp--style--block-gap, 0.5em) * 0.75);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 @media print, screen and (max-width: 740px) {
   .is-style-fill_action01.is-style-fill_action01.is-style-fill_action01.is-style-fill_action01.is-style-fill_action01 {
     width: 100%;
@@ -2157,14 +2176,17 @@ a:hover {
 ========================================================================== **/
 @media print, screen and (max-width: 740px) {
   .c-postContent .l-slide .slick-dots {
-    bottom: -10vw;
+    bottom: -12vw;
   }
 }
 @media print, screen and (max-width: 740px) {
   .c-postContent .l-slide .slick-dots li {
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
   }
+}
+.c-postContent .l-slide .slick-dots li.slick-active {
+  background: #A0821D;
 }
 @media print, screen and (max-width: 740px) {
   .c-postContent .l-slide .wp-block-button {
@@ -2213,10 +2235,6 @@ a:hover {
 * カレンダー
 *
 ========================================================================== **/
-.qms4__block__event-calendar-custom-style{
-  width: 45%;
-  display: inline-block;
-}
 .qms4__block__event-calendar__display-list .qms4__block__event-calendar__display-list-item__thumbnail img {
   border: 1px solid #C9C9C9;
 }
@@ -2245,12 +2263,6 @@ a:hover {
 * TOP
 *
 ========================================================================== **/
-.qms4__block__event-calendar__custom {
-  padding: 30px 0;
-}
-.qms4__block__event-calendar__custom .qms4__block__event-calendar__container{
-
-}
 .qms4__block__event-calendar__container {
   background: rgba(255, 255, 255, 0.95);
   color: var(--dark-text);
@@ -2332,6 +2344,19 @@ a:hover {
   bottom: 0;
   right: 0;
 }
+.l-top-mv__fair .wp-block-group {
+  padding: 1rem 2.25rem;
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-mv__fair .wp-block-group {
+    padding: 1rem;
+  }
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-mv .swiper-pagination {
+    display: none;
+  }
+}
 
 /**  魅力  **/
 .l-top-reason {
@@ -2374,6 +2399,19 @@ a:hover {
   width: 100%;
   object-fit: cover;
 }
+@media print, screen and (max-width: 740px) {
+  .l-top-reason__main {
+    padding-left: var(--ark-padding--container);
+    padding-right: var(--ark-padding--container);
+  }
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-reason .wp-block-buttons {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 /**  フェア  **/
 .l-top-fair__title .p-title::before {
@@ -2384,10 +2422,61 @@ a:hover {
   background: url(images/icon_calendar.png) no-repeat center;
   background-size: 100% auto;
 }
+.l-top-fair__button {
+  max-width: 863px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.l-top-fair__button .wp-block-buttons {
+  height: 100%;
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-fair__button .wp-block-buttons {
+    width: 95%;
+    height: 20vw;
+    margin: 0 auto;
+  }
+}
+.l-top-fair__button .wp-block-buttons .wp-block-button {
+  height: 100%;
+}
+.l-top-fair__button .wp-block-buttons .wp-block-button__link {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.l-top-fair__button .wp-block-buttons .wp-block-button__link::after {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  margin: auto;
+  transform: rotate(45deg);
+  border-top: 1px solid #222222;
+  border-right: 1px solid #222222;
+  vertical-align: middle;
+  content: "";
+}
+.l-top-fair__button .wp-block-buttons .wp-block-button__link span {
+  font-size: 0.9rem;
+  width: 100%;
+}
 
 /**  挙式会場  **/
 .l-top-ceremony {
   position: relative;
+}
+@media print, screen and (max-width: 1000px) {
+  .l-top-ceremony {
+    width: 92%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .l-top-ceremony::before {
   content: "";
@@ -2401,13 +2490,37 @@ a:hover {
   height: 438px;
   background: #F6F9F3;
 }
+@media print, screen and (max-width: 1000px) {
+  .l-top-ceremony::before {
+    top: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 78%;
+  }
+}
 
 /**  披露宴会場  **/
 .l-top-party__contents .wp-block-columns.has-background, .l-top-party .wp-block-group.has-background, .l-top-party p.has-background {
   margin-top: -130px;
   position: relative;
-  z-index: 100;
+  z-index: 10;
   padding: 3.8rem 3.1rem;
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-party__contents .wp-block-columns.has-background, .l-top-party .wp-block-group.has-background, .l-top-party p.has-background {
+    padding: 0;
+    width: 92%;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-party__gallery .swiper-pagination {
+    display: none;
+  }
 }
 
 /**  詳細を見る  **/
@@ -2434,9 +2547,31 @@ a:hover {
 .l-top-cuisine.alignfull.has-background > .wp-block-group__inner-container, .l-top-cuisine.alignfull > .wp-block-cover__inner-container {
   max-width: 100%;
 }
+@media print, screen and (max-width: 1000px) {
+  .l-top-cuisine.alignfull.has-background > .wp-block-group__inner-container, .l-top-cuisine.alignfull > .wp-block-cover__inner-container {
+    padding-bottom: 4.5rem;
+  }
+}
 .l-top-cuisine.alignfull.has-background > .wp-block-group__inner-container .ark-block-columns, .l-top-cuisine.alignfull > .wp-block-cover__inner-container .ark-block-columns {
   width: 100%;
   left: inherit;
+}
+@media print, screen and (max-width: 1000px) {
+  .l-top-cuisine.alignfull.has-background > .wp-block-group__inner-container .ark-block-columns__inner, .l-top-cuisine.alignfull > .wp-block-cover__inner-container .ark-block-columns__inner {
+    width: 85%;
+    margin: 0 auto;
+    padding: 4rem 0 0;
+  }
+}
+@media print, screen and (max-width: 1000px) {
+  .l-top-cuisine.alignfull.has-background > .wp-block-group__inner-container .ark-block-columns .ark-block-column, .l-top-cuisine.alignfull > .wp-block-cover__inner-container .ark-block-columns .ark-block-column {
+    padding: 0;
+  }
+}
+@media print, screen and (max-width: 1000px) {
+  .l-top-cuisine.alignfull.has-background > .wp-block-group__inner-container .l-top-cuisine__item:nth-child(2n+1) .ark-block-columns__inner, .l-top-cuisine.alignfull > .wp-block-cover__inner-container .l-top-cuisine__item:nth-child(2n+1) .ark-block-columns__inner {
+    flex-direction: column-reverse;
+  }
 }
 
 /**  プラン  **/
@@ -2465,10 +2600,24 @@ a:hover {
   border-top: 1px solid #C9C9C9;
   font-size: 0.8rem;
 }
+@media print, screen and (max-width: 740px) {
+  .l-top-plan .wp-block-buttons {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
-/**  プラン  **/
+/**  パーティーレポート  **/
 .l-top-report .qms4__post-list[data-layout=card][data-num-columns-pc="3"] .qms4__post-list__list {
   gap: 44px;
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-report .qms4__post-list[data-layout=card][data-num-columns-pc="3"] .qms4__post-list__list {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .l-top-report .qms4__post-list__terms.qms4__post-list__terms:not(:root) {
   width: 100%;
@@ -2487,16 +2636,35 @@ a:hover {
   content: "#";
   padding-right: 2px;
 }
+@media print, screen and (max-width: 740px) {
+  .l-top-report .wp-block-buttons {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 /**  新着情報  **/
 .l-top-news .l-other-plan__title {
   margin-bottom: 50px;
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-news .l-other-plan__title {
+    margin-bottom: 2.5rem;
+  }
 }
 .l-top-news .qms4__post-list__list-item.qms4__post-list__list-item .qms4__post-list__post-date {
   width: auto;
 }
 .l-top-news .qms4__post-list[data-layout=card][data-num-columns-pc="2"] .qms4__post-list__list {
   gap: 35px;
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-news .qms4__post-list[data-layout=card][data-num-columns-pc="2"] .qms4__post-list__list {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .l-top-news .qms4__post-list__list-item {
   padding-bottom: 32px;
@@ -2518,6 +2686,13 @@ a:hover {
 .l-top-news .qms4__post-list__terms.qms4__post-list__terms:not(:root) .qms4__post-list__terms__icon::before {
   content: "#";
   padding-right: 2px;
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-news .wp-block-buttons {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /** ==========================================================================
@@ -4545,6 +4720,9 @@ a:hover {
 .page-id-2820 .l-footer__foot {
     padding-bottom: 4vw;
   }
+}
+.qms4__block__event-calendar__custom{
+  padding: 30px 50px;
 }
 
 @media print, screen and (max-width: 740px) {

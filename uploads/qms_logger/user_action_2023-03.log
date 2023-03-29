@@ -793,3 +793,5 @@
 [2023-03-29 03:01:43]	core	INFO	transition_post_status	{"post_type":"fair__schedule","ID":589,"new_status":"publish","old_status":"new","post_author":5}	{"uid":"c35ebde","current_user_id":5,"current_user_login":"admin"}
 [2023-03-29 03:01:55]	core	INFO	transition_post_status	{"post_type":"revision","ID":590,"new_status":"inherit","old_status":"new","post_author":5}	{"uid":"a6dc431","current_user_id":5,"current_user_login":"admin"}
 [2023-03-29 03:02:49]	core	INFO	profile_update	{"ID":5,"user_login":"admin"}	{"uid":"f505bea","current_user_id":5,"current_user_login":"admin"}
+[2023-03-30 00:33:15]	core	INFO	transition_post_status	{"post_type":"page","ID":504,"new_status":"publish","old_status":"publish","post_author":1}	{"uid":"c932742","current_user_id":5,"current_user_login":"admin"}
+[2023-03-30 00:33:15]	core	INFO	transition_post_status	{"post_type":"revision","ID":593,"new_status":"inherit","old_status":"new","post_author":5}	{"uid":"c932742","current_user_id":5,"current_user_login":"admin"}

@@ -12,11 +12,51 @@
 	left: -50px;
 }
 .qms4__block__event-calendar_right .qms4__block__event-calendar__month-footer{
-	right: -50px;
+
+	left: 39%;
 }
 .qms4__block__event-calendar_left{
 	position: relative;
 }
 .qms4__block__event-calendar__custom .qms4__block__event-calendar__month-footer{
 	display: inline-block;
+}
+
+@media print, screen and (max-width: 740px) {
+
+	.qms4__block__event-calendar_left{
+		padding-bottom: 0;
+	}
+	.qms4__block__event-calendar__custom{
+		padding: 0;
+	}
+	.qms4__block__event-calendar_left .qms4__block__event-calendar__month-footer{
+
+    min-width: 50%;
+    overflow: hidden;
+
+    width: 100%;
+    left: 39%;
+    position: absolute;
+    top: 0;
+
+	}
+	.qms4__block__event-calendar_right .qms4__block__event-calendar__month-footer{
+		right: auto;
+		top: inherit;
+		bottom: -20px;
+
+	}
+	.qms4__block__event-calendar[data-show-posts=false] .qms4__block__event-calendar__body-cell a, .qms4__block__event-calendar[data-show-posts=false] .qms4__block__event-calendar__body-cell button, .qms4__block__event-calendar[data-show-posts=false] .qms4__block__event-calendar__body-cell span {
+	    align-items: center;
+	    background: none;
+	    border: none;
+	    border-radius: 50%;
+	    display: flex;
+	    height: 35px;
+	    justify-content: center;
+	    width: min(36px,100%);
+	    font-size: 14px;
+	    font-weight: 500;
+	}
 }

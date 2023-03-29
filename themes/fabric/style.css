@@ -4721,9 +4721,6 @@ a:hover {
     padding-bottom: 4vw;
   }
 }
-.qms4__block__event-calendar__custom{
-  padding: 30px 50px;
-}
 
 @media print, screen and (max-width: 740px) {
   .brick-form__row {

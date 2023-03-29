@@ -516,7 +516,7 @@
                                                 "qms4__block__event-calendar__button-next",
                                             onClick: u,
                                         },
-                                        "次の月"
+                                        "次の月 111"
                                     )
                                 ),
                                 r
@@ -882,7 +882,7 @@
                                                 "qms4__block__event-calendar__button-prev",
                                             onClick: b,
                                         },
-                                        "前の月"
+                                        "前の月 22"
                                     ),
                                     (0, n.createElement)(
                                         "div",
@@ -899,7 +899,7 @@
                                                 "qms4__block__event-calendar__button-next",
                                             onClick: u,
                                         },
-                                        "次の月"
+                                        "次の月 333"
                                     )
                                 ),
                                 r
@@ -922,17 +922,17 @@
                                                 "qms4__block__event-calendar__button-prev",
                                             onClick: b,
                                         },
-                                        "前の月"
+                                        "前の月 "
                                     ),
-                                    (0, n.createElement)(
-                                        "button",
-                                        {
-                                            className:
-                                                "qms4__block__event-calendar__button-next",
-                                            onClick: u,
-                                        },
-                                        "次の月"
-                                    )
+                                    // (0, n.createElement)(
+                                    //     "button",
+                                    //     {
+                                    //         className:
+                                    //             "qms4__block__event-calendar__button-next",
+                                    //         onClick: u,
+                                    //     },
+                                    //     "次の月 444"
+                                    // )
                                 )
                             ),
 
@@ -958,7 +958,7 @@
                                                 "qms4__block__event-calendar__button-prev",
                                             onClick: b,
                                         },
-                                        "前の月"
+                                        "前の月 pppqms4__block__event-calendar__button-prev"
                                     ),
                                     (0, n.createElement)(
                                         "div",
@@ -975,7 +975,7 @@
                                                 "qms4__block__event-calendar__button-next",
                                             onClick: u,
                                         },
-                                        "次の月"
+                                        "次の月 555"
                                     )
                                 ),
                                 r
@@ -991,15 +991,15 @@
                                         className:
                                             "qms4__block__event-calendar__month-footer",
                                     },
-                                    (0, n.createElement)(
-                                        "button",
-                                        {
-                                            className:
-                                                "qms4__block__event-calendar__button-prev",
-                                            onClick: b,
-                                        },
-                                        "前の月"
-                                    ),
+                                    // (0, n.createElement)(
+                                    //     "button",
+                                    //     {
+                                    //         className:
+                                    //             "qms4__block__event-calendar__button-prev",
+                                    //         onClick: b,
+                                    //     },
+                                    //     "前の月 mmm"
+                                    // ),
                                     (0, n.createElement)(
                                         "button",
                                         {

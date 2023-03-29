@@ -454,7 +454,7 @@
                                                     t.getMonth() + 1
                                                 }/`,
                                             });
-                                            console.log("return a", a);
+                                            console.log("return list da", a);
 
                                             c(
                                                 a.map((e) => ({

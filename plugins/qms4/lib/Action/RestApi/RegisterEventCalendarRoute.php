@@ -47,7 +47,7 @@ class RegisterEventCalendarRoute
 	{
 
 		if(qms4_calendar_style()  !== 'custom')
-			return $this->get_default();
+			return $this->get_default($request);
 		return $this->get_custom($request);
 	}
 	function get_default(\WP_REST_Request $request){
@@ -170,9 +170,7 @@ class RegisterEventCalendarRoute
 		return array($calendar_month, $calendar_next_month);
 	}
 
-	function get_1moth( \WP_REST_Request $request ){
-		return $this->get_default($request);
-	}
+
 	/**
 	 * @param    array<string,mixed>    $param
 	 * @return    true|\WP_Error

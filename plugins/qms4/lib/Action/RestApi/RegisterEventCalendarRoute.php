@@ -45,13 +45,17 @@ class RegisterEventCalendarRoute
 	 */
 	public function get( \WP_REST_Request $request )
 	{
+		$param  = $request->get_params();
+		$style = isset($param['style'] ) ? (bool) $param['style'] :  '1month';
 
-		if(qms4_calendar_style()  !== 'custom')
-			return $this->get_default($request);
-		return $this->get_custom($request);
+		if( $style == '2months')
+			return $this->get_custom($request);
+
+		return $this->get_default($request);
 	}
 	function get_default(\WP_REST_Request $request){
 		$param = $request->get_params();
+
 
 		$validation_result = $this->validate( $param );
 		if ( is_wp_error( $validation_result ) ) {

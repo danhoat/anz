@@ -1,6 +1,7 @@
 <div
-  class="qms4__block__event-calendar js__qms4__block__event-calendar"
+  class="qms4__block__event-calendar js__qms4__block__event-calendarn js_calendar_right_list_event"
   data-show-posts="false"
+  data-show-style ="1month"
   data-show-area="<?= $show_area ?>"
   data-show-terms="<?= $show_terms ?>"
   data-taxonomies="<?= join( ',', $taxonomies ) ?>"

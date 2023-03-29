@@ -77,7 +77,7 @@
         前の月
       </button> -->
 
-      <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next">
+      <button class="qms4__block__event-calendar__button-next js__qms4__block__event-calendar__button-next-2month ">
         次の月
       </button>
     </div>

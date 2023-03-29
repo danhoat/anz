@@ -1,7 +1,8 @@
 
 <div
-  class="qms4__block__event-calendar js__qms4__block__event-calendar qms4__block__event-calendar__custom"
+  class="qms4__block__event-calendar js__qms4__block__event-calendar qms4__block__event-calendar__custom js_calendar_no_posts"
   data-show-posts="false"
+  data-show-style ="2months"
   data-show-area="<?= $show_area ?>"
   data-show-terms="<?= $show_terms ?>"
   data-taxonomies="<?= join( ',', $taxonomies ) ?>"
@@ -82,7 +83,7 @@
     <!-- /.qms4__block__event-calendar__calendar -->
 
     <div class="qms4__block__event-calendar__month-footer">
-      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev">
+      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev-new">
         前の月
       </button>
 

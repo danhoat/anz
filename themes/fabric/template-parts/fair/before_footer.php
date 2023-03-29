@@ -8,14 +8,14 @@
 <?php
 $param = array();
 $param['count'] = 2;
-$param['area'] = $item->area->slug;
+$param['area'] = isset($item->area->slug) ? $item->area->slug : '';
 $list = qms4_list( 'fair', $param );
 ?>
 
 <?php if ( ok( $list ) ) { ?>
 <div class="l-event-rec">
   <div class="p-title-en">
-    <h2 class="has-text-align-center is-style-ja_title-heading"><?= $item->area->title ?><br class="sp">おすすめイベント</h2>
+    <h2 class="has-text-align-center is-style-ja_title-heading"><?= isset($item->area->title) ? $item->area->title : ''  ?><br class="sp">おすすめイベント</h2>
     <h6 class="has-text-align-center u-mt-0 is-style-en_title-heading"><strong>RECOMMEND</strong></h6>
   </div>
   <ul class="box-list">
@@ -33,7 +33,6 @@ $list = qms4_list( 'fair', $param );
 <?php if ( ok( $item->area ) ) { ?>
                 <li class="icon">
                   <?= $item->area->title ?>
-
                 </li>
 <?php } ?>
                 <?= $item->category ?>

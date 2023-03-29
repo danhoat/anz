@@ -4,13 +4,6 @@
  * 1 : defalt - 1 show 1month + block list event of date selected.
  * 2:  custom - show 2 months and hidden the list event in the right site.
  **/
-function qms4_calendar_style()
-{
-
-	return apply_filters('block_canlendar_style', 'custom1');
-
-}
-
 
 function qms4_get_color( $post_id)
 {
@@ -106,12 +99,4 @@ function filter_events_by_select_date($query){
 	}
 
 }
-
 add_action( 'pre_get_posts', 'filter_events_by_select_date' );
-function js_calendar_style(){?>
-	<script type="text/javascript">
-		var event_clendar_new_style = '<?php  echo  qms4_calendar_style() !== 'custom' ? 0 :1 ?>';
-	</script>
-<?php }
-
-add_action('admin_head','js_calendar_style');

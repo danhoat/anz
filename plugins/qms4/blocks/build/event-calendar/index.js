@@ -30,7 +30,6 @@
                     s = window.wp.date,
                     r = window.wp.apiFetch;
 
-                    console.log('apiFetch r: ',r);
                 var m = t.n(r);
                 function o(e) {
                     if (null === e || !0 === e || !1 === e) return NaN;
@@ -196,11 +195,7 @@
                 var h = t(184),
                     k = t.n(h);
                 const E = (e) => {
-                        console.log("e: ", e);
                         let { calendarDates: a } = e;
-                        console.log("a: ", a);
-                        // let a = b[0]
-                        //console.log('b: ', b);
 
                         return (0, n.createElement)(
                             "div",
@@ -453,8 +448,6 @@
                                                     t.getMonth() + 1
                                                 }/`,
                                             });
-                                            console.log("return list da", a);
-
                                             c(
                                                 a.map((e) => ({
                                                     ...e,

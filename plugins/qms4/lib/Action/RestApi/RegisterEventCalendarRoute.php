@@ -36,7 +36,7 @@ class RegisterEventCalendarRoute
 			return $this->get_default($request);
 		return $this->get_custom($request);
 	}
-	function getdefault($request){
+	function get_default($request){
 		$param = $request->get_params();
 
 		$validation_result = $this->validate( $param );

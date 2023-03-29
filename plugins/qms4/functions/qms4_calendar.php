@@ -7,7 +7,7 @@
 function qms4_calendar_style()
 {
 
-	return apply_filters('block_canlendar_style', 'custom');
+	return apply_filters('block_canlendar_style', 'custom1');
 
 }
 

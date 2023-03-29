@@ -13,7 +13,8 @@
 }
 .qms4__block__event-calendar_right .qms4__block__event-calendar__month-footer{
 
-	left: 39%;
+	right: -40px;
+
 }
 .qms4__block__event-calendar_left{
 	position: relative;
@@ -45,7 +46,7 @@
 		right: auto;
 		top: inherit;
 		bottom: -20px;
-
+		left: 39%;
 	}
 	.qms4__block__event-calendar[data-show-posts=false] .qms4__block__event-calendar__body-cell a, .qms4__block__event-calendar[data-show-posts=false] .qms4__block__event-calendar__body-cell button, .qms4__block__event-calendar[data-show-posts=false] .qms4__block__event-calendar__body-cell span {
 	    align-items: center;

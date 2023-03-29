@@ -79,7 +79,7 @@
                         : (t.setFullYear(n.getFullYear(), n.getMonth(), _), t);
                 }
 
-                 console.log('new_style: ', window.event_clendar_new_style);
+
                 const b = window.wp.components,
                     u = window.wp.data,
                     p = (e) => {

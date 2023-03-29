@@ -46,7 +46,7 @@ class RegisterEventCalendarRoute
 	public function get( \WP_REST_Request $request )
 	{
 		$param  = $request->get_params();
-		$style = isset($param['style'] ) ? (bool) $param['style'] :  '1month';
+		$style = isset($param['style'] ) ?  $param['style'] :  '1month';
 
 		if( $style == '2months')
 			return $this->get_custom($request);

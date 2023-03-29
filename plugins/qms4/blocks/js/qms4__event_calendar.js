@@ -150,6 +150,25 @@ jQuery( function ( $ ) {
 		let calendar_month = [];
 
 		const $unit = $( this );
+		const showArea = !! $unit.data( 'show-area' );
+		const showPosts = !! $unit.data( 'data-show-posts' );
+		const showTerms = !! $unit.data( 'show-terms' );
+		const style 	=  $unit.data('data-set-style' );
+
+		const taxonomies = showTerms
+			? $unit.data( 'taxonomies' ).split( ',' ).filter( Boolean )
+			: [];
+
+		const param = new URLSearchParams( $unit.data( 'query-string' ) );
+		console.log('unit: ', $unit);
+
+		param.set( 'fields[area]', showArea ? 1 : 0 );
+		param.set( 'fields[taxonomies]', taxonomies.join( ',' ) );
+		
+		console.log('style: ', $unit.attr('data-set-style'));
+		param.set('style',$unit.attr('data-set-style'));
+
+
 		const $prev = $unit.find(
 			'.js__qms4__block__event-calendar__button-prev'
 		);
@@ -181,21 +200,8 @@ jQuery( function ( $ ) {
 
 		//end right
 
-		const param = new URLSearchParams( $unit.data( 'query-string' ) );
+		
 
-		const showArea = !! $unit.data( 'show-area' );
-		const showPosts = !! $unit.data( 'data-show-posts' );
-		const showTerms = !! $unit.data( 'show-terms' );
-		const style 	= !! $unit.data( 'data-show-style' );
-
-		const taxonomies = showTerms
-			? $unit.data( 'taxonomies' ).split( ',' ).filter( Boolean )
-			: [];
-
-		param.set( 'fields[area]', showArea ? 1 : 0 );
-		param.set( 'fields[taxonomies]', taxonomies.join( ',' ) );
-		param.set('style',style);
-		console.log('param: ', param);
 
 		const $calendar_body_next = $unit.find(
 			'.js__qms4__block__event-calendar__calendar-body-right'
@@ -235,7 +241,7 @@ jQuery( function ( $ ) {
 		const current = getFirstDay( $unit.data( 'current' ) );
 
 		$prev.on( 'click.prevMonth', async function ( event ) {
-			alert('1');
+
 			event.preventDefault();
 			current.setMonth( current.getMonth() - 1 );
 
@@ -244,12 +250,13 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
+			console.log(calendar_month);
 
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
 
-			$calendar_body.html( calendar_content( calendar_month ) );
+			$calendar_body.html( calendar_content( calendar_month[0] ) );
 		} );
 
 
@@ -293,6 +300,7 @@ jQuery( function ( $ ) {
 		} );
 
 		$next.on( 'click.nextMonth', async function ( event ) {
+			console.log('next');
 			event.preventDefault();
 			current.setMonth( current.getMonth() + 1 );
 

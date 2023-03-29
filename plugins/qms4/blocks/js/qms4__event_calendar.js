@@ -28,12 +28,9 @@ jQuery( function ( $ ) {
 		return calendar_month.map(
 			( { date: date_str, date_class, schedules, enable } ) => {
 				const date = new Date( date_str );
-				console.log('dat')
-				console.log('date: ' +date, schedules );
-				// console.log('schedules:', schedules);
-				// console.log('enable: ', enable);
+
 				var  set_color = '';
-				if(schedules.length && schedules[0].terms.fair__special[0] ){
+				if( schedules.length && schedules[0].terms.fair__special[0] ){
 					 set_color = ` style = " background:  ${schedules[0].terms.fair__special[0].color}" `;
 				}
 				var date_info =  ` ${ archive_link !== ''

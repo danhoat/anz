@@ -23,11 +23,25 @@ jQuery( function ( $ ) {
 	 * @param {{ date: string, date_class: string[], schedules: { id: number, title: string }[] }[]} calendar_month
 	 * @returns {string[]}
 	 */
-	function calendar_content( calendar_month ) {
+	function calendar_content( calendar_month, archive_link = '' ) {
+
 		return calendar_month.map(
 			( { date: date_str, date_class, schedules, enable } ) => {
 				const date = new Date( date_str );
-
+				console.log('dat')
+				console.log('date: ' +date, schedules );
+				// console.log('schedules:', schedules);
+				// console.log('enable: ', enable);
+				var  set_color = '';
+				if(schedules.length && schedules[0].terms.fair__special[0] ){
+					 set_color = ` style = " background:  ${schedules[0].terms.fair__special[0].color}" `;
+				}
+				var date_info =  ` ${ archive_link !== ''
+							? `<a href= "${archive_link}?ymd=${ date.getFullYear() }-${ ("0" + (date.getMonth() + 1)).slice(-2) }-${  ("0" + date.getDate() ).slice(-2)  }"  ${set_color}> ${  date.getDate()} </a>`
+							: `<button class="qms4__block__event-calendar__day-title" ${set_color} >
+									${ date.getDate() }
+								</button>`
+					}`;
 				return `<div
 				class="qms4__block__event-calendar__body-cell ${ date_class.join( ' ' ) }"
 				data-date="${ date_str }"
@@ -37,9 +51,9 @@ jQuery( function ( $ ) {
 							? `<span class="qms4__block__event-calendar__day-title js__qms4__block__event-calendar__display-header">
 									${ date.getDate() }
 								</span>`
-							: `<button class="qms4__block__event-calendar__day-title" >
-									${ date.getDate() }
-								</button>`
+							: `
+									${ date_info }
+								`
 					}
 				</div>`;
 			}
@@ -154,18 +168,17 @@ jQuery( function ( $ ) {
 		const showPosts = !! $unit.data( 'data-show-posts' );
 		const showTerms = !! $unit.data( 'show-terms' );
 		const style 	=  $unit.data('data-set-style' );
-
+		const archive_link = $unit.attr('data-set-archive-link');
 		const taxonomies = showTerms
 			? $unit.data( 'taxonomies' ).split( ',' ).filter( Boolean )
 			: [];
 
 		const param = new URLSearchParams( $unit.data( 'query-string' ) );
 		console.log('unit: ', $unit);
-
+		console.log('data-set-archive-link: ', archive_link );
 		param.set( 'fields[area]', showArea ? 1 : 0 );
 		param.set( 'fields[taxonomies]', taxonomies.join( ',' ) );
-		
-		console.log('style: ', $unit.attr('data-set-style'));
+
 		param.set('style',$unit.attr('data-set-style'));
 
 
@@ -199,9 +212,6 @@ jQuery( function ( $ ) {
 		);
 
 		//end right
-
-		
-
 
 		const $calendar_body_next = $unit.find(
 			'.js__qms4__block__event-calendar__calendar-body-right'
@@ -250,8 +260,6 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
-			console.log(calendar_month);
-
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
@@ -263,7 +271,7 @@ jQuery( function ( $ ) {
 		$new_prev.on( 'click.prevMonth', async function ( event ) {
 
 			event.preventDefault();
-			left = valiate_pre_month(left);
+			left 	= valiate_pre_month(left);
 			right = valiate_pre_month(right);
 
 			month = left-1;
@@ -283,7 +291,8 @@ jQuery( function ( $ ) {
 			$month.text( left );
 			$month_name.text( month_names[ current.getMonth() ] );
 
-			$calendar_body.html( calendar_content( calendar_month[0].data) );
+
+			$calendar_body.html( calendar_content( calendar_month[0].data) , archive_link);
 
 
 
@@ -294,13 +303,12 @@ jQuery( function ( $ ) {
 				$next_year.text( current.getFullYear() +1 );
 			}
 
-			var  html = calendar_content( calendar_month[1].data );
+			var  html = calendar_content( calendar_month[1].data ,archive_link);
 
 			$calendar_body_next.html( html );
 		} );
 
 		$next.on( 'click.nextMonth', async function ( event ) {
-			console.log('next');
 			event.preventDefault();
 			current.setMonth( current.getMonth() + 1 );
 
@@ -309,8 +317,6 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
-			console.log('calendar_month', calendar_month);
-			console.log(param);
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
@@ -319,19 +325,12 @@ jQuery( function ( $ ) {
 		} );
 
 		$new_style_next.on( 'click.nextMonth', async function ( event ) {
-
 			param.set('event', 'next');
-			console.log('click Next new');
+
 			event.preventDefault();
 
-			console.log('left:',left);
-			left = valiate_next_month(left);
-
-			right = valiate_next_month(right);
-
-
-			console.log('left:',left);
-
+			left 	= valiate_next_month(left);
+			right 	= valiate_next_month(right);
 			current.setMonth( left -1 );
 
 			if(right <= 2){
@@ -339,39 +338,26 @@ jQuery( function ( $ ) {
 
 			}
 			$next_year.text( current.getFullYear() );
-			console.log('endpoint: ',endpoint);
 
 			calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
 			);
-			console.log('calendar_month: ', calendar_month);
 
 			$year.text( current.getFullYear() );
-
-			if(left == 12 ){
-				$year.text( current.getFullYear() -1 );
-			}
+			if(left == 12 ) $year.text( current.getFullYear() -1 );
 
 
 			$month.text( left );
 
 			$month_name.text( month_names[ current.getMonth() ] );
-			console.log('calendar_month[0]:',calendar_month[0].data);
-
-			$calendar_body.html( calendar_content( calendar_month[0].data) );
-
-
+			$calendar_body.html( calendar_content( calendar_month[0].data, archive_link) );
 			$year.text( current.getFullYear() );
-
-
 			$next_month.text( right  );
 			$next_year.text( current.getFullYear() );
-
 			$month_name.text( month_names[ current.getMonth() ] );
-
-			$calendar_body_next.html( calendar_content( calendar_month[1].data ) );
+			$calendar_body_next.html( calendar_content( calendar_month[1].data,archive_link ) );
 
 
 		} );

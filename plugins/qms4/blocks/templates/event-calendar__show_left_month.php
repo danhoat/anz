@@ -3,6 +3,8 @@
   class="qms4__block__event-calendar js__qms4__block__event-calendar qms4__block__event-calendar__custom js_calendar_no_posts"
   data-show-posts="false"
   data-set-style="2months"
+  data-set-post-type =<?= $post_type?>
+  data-set-archive-link = <?= $archive_link ?>
   data-show-area="<?= $show_area ?>"
   data-show-terms="<?= $show_terms ?>"
   data-taxonomies="<?= join( ',', $taxonomies ) ?>"
@@ -61,7 +63,7 @@
     if($term){  break; }
   }
   $color = isset($term->color) ? $term->color : '';
-  //$link = get_post_type_archive_link('fair');
+
   $link = get_post_type_archive_link('fair');
   $link = add_query_arg( array(
     'ymd' => $calendar_date->date()->format( 'Y-m-d' ),

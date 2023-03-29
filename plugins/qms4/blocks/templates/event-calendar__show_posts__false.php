@@ -2,6 +2,8 @@
   class="qms4__block__event-calendar js__qms4__block__event-calendar js_calendar_right_list_event"
   data-show-posts="false"
   data-show-style ="1month"
+  data-set-post-type =<?= $post_type?>
+  data-set-archive-link = <?= $archive_link ?>
   data-show-area="<?= $show_area ?>"
   data-show-terms="<?= $show_terms ?>"
   data-taxonomies="<?= join( ',', $taxonomies ) ?>"

@@ -38,6 +38,7 @@ class EventCalendar
 		$show_terms = $attributes[ 'showTerms' ];
 		$taxonomies = $attributes[ 'taxonomies' ];
 		$link_target = $attributes[ 'linkTarget' ];
+		$archive_link = get_post_type_archive_link($post_type);
 
 		$start_of_week = DayOfWeek::from_week( get_option( 'start_of_week', DayOfWeek::MONDAY ) );
 

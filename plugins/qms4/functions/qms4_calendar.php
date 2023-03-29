@@ -28,7 +28,8 @@ function qms4_get_color( $post_id)
    return (object) array('slug'=>$term->term_id,'color' => $color);
 }
 
-function qms4_list_events_by_date(){
+function qms4_list_events_by_date()
+{
 
 	$ymd = isset($_GET['ymd']) ? $_GET['ymd']: date('Y-m-d');
 	$meta_value = $ymd;
@@ -68,7 +69,6 @@ function qms4_list_events_by_date(){
 		_e('Not post found.');
 	}
 	echo '</div>';
-
 
 }
 add_shortcode( 'events_date', 'qms4_list_events_by_date' );

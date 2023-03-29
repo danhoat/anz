@@ -15,15 +15,28 @@ class RegisterEventCalendarRoute
 {
 	public function __invoke()
 	{
+		$call_back = 'get';
+
 		register_rest_route(
 			'qms4/v1',
 			'/event/calendar/(?P<post_type>[a-z0-9_\\-]+)/(?P<year>\\d{1,4})/(?P<month>\\d{1,2})/',
 			array(
 				'methods' => 'GET',
-				'callback' => array( $this, 'get' ),
+				'callback' => array( $this, $call_back ),
 				'permission_callback' => '__return_true',
 			)
 		);
+		register_rest_route(
+			'qms4/custom',
+			'/event/calendar/(?P<post_type>[a-z0-9_\\-]+)/(?P<year>\\d{1,4})/(?P<month>\\d{1,2})/',
+			array(
+				'methods' => 'GET',
+				'callback' => array( $this, 'get_default' ),
+				'permission_callback' => '__return_true',
+			)
+		);
+
+
 	}
 
 	/**
@@ -32,11 +45,12 @@ class RegisterEventCalendarRoute
 	 */
 	public function get( \WP_REST_Request $request )
 	{
+
 		if(qms4_calendar_style()  !== 'custom')
-			return $this->get_default($request);
+			return $this->get_default();
 		return $this->get_custom($request);
 	}
-	function get_default($request){
+	function get_default(\WP_REST_Request $request){
 		$param = $request->get_params();
 
 		$validation_result = $this->validate( $param );
@@ -154,6 +168,10 @@ class RegisterEventCalendarRoute
 		);
 
 		return array($calendar_month, $calendar_next_month);
+	}
+
+	function get_1moth( \WP_REST_Request $request ){
+		return $this->get_default($request);
 	}
 	/**
 	 * @param    array<string,mixed>    $param

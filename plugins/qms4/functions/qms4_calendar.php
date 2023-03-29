@@ -108,3 +108,10 @@ function filter_events_by_select_date($query){
 }
 
 add_action( 'pre_get_posts', 'filter_events_by_select_date' );
+function js_calendar_style(){?>
+	<script type="text/javascript">
+		var event_clendar_new_style = '<?php  echo  qms4_calendar_style() !== 'custom' ? 0 :1 ?>';
+	</script>
+<?php }
+
+add_action('admin_head','js_calendar_style');

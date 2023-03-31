@@ -24,7 +24,7 @@ class Post extends AbstractPost
 	{
 		$this->_wp_post = $wp_post;
 		$this->_param = $param;
-		$this->set_post_date();
+		// $this->set_post_date();
 	}
 	/**
 	 * @return    Post|null

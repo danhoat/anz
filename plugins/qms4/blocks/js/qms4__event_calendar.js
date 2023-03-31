@@ -283,7 +283,7 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
-
+			console.log("calendar_month: ", calendar_month);
 			$year.text( current.getFullYear() );
 			$month.text( left );
 			$month_name.text( month_names[ current.getMonth() ] );
@@ -341,6 +341,7 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
+			console.log("fetch_calendar_month: ", fetch_calendar_month);
 
 			$year.text( current.getFullYear() );
 			if(left == 12 ) $year.text( current.getFullYear() -1 );

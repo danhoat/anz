@@ -19,6 +19,9 @@ class CalendarDate
 	/** @var    bool */
 	private $enable;
 
+	/** @var    DateTimeImmutable */
+	private $now;
+
 	/**
 	 * @param    \DateTimeImmutable    $date
 	 * @param    Schedule[]    $schedules
@@ -28,6 +31,10 @@ class CalendarDate
 	{
 		$this->date = $date;
 		$this->schedules = $schedules;
+		$tz = wp_timezone();
+	    $this->now = new \DateTimeImmutable( 'now', $tz );
+
+
 	}
 
 	/**
@@ -73,7 +80,12 @@ class CalendarDate
 	 */
 	public function set_enable( BorderDate $border_date ): void
 	{
-		$this->enable = $this->date->format( 'Y-m-d' ) >= $border_date->format( 'Y-m-d' );
+		//$this->enable = $this->date->format( 'Y-m-d' ) >= $border_date->format( 'Y-m-d' ); danng commen
+		$this->enable =  $this->date->format( 'Y-m-d' ) >= $this->now->format( 'Y-m-d' ); // danng added.
+
+
+
+
 	}
 
 	// ====================================================================== //

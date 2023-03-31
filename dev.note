@@ -119,8 +119,12 @@ uploads/qms_logger/user_action_2023-03.log
 wp-content % chmod -R 777 /Applications/XAMPP/xamppfiles/htdocs/roseun-charme.jp/
 // fix done.
 
+param.set('style',$unit.attr('data-set-style')); 
+
+param.style để phân biết 1 month hay 2 months.
 
 task 6: Tarkhe-blocks-pro/block-parts/page_list.php
+
 
 $meta_query = array(
       array(
@@ -144,3 +148,9 @@ $meta_query = array(
 
     fetch 3 => 3=>4.
     fetch 5: =. 5 6
+
+    $tz = wp_timezone();
+
+    $post_date = new \DateTimeImmutable( $this->_wp_post->post_date, $tz );
+
+    $now = new \DateTimeImmutable( 'now', $tz );

@@ -23,3 +23,8 @@ qms4/lib/Event/BorderDateFactory.php
 ms4/lib/Action/CustomBlock/EnqueueFrontScript.php
 qms4/blocks/build/event-calendar/index.js
 cal_base_date
+
+qms4/lib/Event/CalendarMonth/CalendarDate.php
+qms4/lib/Event/CalendarMonth/CalendarDate.php
+
+

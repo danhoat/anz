@@ -87,7 +87,7 @@ interface PostTypeMetaInterface
 	/**
 	 *
 	 */
-	 public functin date_format(): string:
+	public function date_format(): string;
 
 	/**
 	 * @return    int

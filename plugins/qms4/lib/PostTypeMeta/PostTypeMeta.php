@@ -278,7 +278,8 @@ class PostTypeMeta implements PostTypeMetaInterface
 
 		$date_format = get_field( 'qms4__date_format', $this->wp_post->ID );
 
-		return $this->cache[ 'new_date' ]  = empty($date_format) ? "Y年n月j日（J-D）" : $date_format;
+
+		return $this->cache['date_format']  = ($date_format) && is_string($date_format) ?  $date_format  : "Y年n月j日（J-D）";
 
 	 }
 

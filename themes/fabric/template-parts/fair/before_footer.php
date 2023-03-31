@@ -12,7 +12,7 @@ $param['area'] = isset($item->area->slug) ? $item->area->slug : '';
 $list = qms4_list( 'fair', $param );
 echo '<pre>';
 var_dump($list);
-echo '</pre>';
+echo '<pre>';
 ?>
 
 <?php if ( ok( $list ) ) { ?>

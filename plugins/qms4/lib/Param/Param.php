@@ -32,7 +32,8 @@ class Param implements \ArrayAccess, \IteratorAggregate
 			'new_date' => $post_type_meta->new_date(),
 			'new_class' => $post_type_meta->new_class(),
 			'term_html' => $post_type_meta->term_html(),
-			'date_format' => get_option( 'date_format' ),
+			//'date_format' => get_option( 'date_format' ), // danng comment
+			'date_format' => $post_type_meta->date_format(),
 			'time_format' => get_option( 'time_format' ),
 		);
 

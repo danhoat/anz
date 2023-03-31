@@ -8,7 +8,7 @@ use QMS4\Item\Post\NoImage;
 use QMS4\Item\Util\Date;
 use QMS4\Item\User\User;
 use QMS4\PostMeta\Area;
-
+use QMS4\Param\Param;
 
 /**
  * @property-read   int    $id    投稿 ID
@@ -19,6 +19,13 @@ use QMS4\PostMeta\Area;
  */
 class Post extends AbstractPost
 {
+
+	public function __construct( \WP_Post $wp_post, Param $param )
+	{
+		$this->_wp_post = $wp_post;
+		$this->_param = $param;
+		$this->set_post_date();
+	}
 	/**
 	 * @return    Post|null
 	 */
@@ -163,6 +170,20 @@ class Post extends AbstractPost
 
 		return $permalink;
 	}
+
+	/**
+	 * @param    string|null    $date_format
+	 * @void    Date
+	 */
+	protected function set_post_date()
+	{
+
+
+		if($this->_param[ 'date_format']){
+			$this->_wp_post->post_date  =  wp_date($this->_param[ 'date_format'], strtotime($this->_wp_post->post_date));
+		}
+	}
+
 
 	/**
 	 * @param    string|null    $date_format

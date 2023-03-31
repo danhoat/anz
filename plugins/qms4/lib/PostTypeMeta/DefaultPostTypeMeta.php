@@ -159,6 +159,14 @@ class DefaultPostTypeMeta implements PostTypeMetaInterface
 	}
 
 	/**
+	 * @return    string
+	 */
+	public function date_format(): string
+	{
+		return 'Y年n月j日（J-D';
+	}
+
+	/**
 	 * @return    int
 	 */
 	public function new_date(): int

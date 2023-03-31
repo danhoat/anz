@@ -28,3 +28,13 @@ date_format = get_option( 'date_format' );
     $post_date = new \DateTimeImmutable( $this->_wp_post->post_date, $tz );
 
     $now = new \DateTimeImmutable( 'now', $tz );
+
+
+    function __post_date(
+        ?string $date_format = null
+    ): Date
+    {
+        $date_format = $date_format ?: $this->_param[ 'date_format' ];
+
+        return new Date( $this->_wp_post->post_date, null, $date_format);
+    }

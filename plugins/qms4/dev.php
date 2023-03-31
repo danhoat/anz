@@ -38,3 +38,6 @@ date_format = get_option( 'date_format' );
 
         return new Date( $this->_wp_post->post_date, null, $date_format);
     }
+
+
+echo get_the_date($date_format, $date_time)

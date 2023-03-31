@@ -146,6 +146,68 @@
 				"return_format": "value",
 				"save_other_choice": 0
 			},
+			 {
+	            "key": "field_5b7e4b1f809f0",
+	            "label": "日付フォーマット",
+	            "name": "qms4__date_format__custom",
+	            "type": "true_false",
+	            "message": "カスタム設定",
+	            "default_value": 0
+	        },
+	        {
+	            "key": "field_5b7e49eb809ee",
+	            "label": "&nbsp;",
+	            "name": "qms3__date_format",
+	            "type": "radio",
+	            "conditional_logic": [
+	                [
+	                    {
+	                        "field": "field_5b7e4b1f809f0",
+	                        "operator": "!=",
+	                        "value": "1"
+	                    }
+	                ]
+	            ],
+	            "choices": {
+	                "Y年n月j日（J-D）": "2020年6月8日（月）",
+	                "Y年m月d日（J-D）": "2020年06月08日（月）",
+	                "Y.n.j D": "2020.6.8 Mon",
+	                "Y.m.d D": "2020.06.08 Mon",
+	                "n月j日（J-D）": "6月8日（月）",
+	                "m月d日（J-D）": "06月08日（月）",
+	                "n.j D": "6.8 Mon",
+	                "m.d D": "06.08 Mon"
+	            },
+	            "other_choice": 0,
+	            "save_other_choice": 0,
+	            "default_value": "Y年n月j日（J-D）",
+	            "layout": "vertical"
+	        },
+	        {
+	            "key": "field_5b7e4987809ed",
+	            "label": "&nbsp;",
+	            "name": "qms4__date_format",
+	            "type": "text",
+	            "conditional_logic": {
+	                "status": 1,
+	                "rules": [
+	                    {
+	                        "field": "field_5b7e4b1f809f0",
+	                        "operator": "==",
+	                        "value": "1"
+	                    }
+	                ],
+	                "allorany": "all"
+	            },
+	            "default_value": "",
+	            "placeholder": "Y年n月j日（J-D）",
+	            "prepend": "",
+	            "append": "",
+	            "formatting": "none",
+	            "maxlength": ""
+	        },
+
+
 			{
 				"key": "field_631c1e4b44709",
 				"label": "詳細ページ サイドバー表示",

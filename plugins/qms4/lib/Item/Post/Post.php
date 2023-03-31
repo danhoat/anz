@@ -178,8 +178,7 @@ class Post extends AbstractPost
 	protected function set_post_date()
 	{
 
-
-		if($this->_param[ 'date_format']){
+		if( $this->_param[ 'date_format']){
 			$this->_wp_post->post_date  =  wp_date($this->_param[ 'date_format'], strtotime($this->_wp_post->post_date));
 		}
 	}

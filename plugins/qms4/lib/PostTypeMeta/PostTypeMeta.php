@@ -269,6 +269,19 @@ class PostTypeMeta implements PostTypeMetaInterface
 
 		return $this->cache[ 'new_date' ] = (int) $new_date;
 	}
+	/**
+	 * @retrn string
+	 */
+	 public function date_format(): string
+	 {
+	 	if (!function_exists("get_field")) { return "Y年n月j日（J-D）"; }
+
+		$date_format = get_field( 'qms4__date_format', $this->wp_post->ID );
+
+		return $this->cache[ 'new_date' ]  = empty($date_format) ? "Y年n月j日（J-D）" : $date_format;
+
+	 }
+
 
 	/**
 	 * @return    string

@@ -85,6 +85,11 @@ interface PostTypeMetaInterface
 	public function order(): string;
 
 	/**
+	 *
+	 */
+	 public functin date_format(): string:
+
+	/**
 	 * @return    int
 	 */
 	public function new_date(): int;

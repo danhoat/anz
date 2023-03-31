@@ -1,4 +1,4 @@
-<?php 
+<?php
     /**
      * 日付フォーマット
      *
@@ -19,3 +19,12 @@ date_format = get_option( 'date_format' );
         $return = '<time class="c-postTimes__item u-flex--aic ' . esc_attr( $type_class ) . '" datetime="' . esc_attr( wp_date( 'Y-m-d', $timestamp ) ) . '">' .
             Arkhe::get_svg( $type, array( 'class' => 'c-postMetas__icon' ) ) .
             esc_html( wp_date( $date_format, $timestamp ) ) .
+
+
+            wp_date( 'Y年n月j日（D）', $date->getTimestamp() )
+
+    $tz = wp_timezone();
+
+    $post_date = new \DateTimeImmutable( $this->_wp_post->post_date, $tz );
+
+    $now = new \DateTimeImmutable( 'now', $tz );

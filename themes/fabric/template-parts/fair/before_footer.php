@@ -10,6 +10,9 @@ $param = array();
 $param['count'] = 2;
 $param['area'] = isset($item->area->slug) ? $item->area->slug : '';
 $list = qms4_list( 'fair', $param );
+echo '<pre>';
+var_dump($list);
+echo '</pre>';
 ?>
 
 <?php if ( ok( $list ) ) { ?>

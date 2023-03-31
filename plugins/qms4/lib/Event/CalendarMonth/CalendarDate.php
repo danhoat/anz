@@ -83,9 +83,6 @@ class CalendarDate
 		//$this->enable = $this->date->format( 'Y-m-d' ) >= $border_date->format( 'Y-m-d' ); danng commen
 		$this->enable =  $this->date->format( 'Y-m-d' ) >= $this->now->format( 'Y-m-d' ); // danng added.
 
-
-
-
 	}
 
 	// ====================================================================== //

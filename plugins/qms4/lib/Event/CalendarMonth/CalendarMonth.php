@@ -111,6 +111,12 @@ class CalendarMonth implements \IteratorAggregate
 
 			$calendar_date = $this->calendar_dates[ $date_str ];
 			$calendar_date->set_enable( $this->border_date );  // TODO: セッターでやるのやめたい
+			$data = $calendar_date->to_array(
+				$date_class_formatter,
+				$schedule_formatter
+			);
+
+
 
 			$dates[] = $calendar_date->to_array(
 				$date_class_formatter,

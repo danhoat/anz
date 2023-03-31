@@ -7,10 +7,7 @@ jQuery( function ( $ ) {
 	 * @returns {Promise<{ date: string, date_class: string[], schedules: { id: number, title: string }[] }[]>}
 	 */
 	function fetch_calendar_month( endpoint, param, current ) {
-		var t = endpoint
-				.replace( '%year%', current.getFullYear() )
-				.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`;
-				console.log('t: ',t);
+
 		return fetch(
 			endpoint
 				.replace( '%year%', current.getFullYear() )
@@ -33,12 +30,17 @@ jQuery( function ( $ ) {
 				if( schedules.length && schedules[0].terms.fair__special[0] ){
 					 set_color = ` style = " background:  ${schedules[0].terms.fair__special[0].color}" `;
 				}
-				var date_info =  ` ${ archive_link !== ''
-							? `<a href= "${archive_link}?ymd=${ date.getFullYear() }-${ ("0" + (date.getMonth() + 1)).slice(-2) }-${  ("0" + date.getDate() ).slice(-2)  }"  ${set_color}> ${  date.getDate()} </a>`
-							: `<button class="qms4__block__event-calendar__day-title" ${set_color} >
+				console.log('start check date:', date);
+				console.log('schedules:', schedules);
+				console.log('enable:', enable);
+				console.log('archive_link: ', archive_link);
+				var date_info =  `${ enable
+							? `<a  111 href= "${archive_link}?ymd=${ date.getFullYear() }-${ ("0" + (date.getMonth() + 1)).slice(-2) }-${  ("0" + date.getDate() ).slice(-2)  }"  ${set_color}> ${  date.getDate()} </a>`
+							: `<button 222 class="qms4__block__event-calendar__day-title" ${set_color} >
 									${ date.getDate() }
 								</button>`
 					}`;
+					console.log('date_info:', date_info);
 				return `<div
 				class="qms4__block__event-calendar__body-cell ${ date_class.join( ' ' ) }"
 				data-date="${ date_str }"

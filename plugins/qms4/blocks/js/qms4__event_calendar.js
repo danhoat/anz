@@ -37,7 +37,7 @@ jQuery( function ( $ ) {
 				if( schedules.length && schedules[0].terms.fair__special[0] ){
 					 set_color = ` style = " background:  ${schedules[0].terms.fair__special[0].color}" `;
 				}
-				var date_info =  `${ enable
+				var date_info =  `${ enable && archive_link
 							? `<a  111 href= "${archive_link}?ymd=${ date.getFullYear() }-${ ("0" + (date.getMonth() + 1)).slice(-2) }-${  ("0" + date.getDate() ).slice(-2)  }"  ${set_color}> ${  date.getDate()} </a>`
 							: `<button 222 class="qms4__block__event-calendar__day-title" ${set_color} >
 									${ date.getDate() }

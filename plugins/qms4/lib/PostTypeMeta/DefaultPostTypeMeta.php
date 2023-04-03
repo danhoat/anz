@@ -173,6 +173,10 @@ class DefaultPostTypeMeta implements PostTypeMetaInterface
 	{
 		return 5;
 	}
+	public function date_html(): string
+	{
+		return new Date();
+	}
 
 	/**
 	 * @return    string

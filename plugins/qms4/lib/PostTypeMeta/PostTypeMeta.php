@@ -286,7 +286,7 @@ class PostTypeMeta implements PostTypeMetaInterface
 	 /**
 	  * return string
 	  */
-	 public function post_date_html() : string
+	 public function date_html() : string
 	 {
 	 	if (!function_exists("get_field")) { return "Y年n月j日（J-D）"; }
 

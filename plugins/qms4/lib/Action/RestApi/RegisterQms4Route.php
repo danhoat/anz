@@ -62,6 +62,9 @@ class RegisterQms4Route
 				'order' => $post_type_meta->order(),
 				'new_date' => $post_type_meta->new_date(),
 				'new_class' => $post_type_meta->new_class(),
+				'date_format' => $post_type_meta->date_format(),
+				'date_html' => $post_type_meta->date_html(),
+				'modified_html' => $post_type_meta->modified_html(),
 				'posts_per_page' => $post_type_meta->posts_per_page(),
 				'term_html' => $post_type_meta->term_html(),
 			);

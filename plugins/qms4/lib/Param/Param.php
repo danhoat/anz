@@ -35,6 +35,7 @@ class Param implements \ArrayAccess, \IteratorAggregate
 			//'date_format' => get_option( 'date_format' ), // danng comment
 			'date_format' => $post_type_meta->date_format(),
 			'time_format' => get_option( 'time_format' ),
+			'date_html' => $post_type_meta->date_html()
 		);
 
 		$param = array_merge( $default_param, $param );

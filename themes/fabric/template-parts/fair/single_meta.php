@@ -24,8 +24,8 @@ if ( $show_modified && $show_posted ) {
 <div class="c-postMetas u-flex--aicw">
 	<div class="c-postTimes u-flex--aicw">
 		<?php
-			if ( $show_posted ) farbic_the__postdate( $item->post_date, 'posted' );
-			if ( $show_modified ) farbic_the__postdate( $item->post_date, 'modified' );
+			if ( $show_posted ) farbic_the__postdate( $item->date_html, 'posted' );
+			if ( $show_modified ) farbic_the__postdate( $item->date_html, 'modified' );
 		?>
 	</div>
 	<?php

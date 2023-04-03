@@ -197,6 +197,22 @@ class Post extends AbstractPost
 		return new Date( $this->_wp_post->post_date, null, $date_format);
 	}
 
+	protected function __date_html(
+		?string $date_format = null
+	): Date
+	{
+		$date_format = $date_format ?: $this->_param[ 'date_format' ];
+
+		return new Date( $this->_wp_post->post_date, null, $date_format);
+	}
+
+	protected function __date_format() : string
+	{
+		$date_format =  $this->_param[ 'date_format' ];
+
+		return $date_format;
+	}
+
 	/**
 	 * @param    string|null    $date_format
 	 * @return    Date

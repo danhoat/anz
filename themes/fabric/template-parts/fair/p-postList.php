@@ -32,8 +32,8 @@ $post_data = get_post();
 				echo '</' . esc_attr( $h_tag ) . '>';
       ?>
 
-      <?php $item = fabric_load_item();  ?>
-      <div class="qms4__post-list__post-date"><?= $item->post_date ?></div>
+      <?php $item = fabric_load_item();?>
+      <div class="qms4__post-list__post-date"><?= $item->date_html ?></div>
 
 			<?php if ( Arkhe::$excerpt_length ) : ?>
 				<div class="p-postList__excerpt">

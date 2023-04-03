@@ -20,11 +20,12 @@ if ( $show_modified && $show_posted ) {
 }
 
 ?>
+<?php $item = fabric_load_item(); ?>
 <div class="c-postMetas u-flex--aicw">
 	<div class="c-postTimes u-flex--aicw">
 		<?php
-			if ( $show_posted ) ark_the__postdate( $date_timestamp, 'posted' );
-			if ( $show_modified ) ark_the__postdate( $modified_timestamp, 'modified' );
+			if ( $show_posted ) farbic_the__postdate( $item->post_date, 'posted' );
+			if ( $show_modified ) farbic_the__postdate( $item->post_date, 'modified' );
 		?>
 	</div>
 	<?php

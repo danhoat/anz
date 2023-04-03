@@ -1,7 +1,7 @@
 <?php
 
 require_once( __DIR__ . '/lib/autoload.php' );
-
+require_once( __DIR__ . '/custom_farbic.php' );
 use Fabric\Util\GetPart;
 use Fabric\Util\RegisterBlockStyle;
 use Fabric\Util\RegisterSidebar;

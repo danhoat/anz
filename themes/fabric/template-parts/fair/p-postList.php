@@ -15,6 +15,8 @@ $list_type     = isset( $args['list_type'] ) ? $args['list_type'] : ARKHE_LIST_T
 
 // 投稿データ取得
 $post_data = get_post();
+
+
 ?>
 <li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>">
 	<a href="<?php the_permalink(); ?>" class="p-postList__link">
@@ -30,8 +32,8 @@ $post_data = get_post();
 				echo '</' . esc_attr( $h_tag ) . '>';
       ?>
 
-      <?php $item = fabric_load_item(); ?>
-      <div class="qms4__post-list__post-date"><?= $item->event_date ?></div>
+      <?php $item = fabric_load_item();  ?>
+      <div class="qms4__post-list__post-date"><?= $item->post_date ?></div>
 
 			<?php if ( Arkhe::$excerpt_length ) : ?>
 				<div class="p-postList__excerpt">

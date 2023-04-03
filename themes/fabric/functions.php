@@ -1,7 +1,7 @@
 <?php
 
 require_once( __DIR__ . '/lib/autoload.php' );
-require_once( __DIR__ . '/custom_farbic.php' );
+
 use Fabric\Util\GetPart;
 use Fabric\Util\RegisterBlockStyle;
 use Fabric\Util\RegisterSidebar;
@@ -18,6 +18,8 @@ new Fabric\Coodinator\YoastSeoCoodinator();
 
 require_once( __DIR__ . '/functions/fabric_load_item.php' );
 require_once( __DIR__ . '/functions/fabric_load_setting.php' );
+
+require_once( __DIR__ . '/custom_farbic.php' );
 
 // ========================================================================== //
 

@@ -177,12 +177,12 @@ class PostListItemRenderer
 		//echo $item->post_date(' D');
 
 		$date_timestamp     = get_post_timestamp( $item->ID, 'date' );
-		$css =  strtolower(date('D', $date_timestamp));
-
+		$week =  strtolower(date('D', $date_timestamp));
+		$css = 'item-post-type-'.$item->post_type  .' '.$week;
 
 		return trim( '
-			<div class="qms4__post-list__post-date ">
-				<p class="card_date '.$css.'">
+			<div class="qms4__post-list__post-date '.$css.'">
+				<p class="card_date">
 				<span class="ym">' . $item->post_date( 'y.m' ).'</span>
 				<span class="day">' . $item->post_date( 'd' )
 				.'</span><span class="week">' . $item->post_date( 'l' ) . '</span>

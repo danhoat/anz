@@ -1,7 +1,7 @@
 .qms4__post-list__list-item{
 	position: relative;
 }
-p.card_date {
+.item-post-type-fair p.card_date {
     width: 23%;
     padding: 0.6rem 0;
     font-size: 12px;
@@ -12,10 +12,10 @@ p.card_date {
     left: 0;
     background-color: rgba(124, 124, 124, 0.79);
 }
-p.card_date.sun {
+.item-post-type-fair.sun p.card_date {
     background-color: rgba(198, 62, 62, 0.54);
 }
-p.card_date.sat {
+.item-post-type-fair.sat p.card_date {
     background-color: rgba(0, 116, 201, 0.68);
 }
 p.card_date span.day {

@@ -173,10 +173,19 @@ class PostListItemRenderer
 		} else {
 			$format = $this->post_date_format;
 		}
+		///$format ='Y年m月d日 l';
+		//echo $item->post_date(' D');
+
+		$date_timestamp     = get_post_timestamp( $item->ID, 'date' );
+		$css =  strtolower(date('D', $date_timestamp));
 
 		return trim( '
-			<div class="qms4__post-list__post-date kkk">
-				' . $item->post_date( $format ) . '
+			<div class="qms4__post-list__post-date ">
+				<p class="card_date '.$css.'">
+				<span class="ym">' . $item->post_date( 'y.m' ).'</span>
+				<span class="day">' . $item->post_date( 'd' )
+				.'</span><span class="week">' . $item->post_date( 'l' ) . '</span>
+				</p>
 			</div>
 		' );
 	}

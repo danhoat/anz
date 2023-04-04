@@ -298,15 +298,15 @@ class PostTypeMeta implements PostTypeMetaInterface
 	 /**
 	  * return string
 	  */
-	 public function modified_html() : string
-	 {
-	 	if (!function_exists("get_field")) { return "Y年n月j日（J-D）"; }
+	// public function modified_html() : string
+	//  {
+	//  	if (!function_exists("get_field")) { return "Y年n月j日（J-D）"; }
 
-		$date_format = get_field( 'qms4__date_format', $this->wp_post->ID );
+	// 	$date_format = get_field( 'qms4__date_format', $this->wp_post->ID );
 
 
-		return $this->cache['modified_html']  = ($date_format) && is_string($date_format) ?  $date_format  : "Y年n月j日（J-D）";
-	 }
+	// 	return $this->cache['modified_html']  = ($date_format) && is_string($date_format) ?  $date_format  : "Y年n月j日（J-D）";
+	//  }
 
 	/**
 	 * @return    string

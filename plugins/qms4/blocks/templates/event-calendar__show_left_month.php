@@ -1,4 +1,3 @@
-
 <div
   class="qms4__block__event-calendar js__qms4__block__event-calendar qms4__block__event-calendar__custom js_calendar_no_posts"
   data-show-posts="false"

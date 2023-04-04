@@ -179,6 +179,7 @@ class PostListItemRenderer
 		$date_timestamp     = get_post_timestamp( $item->ID, 'date' );
 		$css =  strtolower(date('D', $date_timestamp));
 
+
 		return trim( '
 			<div class="qms4__post-list__post-date ">
 				<p class="card_date '.$css.'">

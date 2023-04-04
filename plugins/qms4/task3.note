@@ -1,0 +1,3 @@
+qms4/blocks/templates/post-list.php
+qms4/lib/Block/PostList.php
+qms4/lib/Block/Renderer/PostListItemRenderer.php

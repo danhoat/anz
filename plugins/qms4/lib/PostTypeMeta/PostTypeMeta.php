@@ -40,6 +40,7 @@ class PostTypeMeta implements PostTypeMetaInterface
 	 */
 	public static function from_name( array $names ): self
 	{
+
 		$query = new \WP_Query( array(
 			'post_type' => 'qms4',
 			'post_status' => 'publish',
@@ -54,6 +55,7 @@ class PostTypeMeta implements PostTypeMetaInterface
 		) );
 
 		if ( ! $query->found_posts ) {
+			return 0;
 			throw new \RuntimeException( 'PostTypeMeta が見つかりません。不明なスラッグです: $names: ' . join( '/', $names ) );
 		}
 

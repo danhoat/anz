@@ -175,7 +175,7 @@ class PostListItemRenderer
 		}
 
 		return trim( '
-			<div class="qms4__post-list__post-date">
+			<div class="qms4__post-list__post-date kkk">
 				' . $item->post_date( $format ) . '
 			</div>
 		' );

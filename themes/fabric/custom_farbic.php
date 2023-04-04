@@ -22,3 +22,12 @@ function farbic_the__postdate( $post_date, $type  ='post', $date_format = '' )
 	echo apply_filters( 'farbic_the__postdate', $return, $type );
 }
 
+
+function farbic_theme_enqueue_styles() {
+    wp_enqueue_style( 'farbic-style',
+        get_stylesheet_directory_uri() . '/farbic-custom.css',
+        array( 'arkhe-main-style' ),
+        rand()
+    );
+}
+add_action( 'wp_enqueue_scripts', 'farbic_theme_enqueue_styles' );

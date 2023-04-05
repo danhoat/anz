@@ -34,7 +34,7 @@ class SetValidEventFilter
 			// ここで set( 'post_in', array() ) としてしまうと、
 			// 「フィルター条件なし」と同等の意味になり、結果として全てのイベント投稿が表示される
 			// それを避けるために絶対に存在しない投稿 ID を条件に指定する
-			$query->set( 'post__in', array( -1 ) );
+			// $query->set( 'post__in', array( -1 ) ); danng comment this line
 		} else {
 			$query->set( 'post__in', $event_ids );
 		}

@@ -26,5 +26,5 @@ cal_base_date
 
 qms4/lib/Event/CalendarMonth/CalendarDate.php
 qms4/lib/Event/CalendarMonth/CalendarDate.php
-
+qms4/lib/Action/PostTyeps/SetValidEventFilter.php
 

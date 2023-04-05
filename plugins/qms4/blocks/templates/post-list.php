@@ -11,7 +11,7 @@
 
   <div class="qms4__post-list__list">
 <?php foreach ( $list as $item ) { ?>
-    <div class="qms4__post-list__list-item">
+    <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?>">
       <a
         href="<?= $item->permalink ?>"
         target="<?= $link_target === '__custom' ? $link_target_custom : $link_target ?>"

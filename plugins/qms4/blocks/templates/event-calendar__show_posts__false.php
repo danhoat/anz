@@ -1,3 +1,4 @@
+<?php $archive_link = wp_is_mobile() ? $archive_link: ''; ?>
 <div
   class="qms4__block__event-calendar js__qms4__block__event-calendar js_calendar_right_list_event"
   data-show-posts="false"
@@ -52,8 +53,13 @@
           <span class="qms4__block__event-calendar__day-title">
             <?= $calendar_date->date()->format( 'j' ) ?>
           </span>
-<?php } else { ?>
-          <button class="qms4__block__event-calendar__day-title"><?= $calendar_date->date()->format( 'j' ) ?></button>
+<?php } else  if(wp_is_mobile() ) { ?>
+   <a href="<?= $archive_link?>?ymd=<?= $calendar_date->date()->format( 'Y-m-d' ) ?>" class="qms4__block__event-calendar__day-title"><?= $calendar_date->date()->format( 'j' ) ?></a>
+
+
+<?php }  else { ?>
+   <button class="qms4__block__event-calendar__day-title"><?= $calendar_date->date()->format( 'j' ) ?></button>
+
 <?php } ?>
         </div>
         <!-- /.qms4__block__event-calendar__body-cel -->
@@ -76,7 +82,8 @@
   </div>
   <!-- /.qms4__block__event-calendar__container -->
 
-  <div class="qms4__block__event-calendar__display">
+  <?php if( ! wp_is_mobile() ){ ?>
+  <div class="qms4__block__event-calendar__display"> <!-- list post !-->
     <div class="qms4__block__event-calendar__display-inner">
       <div class="qms4__block__event-calendar__display-header js__qms4__block__event-calendar__display-header">
         <?php if ( ! empty( $recent_enable_date ) ) { ?>
@@ -133,6 +140,7 @@
     </div>
     <!-- /.qms4__block__event-calendar__display-inner -->
   </div>
+<?php  }?>
   <!-- /.qms4__block__event-calendar__display -->
 </div>
 <!-- /.qms4__block__event-calendar -->

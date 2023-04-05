@@ -66,7 +66,7 @@ class EventCalendar
 
 		ob_start();
 
-		if ( $show_posts ) {
+		if ( $show_posts && !wp_is_mobile() ) {
 
 			require( QMS4_DIR . '/blocks/templates/event-calendar__show_left_month.php' );
 			$factory_n = new BorderDateFactory();
@@ -95,6 +95,7 @@ class EventCalendar
 
 
 				require( QMS4_DIR . '/blocks/templates/event-calendar__show_right_month.php' );
+
 		} else {
 
 				require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );

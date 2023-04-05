@@ -37,6 +37,9 @@ class PostList
 	 */
 	public function render( array $attributes, ?string $content ): string
 	{
+
+
+
 		$layout = $attributes['layout'];
 		$className = $attributes['className'];
 
@@ -75,10 +78,17 @@ class PostList
 			? array()
 			: array_map( 'trim', explode( ',', $include_post_ids ) );
 
-		//$list = qms4_list( $post_type, $param );
+		$list = qms4_list( $post_type, $param );
+
+
+		if( !empty($content) && $className == 'rows_style'){
+			$str = '{"name":"post-excerpt","attributes":{"textAlign":"left","numLinesPc":2,"numLinesSp":2}}';
+			$content.=$str;
+		}
 
 
 		if ( empty( $content ) ) {
+
 			$renderer = PostListItemRenderer::from_block_instance_array( $attributes[ 'innerBlocks' ] );
 			$server_side_rendering = true;
 		} else {

@@ -16,7 +16,7 @@
         href="<?= $item->permalink ?>"
         target="<?= $link_target === '__custom' ? $link_target_custom : $link_target ?>"
       >
-        <?= $renderer->render( $item ) ?>
+      <?= $renderer->render( $item ) ?>
       </a>
     </div>
     <!-- /.qms4__post-list__list-item -->

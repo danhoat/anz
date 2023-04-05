@@ -68,7 +68,7 @@ add_shortcode( 'events_date', 'qms4_list_events_by_date' );
 
 function filter_events_by_select_date($query){
 	if( is_admin() ) return ;
-	if( is_post_type_archive() && $query->is_main_query() ){
+	if( is_post_type_archive('fair') && $query->is_main_query() ){
 		$ymd = isset($_GET['ymd']) ? $_GET['ymd']: '';
 		if( !empty($ymd) ){
 

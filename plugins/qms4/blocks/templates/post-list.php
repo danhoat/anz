@@ -9,7 +9,7 @@
 >
 <?php } ?>
 
-  <div class="qms4__post-list__list">
+  <div class="qms4__post-list__list <?= $className ?>">
 <?php foreach ( $list as $item ) { ?>
     <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?>">
       <a

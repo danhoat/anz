@@ -38,6 +38,7 @@ class PostList
 	public function render( array $attributes, ?string $content ): string
 	{
 		$layout = $attributes['layout'];
+		$className = $attributes['className'];
 
 		$num_columns_pc = $attributes[ 'numColumnsPc' ];
 		$num_columns_sp = $attributes[ 'numColumnsSp' ];
@@ -74,7 +75,7 @@ class PostList
 			? array()
 			: array_map( 'trim', explode( ',', $include_post_ids ) );
 
-		$list = qms4_list( $post_type, $param );
+		//$list = qms4_list( $post_type, $param );
 
 
 		if ( empty( $content ) ) {

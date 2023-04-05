@@ -58,3 +58,10 @@
     width: 100%;
     clear: both;
 }
+.page-template-page-fair_calendar .p-postList.-type-list .p-postList__item {
+    margin-bottom: 2rem;
+    margin-top: 0;
+    border: bo;
+    border: 1px solid #e0d8d8;
+    padding: 15px;
+}

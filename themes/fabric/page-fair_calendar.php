@@ -35,9 +35,9 @@ $list = qms4_list( 'fair', $param );
 
 
 // ========================================================================== //
-?>	
+?>
 
-<?= qms4_site_part( 859 ) ?>
+<? // qms4_site_part( 859 ) ?>
 
 
 		<div class=" l-main__body p-archive">
@@ -50,9 +50,7 @@ $list = qms4_list( 'fair', $param );
 				$post = get_post($item->ID);
 
 				$item = fabric_load_item();
-				// echo '<pre>';
-				// var_dump($item);
-				// echo '</pre>';
+
 				?>
 
 				<li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>">

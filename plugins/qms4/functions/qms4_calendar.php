@@ -61,10 +61,11 @@ function qms4_list_events_by_date()
 	} else{
 		_e('Not post found.');
 	}
+	wp_reset_query();
 	echo '</div>';
 
 }
-add_shortcode( 'events_date', 'qms4_list_events_by_date' );
+// add_shortcode( 'events_date', 'qms4_list_events_by_date' );
 
 function filter_events_by_select_date($query){
 	if( is_admin() ) return ;

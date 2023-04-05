@@ -41,7 +41,7 @@ class PostList
 
 
 		$layout = $attributes['layout'];
-		$className = $attributes['className'];
+		$className = isset( $attributes['className']) ? $attributes['className'] : '';;
 
 		$num_columns_pc = $attributes[ 'numColumnsPc' ];
 		$num_columns_sp = $attributes[ 'numColumnsSp' ];

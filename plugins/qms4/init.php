@@ -55,3 +55,51 @@ require_once( __DIR__ . '/functions/hooks/qms4_list_set_item_class.php' );
 require_once( __DIR__ . '/functions/hooks/qms4_detail_set_item_class.php' );
 require_once( __DIR__ . '/functions/hooks/qms4_list_add_query_part.php' );
 require_once( __DIR__ . '/functions/hooks/qms4_list_debug_mode.php' );
+
+
+function debug_lab(){
+    $ymd = isset($_GET['ymd']) ? $_GET['ymd']: '';
+
+    if($ymd){
+        $meta_value = $ymd;
+        $meta_key = 'qms4__event_date';
+        global $wpdb;
+
+        $sql =  $wpdb->prepare(
+            "SELECT s.meta_value as id FROM $wpdb->postmeta m
+                LEFT JOIN $wpdb->postmeta s ON m.post_id = s.post_id
+                    WHERE   m.meta_key = %s AND m.meta_value = %s
+                            AND s.meta_key = %s GROUP BY s.meta_value
+                    ",
+                    $meta_key,
+                    $meta_value,
+                    'qms4__parent_event_id'
+       );
+        $sql =  $wpdb->prepare(
+            "
+            SELECT p.ID FROM qj_posts p
+                LEFT JOIN qj_postmeta m
+                ON p.ID = m.post_id
+                WHERE m.meta_key = 'qms4__event_date' AND
+                 m.meta_value ='2023-04-07' AND
+                 p.post_status = 'publish' ",
+         $meta_value);
+
+        global $wpdb;
+        $result = $wpdb->get_results($sql);
+
+        //$post = get_post(1219);
+        $sql =  "SELECT * FROM $wpdb->postmeta WHERE post_id = 1219";
+        $results = $wpdb->get_results($sql);
+        echo '<pre>';
+        var_dump($results);
+        echo '</pre>';
+
+    }
+
+
+}
+
+//add_action('wp_head','debug_lab');
+
+

@@ -69,7 +69,7 @@ add_shortcode( 'events_date', 'qms4_list_events_by_date' );
 function qms4_list_fair(){
 	$list = qms4_list( $post_type, $param );
 	foreach($list as $item){
-		
+
 	}
 }
 add_shortcode( 'list_fair', 'qms4_list_fair' );
@@ -83,25 +83,38 @@ function filter_events_by_select_date($query){
 			$meta_value = $ymd;
 			$meta_key = 'qms4__event_date';
 			global $wpdb;
+			$sql =  $wpdb->prepare("
+	            SELECT p.ID FROM qj_posts p
+	                LEFT JOIN qj_postmeta m
+	                ON p.ID = m.post_id
+	                WHERE m.meta_key = %s AND
+	                 	m.meta_value =%s AND
+	                 	p.post_status = 'publish' ",
+	                'qms4__event_date',
+		         	$meta_value
+		         );
 
-			$sql =  $wpdb->prepare(
-		      	"SELECT s.meta_value as id FROM $wpdb->postmeta m
-		      		LEFT JOIN $wpdb->postmeta s ON m.post_id = s.post_id
-		      			WHERE   m.meta_key = %s AND m.meta_value = %s
-		      					AND s.meta_key = %s GROUP BY s.meta_value
-		      			",
-				      	$meta_key,
-				      	$meta_value,
-				      	'qms4__parent_event_id'
-		   );
+	        global $wpdb;
+	        $result = $wpdb->get_results($sql, ARRAY_A);
+	        $ids = array();
+	        foreach($result as $id){
+	        	$ids[] = $id['ID'];
+	        }
 
-			$parent_ids = $wpdb->get_results($sql, ARRAY_A);
-			$ids = array();
-			foreach( $parent_ids as $key=>$value){
-				$ids[] = (int) $value['id'];
+	       	$sql = $wpdb->prepare("
+	       		SELECT m.meta_value as event_id FROM $wpdb->posts p
+	       			LEFT JOIN $wpdb->postmeta m
+	       			ON p.ID = m.post_id WHERE p.ID IN (".implode(",", $ids).")
+	       			AND m.meta_key = %s
+	       			GROUP BY m.meta_value ",'qms4__parent_event_id' );
+
+	       	$ids = $wpdb->get_results($sql, ARRAY_A);
+	       	$event_ids = array();
+			foreach($ids as $id){
+				$event_ids[] = $id['event_id'];
 			}
-
-			$query->set('post__in',$ids);
+			if($event_ids)
+				$query->set('post__in',$event_ids);
 
 		}
 	}

@@ -93,8 +93,6 @@ $list = qms4_list( 'fair', $param );
 		  <?php the_posts_pagination( array( 'mid_size' => 2 ) ); ?>
 		</div>
 
-
-
 	</main>
 <?php
 endwhile;

@@ -1,0 +1,15 @@
+{
+	"name": "atsu-maru/qms4",
+	"authors": [
+		{
+			"name": "ATSUMARU inc",
+			"email": "system@atsu-maru.co.jp"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"QMS4\\": "lib/"
+		}
+	},
+	"require": {}
+}

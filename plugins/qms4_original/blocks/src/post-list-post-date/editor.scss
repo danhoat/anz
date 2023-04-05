@@ -1,0 +1,10 @@
+.qms4__post-list__post-date.qms4__post-list__post-date:not(:root) {
+	margin: 0;
+	margin-top: 8px;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	cursor: default;
+}

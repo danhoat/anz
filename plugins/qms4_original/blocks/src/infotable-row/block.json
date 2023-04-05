@@ -1,0 +1,30 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+	"apiVersion": 2,
+	"name": "qms4/infotable-row",
+	"parent": [ "qms4/infotable" ],
+	"version": "0.1.0",
+	"title": "情報テーブル > 行",
+	"category": "text",
+	"icon": "pets",
+	"description": "Example static block scaffolded with Create Block tool.",
+	"supports": {
+		"html": true
+	},
+	"attributes": {
+		"wide": {
+			"type": "boolean",
+			"default": false
+		},
+		"label": {
+			"type": "string",
+			"source": "text",
+			"selector": "dt",
+			"default": ""
+		}
+	},
+	"textdomain": "qms4",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

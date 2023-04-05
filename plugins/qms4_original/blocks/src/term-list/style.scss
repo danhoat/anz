@@ -1,0 +1,38 @@
+.widget {
+	&__main-list:not(:root) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 5px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			font-size: 13px;
+			line-height: 32px;
+			border: 1px solid #c9c9c9;
+			border-radius: 16px;
+
+			&.active {
+				color: #fff;
+				border-color: #D1AC79;
+				background-color: #D1AC79;
+			}
+		}
+
+		a {
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			padding: 0 12px;
+
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	&__main-list__term-count {
+		&::before { content: "（"; }
+		&::after { content: "）"; }
+	}
+}

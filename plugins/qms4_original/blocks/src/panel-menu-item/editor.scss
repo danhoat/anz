@@ -1,0 +1,63 @@
+.editor-styles-wrapper {
+	.qms4__panel-menu__item:not(:root) {
+		position: static !important;
+		margin: 0;
+	}
+
+	.qms4__panel-menu__item__label {
+		position: relative;
+
+		padding: 12px 16px 12px;
+
+		.components-base-control__field {
+			margin: 0 !important;
+		}
+	}
+
+	.qms4__panel-menu__item:not(:first-child) .qms4__panel-menu__item__label {
+		&::before {
+			content: "";
+
+			position: absolute;
+			top: -4px;
+			left: 0;
+			z-index: 1;
+
+			display: block;
+			width: 100%;
+			height: 0;
+
+			border-top: 1px solid #c9c9c9;
+		}
+	}
+
+	.is-selected > .qms4__panel-menu__item__label,
+	.has-child-selected > .qms4__panel-menu__item__label {
+		background-color: #faf6f0;
+	}
+
+	.qms4__panel-menu__item__content {
+		padding: 4px 0;
+
+		position: absolute;
+		top: 0;
+		left: 100%;
+		z-index: 10;
+
+		width: 150%;
+		min-height: 100%;
+	}
+
+	.qms4__panel-menu__item__content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+
+		> .block-list-appender {
+			position: static;
+			display: block;
+			width: calc( 100% - 32px );
+			margin: 0 auto;
+		}
+	}
+}

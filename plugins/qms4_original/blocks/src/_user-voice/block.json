@@ -1,0 +1,43 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+	"apiVersion": 2,
+	"name": "qms4/user-voice",
+	"version": "0.1.0",
+	"title": "お客様の声",
+	"category": "widgets",
+	"icon": "pets",
+	"attributes": {
+		"layout": {
+			"type": "string",
+			"enum": [ "image", "movie", "youtube", "none" ],
+			"default": "image"
+		},
+		"title": {
+			"type": "string",
+			"default": "お客様の声"
+		},
+		"imageId": {
+			"type": "number",
+			"default": 0
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"youtubeId": {
+			"type": [ "string", "null" ],
+			"default": null
+		},
+		"youtubeUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"content": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

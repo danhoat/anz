@@ -1,0 +1,19 @@
+.
+|--- container
+| |--- month-header
+| |--- calendar
+| | |--- calendar-header
+| | | |--- header-cell
+| | | |--- ...
+| | | `--- header-cell
+| | `--- calendar-body
+| |   |--- body-cell
+| |   |--- ...
+| |   `--- body-cell
+| `--- month-footer
+`--- display
+  |--- display-header
+  `--- display-list
+    |--- display-item
+    |--- ...
+    `--- display-item

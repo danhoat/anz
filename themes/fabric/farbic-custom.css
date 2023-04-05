@@ -42,3 +42,6 @@ p.card_date span.day:after {
     right: 0;
     margin: 0 auto;
 }
+.single-fair .qms4__block__timetable__example img{
+    max-width: 14px;
+}

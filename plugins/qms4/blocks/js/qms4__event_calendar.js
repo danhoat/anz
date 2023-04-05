@@ -37,9 +37,12 @@ jQuery( function ( $ ) {
 				if( schedules.length && schedules[0].terms.fair__special[0] ){
 					 set_color = ` style = " background:  ${schedules[0].terms.fair__special[0].color}" `;
 				}
+				console.log(date_str);
+				console.log('enable: ', enable);
+				console.log('archive_link: ', archive_link);
 				var date_info =  `${ enable && archive_link
-							? `<a  111 href= "${archive_link}?ymd=${ date.getFullYear() }-${ ("0" + (date.getMonth() + 1)).slice(-2) }-${  ("0" + date.getDate() ).slice(-2)  }"  ${set_color}> ${  date.getDate()} </a>`
-							: `<button 222 class="qms4__block__event-calendar__day-title" ${set_color} >
+							? `<a   href= "${archive_link}?ymd=${ date.getFullYear() }-${ ("0" + (date.getMonth() + 1)).slice(-2) }-${  ("0" + date.getDate() ).slice(-2)  }"  ${set_color}> ${  date.getDate()} </a>`
+							: `<button  class="qms4__block__event-calendar__day-title" ${set_color} >
 									${ date.getDate() }
 								</button>`
 					}`;
@@ -264,7 +267,7 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
-			console.log('calendar_month: ', calendar_month);
+
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
@@ -293,13 +296,13 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
-			console.log("calendar_month: ", calendar_month );
+
 			$year.text( current.getFullYear() );
 			$month.text( left );
 			$month_name.text( month_names[ current.getMonth() ] );
 
-
-			$calendar_body.html( calendar_content( calendar_month[0].data) , archive_link);
+			console.log('archive_link left:',archive_link)
+			$calendar_body.html( calendar_content( calendar_month[0].data , archive_link));
 
 
 
@@ -309,7 +312,7 @@ jQuery( function ( $ ) {
 			if(right == 12){
 				$next_year.text( current.getFullYear() +1 );
 			}
-
+			console.log('archive_link right:',archive_link)
 			var  html = calendar_content( calendar_month[1].data ,archive_link);
 
 			$calendar_body_next.html( html );

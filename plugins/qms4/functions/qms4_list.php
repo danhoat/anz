@@ -59,7 +59,6 @@ function qms4_list( $post_type, array $_param = array() ): Items
 
 	$query_args = $list_query_builder->build( $param );
 	$query = new WP_Query( $query_args );
-
 	$debug_mode = false;
 	$debug_mode = apply_filters(
 		'qms4_list_debug',

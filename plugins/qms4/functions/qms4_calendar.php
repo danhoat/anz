@@ -121,7 +121,7 @@ function qms4_get_event_date($event_id){
 
 	global $wpdb;
 	$sql = $wpdb->prepare("
-		SELECT SQL_CALC_FOUND_ROWS p.ID, m.meta_value as event_date FROM qj_posts p
+		SELECT SQL_CALC_FOUND_ROWS p.ID, m.meta_value as event_date FROM $wpdb->posts p
 			INNER JOIN $wpdb->postmeta m
 			ON ( p.ID = m.post_id )
 				INNER JOIN $wpdb->postmeta AS mt1

@@ -45,6 +45,15 @@
 
       <div class="qms4__block__event-calendar__calendar-body js__qms4__block__event-calendar__calendar-body">
 <?php foreach ( $calendar_month as $calendar_date ) { ?>
+    <?php
+     foreach( $calendar_date->schedules() as $schedule ){
+
+        $event_id   = $schedule->ID;
+        $term       = qms4_get_color($event_id);
+        if($term){  break; }
+    }
+    $color = isset($term->color) ? $term->color : '';
+    ?>
         <div
           class="qms4__block__event-calendar__body-cell <?= join( ' ', $date_class->format( $calendar_date->date() ) ) ?>"
           data-date="<?= $calendar_date->date()->format( 'Y-m-d' ) ?>"
@@ -53,12 +62,14 @@
           <span class="qms4__block__event-calendar__day-title">
             <?= $calendar_date->date()->format( 'j' ) ?>
           </span>
-<?php } else  if(wp_is_mobile() ) { ?>
-   <a href="<?= $archive_link?>?ymd=<?= $calendar_date->date()->format( 'Y-m-d' ) ?>" class="qms4__block__event-calendar__day-title"><?= $calendar_date->date()->format( 'j' ) ?></a>
+<?php } else  if( wp_is_mobile() ) { ?>
+
+
+   <a href="<?= $archive_link?>?ymd=<?= $calendar_date->date()->format( 'Y-m-d' ) ?>" class="qms4__block__event-calendar__day-title" style ="background-color: <?= $color;?>" ><?= $calendar_date->date()->format( 'j' ) ?></a>
 
 
 <?php }  else { ?>
-   <button class="qms4__block__event-calendar__day-title"><?= $calendar_date->date()->format( 'j' ) ?></button>
+   <button class="qms4__block__event-calendar__day-title" style ="background-color: <?= $color;?>" ><?= $calendar_date->date()->format( 'j' ) ?></button>
 
 <?php } ?>
         </div>

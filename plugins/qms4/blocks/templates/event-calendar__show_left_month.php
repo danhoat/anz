@@ -48,27 +48,27 @@
           data-date="<?= $calendar_date->date()->format( 'Y-m-d' ) ?>"
         >
 <?php if ( ! $calendar_date->enable() || empty( $calendar_date->schedules() ) ) { ?>
-          <span class="qms4__block__event-calendar__day-title">
-            <?= $calendar_date->date()->format( 'j' ) ?>
-          </span>
+    <span class="qms4__block__event-calendar__day-title">
+    <?= $calendar_date->date()->format( 'j' ) ?>
+    </span>
 <?php } else {
-  $color_code = $event_id = '';
-  $term = (object) array('color'=>'','slug' => '');
+    $color_code = $event_id = '';
+    $term = (object) array('color'=>'','slug' => '');
 
-  foreach( $calendar_date->schedules() as $schedule ){
+    foreach( $calendar_date->schedules() as $schedule ){
 
-    $event_id   = $schedule->ID;
-    $term   = qms4_get_color($event_id);
-    if($term){  break; }
-  }
-  $color = isset($term->color) ? $term->color : '';
+        $event_id   = $schedule->ID;
+        $term       = qms4_get_color($event_id);
+        if($term){  break; }
+    }
+    $color = isset($term->color) ? $term->color : '';
 
-  $link = get_post_type_archive_link('fair');
-  $link = add_query_arg( array(
-    'ymd' => $calendar_date->date()->format( 'Y-m-d' ),
-  ), $link);
+    $link = get_post_type_archive_link('fair');
+    $link = add_query_arg( array(
+        'ymd' => $calendar_date->date()->format( 'Y-m-d' ),
+    ), $link);
 
-  ?>
+    ?>
 
    <a href="<?php echo $link;?>" class="qms4__block__event-calendar__day-title " style= "background-color:<?= $color ?>"> <?= $calendar_date->date()->format( 'j' ) ?></a>
 

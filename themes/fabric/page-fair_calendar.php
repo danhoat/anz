@@ -11,9 +11,7 @@ while ( have_posts() ) :
 	$the_id = get_the_ID();?>
 
 	<article <?php post_class( Arkhe::get_main_body_class() ); ?> data-postid="<?php echo esc_attr( $the_id ); ?>">
-		<?php
-			the_content();
-		?>
+		<?php the_content(); ?>
 	</article>
 
 <?php endwhile; ?>
@@ -22,6 +20,7 @@ while ( have_posts() ) :
 
 $list_type     = ARKHE_LIST_TYPE;
 $list_type 		= 'card';
+$cur_url 	= get_permalink($post->ID);
 
 $args = array(
 	'post_type' 	=> 'fair',
@@ -40,10 +39,11 @@ if($slugs){
 		)
 	);
 }
-$query = new WP_Query($args);
-$cur_url 	= get_permalink($post->ID);
+$query 		= new WP_Query($args);
+
 ?>
 <?php farbic_list_categories_filter($cur_url) ?>
+
 	<div class=" l-main__body p-archive">
 		<ul class="p-postList -type-list">
 			<?php if( $query->have_posts() ) { ?>

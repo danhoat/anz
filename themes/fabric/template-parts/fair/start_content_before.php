@@ -5,7 +5,7 @@
  if($ymd){
 
     $date = date_create($ymd);
-    $page_title = 'Date: '. $date->format('y年n月j日');
+    $page_title = 'Date: '. $date->format('Y年n月j日');
     $css = 'calendar-day-list';
   }
 ?>

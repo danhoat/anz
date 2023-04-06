@@ -72,6 +72,15 @@
 .p-topArea .c-pageTitle__main.calendar-day-list{
     font-size: 1.3em;
 }
+.recommend_style .sun .card_date span{
+
+        color: rgb(255 68 68);
+}
+
+.recommend_style .sat .card_date span{
+    color: #03A9F4;
+
+}
 .recommend_style .card_date::before{
     width: 16px;
     height: 16px;

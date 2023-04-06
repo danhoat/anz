@@ -175,21 +175,37 @@ class PostListItemRenderer
 		}
 		///$format ='Y年m月d日 l';
 		//echo $item->post_date(' D');
-
+		//時間
+		$show_time = @$attributes->showTime;
+		$show_date = @$attributes->showDate;
+		$custom_style = $item->custom_style;
 
 		$css = 'item-post-type-'.$item->post_type;
 
-		return trim( '
-			<div class="qms4__post-list__post-date '.$css.'">
-				<p class="card_date">
-				<iconify-icon icon="icomoon-free:calendar"></iconify-icon>
+		$html = ' <div class="qms4__post-list__post-date '.$css.'">';
 
-				<span class="ym"> ' . $item->post_date( 'y.m' ).' </span>
+
+		if( $show_date ){
+			$html.='<p class="card_date">';
+			if($custom_style == 'flat_style'){
+
+			 $html.='<span class="ym"> ' . $item->post_date( 'y.m' ).' </span>
 				<span class="day"> ' . $item->post_date( 'd' ).' </span>
-				<span class="week"> ' . $item->post_date( 'l' ) . ' </span>
-				</p>
-			</div>
-		' );
+				<span class="week"> ' . $item->post_date( 'l' ) . ' </span>';
+
+			} else {
+				$html.=$item->post_date( "d月m日 l");
+			}
+			$html.='</p>';
+		}
+
+		if($show_time){
+			$html.= '<span class="time"> 時間: <span class="time-around">08:30 ~ 20:00 </span></span>';
+		}
+
+		$html.='</div>';
+
+		return $html;
 	}
 
 	/**

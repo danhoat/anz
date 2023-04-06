@@ -15,6 +15,7 @@
   ?>
   <div class="qms4__post-list__list <?= $className ?> 999 <?= $custom_style ?>">
 <?php foreach ( $list as $item ) { ?>
+  <?php $item->custom_style = $custom_style; ?>
     <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?> <?= $week ?>">
       <a
         href="<?= $item->permalink ?>"

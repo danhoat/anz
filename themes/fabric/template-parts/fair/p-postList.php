@@ -33,7 +33,11 @@ $post_data = get_post();
       ?>
 
       <?php $item = fabric_load_item();?>
-      <div class="qms4__post-list__post-date"><?= $item->date_html ?></div>
+      <?php
+      $event_date = qms4_get_event_date($item->ID);
+      $event_date = new \DateTimeImmutable( $item->event_date, wp_timezone() );
+      ?>
+      <div class="qms4__post-list__post-date"><?= wp_date($item->date_format, $event_date->getTimestamp()); ?></div>
 
 			<?php if ( Arkhe::$excerpt_length ) : ?>
 				<div class="p-postList__excerpt">

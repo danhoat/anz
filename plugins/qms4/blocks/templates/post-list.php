@@ -12,11 +12,14 @@
 <?php foreach ( $list as $item ) { ?>
   <?php
 
-    $week =  strtolower(date('D', $date_timestamp));
+    $week = '';
     $item->custom_style = $custom_style;
-    $item->event_date   = qms4_get_event_date($item->ID);
-    $event_date = new \DateTimeImmutable( $item->event_date, wp_timezone() );
-    $item->event_time_stamp = $event_date->getTimestamp();
+    if($item->post_type == 'fair'){
+      $item->event_date   = qms4_get_event_date($item->ID);
+      $event_date = new \DateTimeImmutable( $item->event_date, wp_timezone() );
+      $item->event_time_stamp = $event_date->getTimestamp();
+      $week =  strtolower(date('D', $item->event_time_stamp));
+    }
 
     $item->excerpt_lenght = apply_filters($item->post_type.'_execept_lenght', 50);
   ?>

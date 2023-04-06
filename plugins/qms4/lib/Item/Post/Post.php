@@ -201,9 +201,8 @@ class Post extends AbstractPost
 	): Date
 	{
 		$date_format = $date_format ?: $this->_param[ 'date_format' ];
-		$event_date = qms4_get_event_date($this->_wp_post->ID);
 
-		return new Date( $event_date, null, $date_format);
+		return new Date( $this->_wp_post->post_date, null, $date_format);
 	}
 
 	protected function __date_format() : string

@@ -35,7 +35,7 @@
                             numColumnsSp: o,
                             numPostsPc: r,
                             numPostsSp: i,
-                            showPosts: _
+                            customStyle: _
                         } = t;
                         return (0, l.createElement)(s.TabPanel, {
                             tabs: [{
@@ -73,11 +73,32 @@
                                         numPostsPc: e
                                     })
                                 }),
-                                 (0, l.createElement)(s.ToggleControl, {
-                                        label: "イベントを表示する",
-                                        checked: _,
-                                        onChange: () => a({ showPosts: !_ }),
+                                 // (0, l.createElement)(s.ToggleControl, {
+                                 //        label: "イベントを表示する",
+                                 //        checked: _,
+                                 //        onChange: e => a({ customStyle: !_ }),
+                                 //    })
+                                (0, l.createElement)(s.SelectControl, {
+                                    label: "customStyle",
+                                    value: _,
+                                    options: [{
+                                        label: "Style 1",
+                                        value: "styl1"
+                                    }, {
+                                        label: "Flat style",
+                                        value: "flat_style"
+                                    },
+                                    {
+                                        label: "Style 3",
+                                        value: "styl3"
+                                    }
+                                    ],
+                                    onChange: e => a({
+                                        customStyle: e
                                     })
+                                })
+
+
                                 ) // end content
                             }, {
                                 title: "SP 表示",

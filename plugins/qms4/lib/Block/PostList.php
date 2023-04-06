@@ -81,10 +81,10 @@ class PostList
 		$list = qms4_list( $post_type, $param );
 
 
-		if( !empty($content) && $className == 'rows_style'){
-			$str = '{"name":"post-excerpt","attributes":{"textAlign":"left","numLinesPc":2,"numLinesSp":2}}';
-			$content.=$str;
-		}
+		// if( !empty($content) && $className == 'rows_style'){
+		// 	$str = '{"name":"post-excerpt","attributes":{"textAlign":"left","numLinesPc":2,"numLinesSp":2}}';
+		// 	$content.=$str;
+		// }
 
 
 		if ( empty( $content ) ) {

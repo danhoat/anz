@@ -10,6 +10,12 @@
     "postType": {
       "type": "string"
     },
+
+    "customStyle": {
+      "type": "string",
+       "default": "style1"
+    },
+
     "orderby": {
       "type": "string",
       "enum": [

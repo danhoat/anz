@@ -47,8 +47,11 @@ $query 		= new WP_Query($args);
 	<div class=" l-main__body p-archive page_fair_calendar">
 		<ul class="p-postList -type-list">
 			<?php if( $query->have_posts() ) { ?>
+
 				<?php while($query->have_posts() ){ ?>
-					<?php $query->the_post();  global $post;  $item = fabric_load_item(); ?>
+
+					<?php $query->the_post(); ?>
+					<?php global $post;  $item = fabric_load_item(); ?>
 
 					<li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>">
 						<a href="<?php the_permalink();?>" class="p-postList__link">
@@ -63,34 +66,9 @@ $query 		= new WP_Query($args);
 								<div class="p-postList__excerpt"> <?php the_excerpt(); ?></div>
 
 									<div class="c-postIcon">
-										<?php
-										$categories = get_the_terms( get_the_ID(), 'fair__category' );
-
-										if ( $categories && ! is_wp_error( $categories ) ) :
-											$draught_links = array();
-											$html = '';
-											foreach ( $categories as $term ) {
-												$html .= '<li class="icon">'.$term->name.'</li>';
-											}
-											?>
-											<ul class="p-postList__icon"><?= $html ?> </ul>
-										<?php endif; ?>
-										<?php
-
-										$specials = get_the_terms( get_the_ID(), 'fair__special' );
-										if ( $specials && ! is_wp_error( $specials ) ) :
-											$draught_links = array();
-											$html = '';
-											foreach ( $specials as $term ) {
-												$color = get_field( 'field_62fb7354562ba', $term->taxonomy . '_' . $term->term_id );
-												$bg = 'style = "background-color: '.$color.'" ';
-												$html .= '<li class="icon" '.$bg.'>'.$term->name.'</li>';
-											}
-											?>
-											<ul class="p-postList__icon"><?= $html ?> </ul>
-										<?php endif; ?>
-
-								  </div>
+										<?php farbic_show_categories($item->ID) ?>
+										<?php farbic_show_fair_icons($item->ID);?>
+								  	</div>
 								</div>
 							</a>
 						</li>

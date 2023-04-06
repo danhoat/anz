@@ -105,3 +105,32 @@ add_filter( 'excerpt_length', 'farbic_custom_excerpt_length', 9999 );
 add_filter('excerpt_mblength','farbic_custom_excerpt_length', 9999);
 
 add_filter('fair_execept_lenght','farbic_custom_excerpt_length', 9999);
+
+function farbic_show_fair_icons( $fair_id ){
+
+	$specials = get_the_terms( $fair_id, 'fair__special' );
+	if ( $specials && ! is_wp_error( $specials ) ) {
+		$html = '';
+		foreach ( $specials as $term ) {
+			$color = get_field( 'field_62fb7354562ba', $term->taxonomy . '_' . $term->term_id );
+			$bg = 'style = "background-color: '.$color.'" ';
+			$html .= '<li class="icon" '.$bg.'>'.$term->name.'</li>';
+		}
+		?>
+		<ul class="p-postList__icon"><?= $html ?> </ul>
+		<?php
+	}
+}
+function farbic_show_categories($fair_id){
+	$categories = get_the_terms( $fair_id, 'fair__category' );
+
+	if ( $categories && ! is_wp_error( $categories ) ) {
+		$html = '';
+		foreach ( $categories as $term ) {
+			$html .= '<li class="icon">'.$term->name.'</li>';
+		}
+		?>
+		<ul class="p-postList__icon"><?= $html ?> </ul>
+		<?php
+	}
+}

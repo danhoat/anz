@@ -12,7 +12,7 @@ $show_modified = isset( $args['show_modified'] ) ? $args['show_modified'] : Arkh
 $show_cat      = isset( $args['show_cat'] ) ? $args['show_cat'] : Arkhe::get_setting( 'show_list_cat' );
 $show_author   = isset( $args['show_author'] ) ? $args['show_author'] : Arkhe::get_setting( 'show_list_author' );
 $list_type     = isset( $args['list_type'] ) ? $args['list_type'] : ARKHE_LIST_TYPE;
-
+$show_event_date = false;
 // 投稿データ取得
 $post_data = get_post();
 
@@ -30,14 +30,18 @@ $post_data = get_post();
 				echo '<' . esc_attr( $h_tag ) . ' class="p-postList__title">';
 				the_title();
 				echo '</' . esc_attr( $h_tag ) . '>';
-      ?>
+      		?>
 
-      <?php $item = fabric_load_item();?>
-      <?php
-      $event_date = qms4_get_event_date($item->ID);
-      $event_date = new \DateTimeImmutable( $event_date );
-      ?>
-      <div class="qms4__post-list__post-date"><?= wp_date($item->date_format, $event_date->getTimestamp()); ?></div>
+	      	<?php $item = fabric_load_item();?>
+	      	<?php if($show_event_date){
+	      	$event_date = qms4_get_event_date($item->ID);
+	      	$event_date = new \DateTimeImmutable( $event_date );
+	      	?>
+	      		<div class="qms4__post-list__post-date fair-event-date">
+	      			<?= wp_date($item->date_format, $event_date->getTimestamp()); ?>
+
+	      		</div>
+	      	<?php } ?>
 
 			<?php if ( Arkhe::$excerpt_length ) : ?>
 				<div class="p-postList__excerpt">

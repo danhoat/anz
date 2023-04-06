@@ -47,7 +47,7 @@ if ( $show_modified && $show_posted ) {
 	?>
   <?php $item = fabric_load_item(); ?>
   <div class="c-postIcon">
-    <ul class="p-postList__icon">
+    <ul class="p-postList__icon 888 ">
     <?php if ( ok( $item->area ) ) { ?>
       <li class="icon">
         <?= $item->area->title ?>

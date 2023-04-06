@@ -1,7 +1,7 @@
 .qms4__post-list__list-item{
 	position: relative;
 }
-.block_style  .qms4__list_item_type_fair p.card_date {
+.flat_style  .qms4__list_item_type_fair p.card_date {
     width: 23%;
     padding: 0.6rem 0;
     font-size: 12px;
@@ -12,25 +12,25 @@
     left: 0;
     background-color: rgba(124, 124, 124, 0.79);
 }
-.block_style  .qms4__list_item_type_fair .sun p.card_date {
+.flat_style  .qms4__list_item_type_fair .sun p.card_date {
     background-color: rgba(198, 62, 62, 0.54);
 }
-.block_style .item-post-type-fair.sat p.card_date {
+.flat_style .item-post-type-fair.sat p.card_date {
     background-color: rgba(0, 116, 201, 0.68);
 }
-.block_style p.card_date span.day {
+.flat_style p.card_date span.day {
     width: auto;
     display: block;
     font-size: 22px;
     position: relative;
 }
-.block_style p.card_date span.week {
+.flat_style p.card_date span.week {
     width: auto;
     display: block;
     padding: 8px 0 0 0;
     font-size: 12px;
 }
-.block_style  p.card_date span.day:after {
+.flat_style  p.card_date span.day:after {
     content: "";
     width: 30px;
     height: 1px;

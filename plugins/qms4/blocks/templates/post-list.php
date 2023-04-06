@@ -8,8 +8,7 @@
   data-num-posts-sp="<?= $num_posts_sp ?>"
 >
 <?php } ?>
-<?php $className = ($className == 'rows_style') ? $classname : 'block_style';?>
-  <div class="qms4__post-list__list <?= $className ?>">
+  <div class="qms4__post-list__list <?= $className ?> 999">
 <?php foreach ( $list as $item ) { ?>
     <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?>">
       <a

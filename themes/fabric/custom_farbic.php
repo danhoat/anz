@@ -25,7 +25,7 @@ function farbic_the__postdate( $post_date, $type  ='post', $date_format = '' )
 
 function farbic_theme_enqueue_styles() {
     wp_enqueue_style( 'farbic-style',
-        get_stylesheet_directory_uri() . '/farbic-custom.css',
+        get_stylesheet_directory_uri() . '/custom-farbic.css',
         array( 'arkhe-main-style' ),
         rand()
     );

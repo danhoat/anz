@@ -40,6 +40,7 @@ class PostList
 
 
 
+		$custom_style = isset($attributes['custom_style']) ? $attributes['custom_style'] : 'default_style';
 		$layout = $attributes['layout'];
 		$className = isset( $attributes['className']) ? $attributes['className'] : 'block_style';;
 

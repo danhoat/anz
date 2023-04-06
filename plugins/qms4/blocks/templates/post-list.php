@@ -8,7 +8,7 @@
   data-num-posts-sp="<?= $num_posts_sp ?>"
 >
 <?php } ?>
-  <div class="qms4__post-list__list <?= $className ?> 999">
+  <div class="qms4__post-list__list <?= $className ?> 999 <?= $custom_style ?>">
 <?php foreach ( $list as $item ) { ?>
     <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?>">
       <a

@@ -88,7 +88,9 @@ $list = qms4_list( 'fair', $param );
 									$draught_links = array();
 									$html = '';
 									foreach ( $specials as $term ) {
-										$html .= '<li class="icon">'.$term->name.'</li>';
+										$color = get_field( 'field_62fb7354562ba', $term->taxonomy . '_' . $term->term_id );
+										$bg = 'style = "background-color: '.$color.'" ';
+										$html .= '<li class="icon" '.$bg.'>'.$term->name.'</li>';
 									}
 									?>
 									<ul class="p-postList__icon"><?= $html ?> </ul>

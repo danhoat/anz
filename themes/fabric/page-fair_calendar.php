@@ -36,30 +36,7 @@ $param['posts_per_page'] = 6;
 $list 		= qms4_list( 'fair', $param );
 $cur_url 	= get_permalink($post->ID);
 ?>
-<div class="l-search">
-	<div class="wp-block-columns is-layout-flex wp-container-10"> <div class="wp-block-column is-layout-flow"><div class="widget qms4__term-list" data-taxonomy="fair__category" data-query-key="CAT">
-  <ul class="widget__main-list">
-    <li class="active">
-      <a href="<?= $cur_url ?>?CAT=">
-        <span classname="widget__main-list__term-name">相談会</span>
-      </a>
-    </li>
-    <li class="active">
-      <a href="<?= $cur_url ?>?CAT=">
-        <span classname="widget__main-list__term-name">無料試食</span>
-      </a>
-    </li>
-    <li class="">
-      <a href="<?= $cur_url ?>?CAT=">
-        <span classname="widget__main-list__term-name">模擬披露宴</span>
-      </a>
-    </li>
-  </ul>
-  <!-- /.widget__main-list -->
-</div>
-<!-- /.widget.qms4__term-list -->
-</div> </div>
-	</div>
+	<?php farbic_list_categories_filter($cur_url) ?>
 	<div class=" l-main__body p-archive">
 
 

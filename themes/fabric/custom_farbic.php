@@ -17,7 +17,6 @@ function farbic_the__postdate( $post_date, $type  ='post', $date_format = '' )
 		esc_html($post_date ) .
 	'</time>';
 
-
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo apply_filters( 'farbic_the__postdate', $return, $type );
 }
@@ -40,3 +39,36 @@ function farbic_theme_enqueue_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'farbic_theme_enqueue_styles' );
+
+
+function farbic_list_categories_filter( $cur_url ){ ?>
+	<div class="l-search">
+		<div class="wp-block-columns is-layout-flex wp-container-10">
+			<div class="wp-block-column is-layout-flow">
+				<div class="widget qms4__term-list" data-taxonomy="fair__category" data-query-key="CAT">
+				<ul class="widget__main-list">
+					<?php
+					$categories = get_terms( 'fair__category' );
+
+					if ( $categories && ! is_wp_error( $categories ) ) {
+						foreach ( $categories as $term ) { ?>
+							<li class="active">
+								<a href="<?= $cur_url ?>?CAT=<?=$term->slug?>">
+									<span classname="widget__main-list__term-name"><?= $term->name ?></span>
+								</a>
+							</li>
+							<?php
+						}
+					}
+					?>
+
+				</ul>
+				<!-- /.widget__main-list -->
+		</div>
+		<!-- /.widget.qms4__term-list -->
+		</div>
+		</div>
+	</div>
+
+	<?php
+}

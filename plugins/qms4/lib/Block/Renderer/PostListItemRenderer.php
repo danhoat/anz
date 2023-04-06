@@ -194,7 +194,7 @@ class PostListItemRenderer
 				<span class="week"> ' . $item->post_date( 'l' ) . ' </span>';
 
 			} else {
-				$html.=$item->post_date( "d月m日 l");
+				$html.=$item->post_date('d月m日 l');
 			}
 			$html.='</p>';
 		}

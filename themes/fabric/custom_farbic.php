@@ -87,3 +87,20 @@ function farbic_list_categories_filter( $cur_url ){ ?>
 
 	<?php
 }
+/**
+ * Filter the excerpt length to 80 words on homepage and 50 words on page template
+ *
+ * @param int $length Excerpt length.
+ * @return int modified excerpt length.
+ */
+function farbic_custom_excerpt_length( $length ) {
+  if ( is_front_page() || is_home() ) {
+        return 50;
+    } else {
+        return $length;
+    }
+}
+
+add_filter( 'excerpt_length', 'farbic_custom_excerpt_length', 9999 );
+add_filter('excerpt_mblength','farbic_custom_excerpt_length', 9999);
+

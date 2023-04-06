@@ -88,37 +88,28 @@ function filter_events_by_select_date($query){
 			$meta_key = 'qms4__event_date';
 			global $wpdb;
 			$sql =  $wpdb->prepare("
-	            SELECT p.ID FROM qj_posts p
-	                LEFT JOIN qj_postmeta m
-	                ON p.ID = m.post_id
-	                WHERE m.meta_key = %s AND
-	                 	m.meta_value =%s AND
-	                 	p.post_status = 'publish' ",
+	           SELECT SQL_CALC_FOUND_ROWS mt1.meta_value as parent_id
+	           FROM $wpdb->posts p
+	           	INNER JOIN $wpdb->postmeta m ON ( p.ID = m.post_id )
+	           	INNER JOIN $wpdb->postmeta AS mt1 ON ( p.ID = mt1.post_id ) WHERE 1=1 AND
+	           		( ( m.meta_key = %s AND CAST(m.meta_value AS DATE) = %s ) AND( mt1.meta_key = %s ) )
+	           		AND p.post_type = %s AND
+	           		((p.post_status = 'publish'))
+	           		 GROUP BY mt1.meta_value",
 	                'qms4__event_date',
-		         	$meta_value
+		         	$ymd,
+		         	'qms4__parent_event_id',
+		         	'fair__schedule'
 		         );
 
 	        global $wpdb;
 	        $result = $wpdb->get_results($sql, ARRAY_A);
-	        $ids = array();
+	        $event_ids = array();
 	        foreach($result as $id){
-	        	$ids[] = $id['ID'];
+	        	$event_ids[] = $id['parent_id'];
 	        }
 
-	       	$sql = $wpdb->prepare("
-	       		SELECT m.meta_value as event_id FROM $wpdb->posts p
-	       			LEFT JOIN $wpdb->postmeta m
-	       			ON p.ID = m.post_id WHERE p.ID IN (".implode(",", $ids).")
-	       			AND m.meta_key = %s
-	       			GROUP BY m.meta_value ",'qms4__parent_event_id' );
-
-	       	$ids = $wpdb->get_results($sql, ARRAY_A);
-	       	$event_ids = array();
-			foreach($ids as $id){
-				$event_ids[] = $id['event_id'];
-			}
-			if($event_ids)
-				$query->set('post__in',$event_ids);
+			if($event_ids)$query->set('post__in',$event_ids);
 
 		}
 	}
@@ -127,24 +118,7 @@ function filter_events_by_select_date($query){
 add_action( 'pre_get_posts', 'filter_events_by_select_date' );
 
 function qms4_get_event_date($event_id){
-	// $args = array(
-	// 	'post_status' 	=> 'publish',
-	// 	'post_type' 	=>'fair__schedule',
-	// 	'meta_query' => array(
-	// 			'relation' => 'AND',
-	// 			array(
-	// 				'key' => 'qms4__event_date',
-	// 				'type'      => "DATE",
-	// 				'value' => date("Y-m-d"),
-	// 				'compare'   => '>=',
-	// 			),
-	// 			array(
-	// 				'key' => 'qms4__parent_event_id',
-	// 				'value' => $event_id
-	// 			)
-	// 	),
-	// 	'posts_per_page' => 1
-	// );
+
 	global $wpdb;
 	$sql = $wpdb->prepare("
 		SELECT SQL_CALC_FOUND_ROWS p.ID, m.meta_value as event_date FROM qj_posts p
@@ -165,7 +139,7 @@ function qms4_get_event_date($event_id){
 		return $result[0]['event_date'];
 	} else {
 		$sql = $wpdb->prepare("
-		SELECT SQL_CALC_FOUND_ROWS p.ID, m.meta_value as event_date FROM qj_posts p
+		SELECT SQL_CALC_FOUND_ROWS p.ID, m.meta_value as event_date FROM $wpdb->posts p
 			INNER JOIN $wpdb->postmeta m
 			ON ( p.ID = m.post_id )
 				INNER JOIN $wpdb->postmeta AS mt1
@@ -184,6 +158,27 @@ function qms4_get_event_date($event_id){
 	}
 }
 function debug_test(){
-	qms4_get_event_date(991);
+	$args = array(
+		'post_status' 	=> 'publish',
+		'post_type' 	=>'fair__schedule',
+		'meta_query' => array(
+				'relation' => 'AND',
+				array(
+					'key' => 'qms4__event_date',
+					'type'      => "DATE",
+					'value' => date("Y-m-d"),
+					'compare'   => '==',
+				),
+				array(
+					'key' => 'qms4__parent_event_id',
+					'value' => $event_id
+				)
+		),
+		'posts_per_page' => 1
+	);
+	$query = new WP_Query($args);
+	echo '<pre>';
+	var_dump($query);
+	echo '</pre>';
 }
 add_action('wp_footer','debug_test');

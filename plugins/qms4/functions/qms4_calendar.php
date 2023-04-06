@@ -162,10 +162,24 @@ function qms4_get_event_date($event_id){
 	$result  = $wpdb->get_results($sql, ARRAY_A);
 	if($result){
 		return $result[0]['event_date'];
+	} else {
+		$sql = $wpdb->prepare("
+		SELECT SQL_CALC_FOUND_ROWS p.ID, m.meta_value as event_date FROM qj_posts p
+			INNER JOIN $wpdb->postmeta m
+			ON ( p.ID = m.post_id )
+				INNER JOIN $wpdb->postmeta AS mt1
+				ON ( p.ID = mt1.post_id ) WHERE 1=1 AND (
+					( mt1.meta_key = 'qms4__parent_event_id' AND mt1.meta_value = %d ) ) AND
+					 p.post_type = 'fair__schedule' AND
+					  ((p.post_status = 'publish'))
+					  GROUP BY p.ID, m.meta_value
+					  LIMIT 0, 1", $event_id);
+
+
+		$result  = $wpdb->get_results($sql, ARRAY_A);
+
+		return ($result) ? $result[0]['event_date'] : 0;
 	}
-
-
-
 }
 function debug_test(){
 	qms4_get_event_date(998);

@@ -50,9 +50,6 @@ $list = qms4_list( 'fair', $param );
 				<?php
 				global $post;
 				$post = get_post($item->ID);
-
-				$item = fabric_load_item();
-
 				?>
 
 				<li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>">
@@ -67,25 +64,37 @@ $list = qms4_list( 'fair', $param );
 								echo '<' . esc_attr( $h_tag ) . ' class="p-postList__title">';
 								?>
 								<?php the_title() ; ?>
-								<?php echo '</' . esc_attr( $h_tag ) . '>';
-				      ?>
+								<?php echo '</' . esc_attr( $h_tag ) . '>'; ?>
 
+							<div class="p-postList__excerpt"> <?php the_excerpt(); ?></div>
 
-				      <div class="qms4__post-list__post-date"><?= $item->date_html ?></div>
-							<?php if ( Arkhe::$excerpt_length ) : ?>
-								<div class="p-postList__excerpt">
-									<?php the_excerpt(); ?>
-								</div>
-							<?php endif; ?>
-							<?= $item->term_html ?>
-							<?php
-								Arkhe::get_part( 'post_list/item/meta', array(
-									'show_date'     => false,
-									'show_modified' => false,
-									'show_cat'      => $show_cat,
-									'author_id'     => $show_author ? $item->post_author : 0,
-								) );
-							?>
+							<div class="c-postIcon">
+								<?php
+								$categories = get_the_terms( get_the_ID(), 'fair__category' );
+
+								if ( $categories && ! is_wp_error( $categories ) ) :
+									$draught_links = array();
+									$html = '';
+									foreach ( $categories as $term ) {
+										$html .= '<li class="icon">'.$term->name.'</li>';
+									}
+									?>
+									<ul class="p-postList__icon"><?= $html ?> </ul>
+								<?php endif; ?>
+								<?php
+
+								$specials = get_the_terms( get_the_ID(), 'fair__special' );
+								if ( $specials && ! is_wp_error( $specials ) ) :
+									$draught_links = array();
+									$html = '';
+									foreach ( $specials as $term ) {
+										$html .= '<li class="icon">'.$term->name.'</li>';
+									}
+									?>
+									<ul class="p-postList__icon"><?= $html ?> </ul>
+								<?php endif; ?>
+
+						  </div>
 						</div>
 					</a>
 				</li>
@@ -94,6 +103,4 @@ $list = qms4_list( 'fair', $param );
 		</div>
 
 	</main>
-<?php
-
-get_footer();
+<?php get_footer();

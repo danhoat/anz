@@ -18,7 +18,7 @@ $post_data = get_post();
 
 
 ?>
-<li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>" fair_p-postList.php>
+<li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>" fair_p-postList.phppppp>
 	<a href="<?php the_permalink(); ?>" class="p-postList__link">
 		<?php
 			Arkhe::get_part( 'post_list/item/thumb', array(

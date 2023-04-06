@@ -3,7 +3,7 @@
  * アーカイブページ用テンプレート
  */
 get_header(); ?>
-	<main id="main_content" class="<?php Arkhe::main_class(); ?>">
+	<main id="main_content" class="<?php Arkhe::main_class(); ?>" arkhe/archive.phppppp>
 		<div class="<?php Arkhe::main_body_class(); ?>">
 			<?php
 				do_action( 'arkhe_start_archive_main' );

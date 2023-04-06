@@ -227,7 +227,10 @@ class PostListItemRenderer
 	private function render_post_excerpt( Post $item, \stdClass $attributes ): string
 	{
 		if ( trim( $item->excerpt ) == false ) { return ''; }
-
+		if($item->excerpt_lenght){
+			var_dump($item->excerpt_lenght);
+			return wp_trim_words($item->excerpt,$item->excerpt_lenght );
+		}
 		return trim( '
 			<div
 				class="qms4__post-list__post-excerpt"

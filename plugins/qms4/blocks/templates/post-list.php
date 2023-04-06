@@ -18,6 +18,7 @@
     $date_timestamp     = get_post_timestamp( $item->ID, 'date' );
     $week =  strtolower(date('D', $date_timestamp));
     $item->custom_style = $custom_style;
+    $item->excerpt_lenght = apply_filters('fair_execept_lenght', 50);
   ?>
     <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?> <?= $week ?>">
       <a

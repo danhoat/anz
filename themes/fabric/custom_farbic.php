@@ -94,7 +94,7 @@ function farbic_list_categories_filter( $cur_url ){ ?>
  * @return int modified excerpt length.
  */
 function farbic_custom_excerpt_length( $length ) {
-  if ( is_front_page() || is_home() ) {
+  if ( is_front_page() || is_home()  ) {
         return 50;
     } else {
         return $length;

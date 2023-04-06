@@ -29,5 +29,14 @@ function farbic_theme_enqueue_styles() {
         array( 'arkhe-main-style' ),
         rand()
     );
+    $css_path = ARKHE_THEME_URI . '/dist/css';
+
+	if ( is_front_page() ) {
+		// カスタマイザー
+		wp_enqueue_style( 'arkhe-icon', $css_path . '/icon.css', array(), rand() );
+
+	}
+
+
 }
 add_action( 'wp_enqueue_scripts', 'farbic_theme_enqueue_styles' );

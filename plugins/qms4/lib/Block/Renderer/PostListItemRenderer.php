@@ -182,6 +182,8 @@ class PostListItemRenderer
 		return trim( '
 			<div class="qms4__post-list__post-date '.$css.'">
 				<p class="card_date">
+				<iconify-icon icon="icomoon-free:calendar"></iconify-icon>
+
 				<span class="ym"> ' . $item->post_date( 'y.m' ).' </span>
 				<span class="day"> ' . $item->post_date( 'd' ).' </span>
 				<span class="week"> ' . $item->post_date( 'l' ) . ' </span>

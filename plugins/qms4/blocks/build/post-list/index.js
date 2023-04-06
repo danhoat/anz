@@ -82,15 +82,15 @@
                                     label: "customStyle",
                                     value: _,
                                     options: [{
-                                        label: "Style 1",
-                                        value: "styl1"
+                                        label: "Default",
+                                        value: "default_style"
                                     }, {
                                         label: "Flat style",
                                         value: "flat_style"
                                     },
                                     {
-                                        label: "Style 3",
-                                        value: "styl3"
+                                        label: "Recommend Fair",
+                                        value: "recommend_style"
                                     }
                                     ],
                                     onChange: e => a({

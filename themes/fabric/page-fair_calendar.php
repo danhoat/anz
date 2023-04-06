@@ -16,6 +16,7 @@ while ( have_posts() ) :
 		</article>
 
 <?php
+endwhile;
 $param['count'] = -1;
 $h_tag         = isset( $args['h_tag'] ) ? $args['h_tag'] : 'h2';
 $list_class    = true;
@@ -35,7 +36,6 @@ $list = qms4_list( 'fair', $param );
 
 ?>
 
-<? // qms4_site_part( 859 ) ?>
 
 
 		<div class=" l-main__body p-archive">
@@ -93,5 +93,5 @@ $list = qms4_list( 'fair', $param );
 
 	</main>
 <?php
-endwhile;
+
 get_footer();

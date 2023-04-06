@@ -49,11 +49,26 @@ function farbic_list_categories_filter( $cur_url ){ ?>
 				<ul class="widget__main-list">
 					<?php
 					$categories = get_terms( 'fair__category' );
-
+					$slugs 		= isset($_GET['CAT']) ? $_GET['CAT'] : '';
 					if ( $categories && ! is_wp_error( $categories ) ) {
+						$list = explode('|', $slugs);
 						foreach ( $categories as $term ) { ?>
-							<li class="active">
-								<a href="<?= $cur_url ?>?CAT=<?=$term->slug?>">
+							<?php
+							$active = '';
+							$slug = urldecode( $term->slug );
+							if( empty($slugs ) ){
+								$href = $term->slug;
+							} else {
+								if( ! in_array($slug,$list) ){
+									$href = $slugs.'|'.$term->slug;
+								} else{
+									$active = 'active';
+									$href = $slugs;
+								}
+							}
+							?>
+							<li class="<?= $active?>">
+								<a href="<?= $cur_url ?>?CAT=<?=$href?>">
 									<span classname="widget__main-list__term-name"><?= $term->name ?></span>
 								</a>
 							</li>

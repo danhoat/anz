@@ -36,37 +36,31 @@ $param['posts_per_page'] = 6;
 
 
 $list = qms4_list( 'fair', $param );
-
-
 ?>
+	<div class=" l-main__body p-archive">
 
+		<ul class="p-postList -type-list">
+			<?php foreach ( $list as $item ) { ?>
+			<?php
+			global $post;
+			$post = get_post($item->ID);
+			?>
 
-
-		<div class=" l-main__body p-archive">
-
-		  	<ul class="p-postList -type-list">
-				<?php foreach ( $list as $item ) { ?>
-
-				<?php
-				global $post;
-				$post = get_post($item->ID);
-				?>
-
-				<li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>">
-					<a href="<?php the_permalink();?>" class="p-postList__link">
-						<?php
-							Arkhe::get_part( 'post_list/item/thumb', array(
+			<li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>">
+				<a href="<?php the_permalink();?>" class="p-postList__link">
+					<?php
+						Arkhe::get_part( 'post_list/item/thumb', array(
 								'sizes' => 'card' === $list_type ? '(min-width: 600px) 400px, 100vw' : '(min-width: 600px) 400px, 40vw',
 							) );
-						?>
-						<div class="p-postList__body">
-							<?php
-								echo '<' . esc_attr( $h_tag ) . ' class="p-postList__title">';
-								?>
-								<?php the_title() ; ?>
-								<?php echo '</' . esc_attr( $h_tag ) . '>'; ?>
+					?>
+					<div class="p-postList__body">
+						<?php
+							echo '<' . esc_attr( $h_tag ) . ' class="p-postList__title">';
+							?>
+						<?php the_title() ; ?>
+						<?php echo '</' . esc_attr( $h_tag ) . '>'; ?>
 
-							<div class="p-postList__excerpt"> <?php the_excerpt(); ?></div>
+						<div class="p-postList__excerpt"> <?php the_excerpt(); ?></div>
 
 							<div class="c-postIcon">
 								<?php
@@ -103,6 +97,5 @@ $list = qms4_list( 'fair', $param );
 			<?php } ?>
 		  </ul>
 		</div>
-
 	</main>
 <?php get_footer();

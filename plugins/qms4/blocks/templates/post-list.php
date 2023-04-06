@@ -16,9 +16,10 @@
     $item->custom_style = $custom_style;
     if($item->post_type == 'fair'){
       $item->event_date   = qms4_get_event_date($item->ID);
-      $event_date = new \DateTimeImmutable( $item->event_date, wp_timezone() );
-      $item->event_time_stamp = $event_date->getTimestamp();
+      $event_date         = new \DateTimeImmutable( $item->event_date );// add argument wp_timezone after;
+      $item->event_time_stamp = $event_date->getTimestamp()+20000;
       $week =  strtolower(date('D', $item->event_time_stamp));
+
     }
 
     $item->excerpt_lenght = apply_filters($item->post_type.'_execept_lenght', 50);

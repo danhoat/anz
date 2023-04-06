@@ -69,7 +69,7 @@ add_shortcode( 'events_date', 'qms4_list_events_by_date' );
 function qms4_list_fair(){
 
 	$list = qms4_list( 'fair' );
-	
+
 
 
 
@@ -125,3 +125,49 @@ function filter_events_by_select_date($query){
 
 }
 add_action( 'pre_get_posts', 'filter_events_by_select_date' );
+
+function qms4_get_event_date($event_id){
+	// $args = array(
+	// 	'post_status' 	=> 'publish',
+	// 	'post_type' 	=>'fair__schedule',
+	// 	'meta_query' => array(
+	// 			'relation' => 'AND',
+	// 			array(
+	// 				'key' => 'qms4__event_date',
+	// 				'type'      => "DATE",
+	// 				'value' => date("Y-m-d"),
+	// 				'compare'   => '>=',
+	// 			),
+	// 			array(
+	// 				'key' => 'qms4__parent_event_id',
+	// 				'value' => $event_id
+	// 			)
+	// 	),
+	// 	'posts_per_page' => 1
+	// );
+	global $wpdb;
+	$sql = $wpdb->prepare("
+		SELECT SQL_CALC_FOUND_ROWS p.ID, m.meta_value as event_date FROM qj_posts p
+			INNER JOIN $wpdb->postmeta m
+			ON ( p.ID = m.post_id )
+				INNER JOIN $wpdb->postmeta AS mt1
+				ON ( p.ID = mt1.post_id ) WHERE 1=1 AND ( ( m.meta_key = 'qms4__event_date' AND CAST( m.meta_value AS DATE) >= CURDATE() ) AND
+					( mt1.meta_key = 'qms4__parent_event_id' AND mt1.meta_value = %d ) ) AND
+					 p.post_type = 'fair__schedule' AND
+					  ((p.post_status = 'publish'))
+					  GROUP BY p.ID, m.meta_value
+					  LIMIT 0, 1", $event_id);
+
+
+	$result  = $wpdb->get_results($sql, ARRAY_A);
+	if($result){
+		return $result[0]['event_date'];
+	}
+
+
+
+}
+function debug_test(){
+	qms4_get_event_date(998);
+}
+add_action('wp_footer','debug_test');

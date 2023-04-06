@@ -184,14 +184,27 @@ class PostListItemRenderer
 
 		$html = ' <div class="qms4__post-list__post-date '.$css.'">';
 
-
+		$df_post_date = $item->post_date;
 		if( $show_date ){
-			$html.='<p class="card_date">';
-			if($custom_style == 'flat_style'){
 
-			 $html.='<span class="ym"> ' . $item->post_date( 'y.m' ).' </span>
-				<span class="day"> ' . $item->post_date( 'd' ).' </span>
-				<span class="week"> ' . $item->post_date( 'l' ) . ' </span>';
+			if($item->post_type == 'fair'){
+
+				$event_date   = qms4_get_event_date($item->ID);
+				if(!empty($event_date) ){
+					$event_date = new \DateTimeImmutable( $event_date, wp_timezone() );
+					$time_stamp = $event_date->getTimestamp();
+					$html.='<p class="card_date">';
+
+					if($custom_style == 'flat_style'){
+
+					 	$html.='<span class="ym"> ' . wp_date( 'y.m', $time_stamp ).' </span>
+						<span class="day"> ' . wp_date( 'd', $time_stamp ).' </span>
+						<span class="week"> ' . wp_date( 'l', $time_stamp ) . ' </span>';
+
+					} else{
+						$html.=wp_date('d月m日', $time_stamp).' <span>'.wp_date('l', $time_stamp).'</span>';
+					}
+				}
 
 			} else {
 				$html.=$item->post_date('d月m日').' <span>'.$item->post_date('l').'</span>';
@@ -213,6 +226,7 @@ class PostListItemRenderer
 				$html.= '<span class="time"> '. $item->post_date( 'h:m' ).'</span>';
 			}
 		}
+		$item->post_date = $df_post_date;
 
 		$html.='</div>';
 
@@ -227,15 +241,16 @@ class PostListItemRenderer
 	private function render_post_excerpt( Post $item, \stdClass $attributes ): string
 	{
 		if ( trim( $item->excerpt ) == false ) { return ''; }
+		$excerpt =  $item->excerpt ;
+
 		if($item->excerpt_lenght){
-			var_dump($item->excerpt_lenght);
-			return wp_trim_words($item->excerpt,$item->excerpt_lenght );
+			$exerpt = wp_trim_words($excerpt,$item->excerpt_lenght );
 		}
 		return trim( '
 			<div
 				class="qms4__post-list__post-excerpt"
-				title="' . esc_attr( $item->excerpt ) . '"
-			>' . $item->excerpt . '</div>
+				title="' . esc_attr( $exerpt ) . '"
+			>' . $exerpt . '</div>
 		' );
 	}
 

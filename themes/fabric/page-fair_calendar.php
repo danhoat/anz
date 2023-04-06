@@ -44,7 +44,7 @@ $query 		= new WP_Query($args);
 ?>
 <?php farbic_list_categories_filter($cur_url) ?>
 
-	<div class=" l-main__body p-archive">
+	<div class=" l-main__body p-archive page_fair_calendar">
 		<ul class="p-postList -type-list">
 			<?php if( $query->have_posts() ) { ?>
 				<?php while($query->have_posts() ){ ?>

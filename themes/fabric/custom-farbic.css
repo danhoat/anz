@@ -97,3 +97,6 @@
 .qms4__post-list__list-item .qms4__post-list__post-excerpt p{
     font-size1: 1rem;
 }
+.page_fair_calendar .p-postList__excerpt{
+    min-height: 86px;
+}

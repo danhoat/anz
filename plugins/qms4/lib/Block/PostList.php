@@ -38,8 +38,6 @@ class PostList
 	public function render( array $attributes, ?string $content ): string
 	{
 
-		//var_dump($attributes);
-
 		$custom_style = isset($attributes['customStyle']) ? $attributes['customStyle'] : 'default_style';
 
 		$layout = $attributes['layout'];
@@ -81,13 +79,6 @@ class PostList
 			: array_map( 'trim', explode( ',', $include_post_ids ) );
 
 		$list = qms4_list( $post_type, $param );
-
-
-		// if( !empty($content) && $className == 'rows_style'){
-		// 	$str = '{"name":"post-excerpt","attributes":{"textAlign":"left","numLinesPc":2,"numLinesSp":2}}';
-		// 	$content.=$str;
-		// }
-
 
 		if ( empty( $content ) ) {
 

@@ -8,17 +8,13 @@
   data-num-posts-sp="<?= $num_posts_sp ?>"
 >
 <?php } ?>
-<?php
-
-
-  ?>
   <div class="qms4__post-list__list <?= $className ?>  <?= $custom_style ?>">
 <?php foreach ( $list as $item ) { ?>
   <?php
     $date_timestamp     = get_post_timestamp( $item->ID, 'date' );
     $week =  strtolower(date('D', $date_timestamp));
     $item->custom_style = $custom_style;
-    $item->excerpt_lenght = apply_filters('fair_execept_lenght', 50);
+    $item->excerpt_lenght = apply_filters($item->post_type.'_execept_lenght', 50);
   ?>
     <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?> <?= $week ?>">
       <a

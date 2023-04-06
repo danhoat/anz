@@ -12,10 +12,10 @@
     left: 0;
     background-color: rgba(124, 124, 124, 0.79);
 }
-.flat_style  .qms4__list_item_type_fair .sun p.card_date {
+.flat_style  .sun p.card_date {
     background-color: rgba(198, 62, 62, 0.54);
 }
-.flat_style .item-post-type-fair.sat p.card_date {
+.flat_style .sat p.card_date {
     background-color: rgba(0, 116, 201, 0.68);
 }
 .flat_style p.card_date span.day {

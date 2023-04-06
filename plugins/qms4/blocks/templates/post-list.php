@@ -8,9 +8,14 @@
   data-num-posts-sp="<?= $num_posts_sp ?>"
 >
 <?php } ?>
+<?php
+  $date_timestamp     = get_post_timestamp( $item->ID, 'date' );
+  $week =  strtolower(date('D', $date_timestamp));
+
+  ?>
   <div class="qms4__post-list__list <?= $className ?> 999 <?= $custom_style ?>">
 <?php foreach ( $list as $item ) { ?>
-    <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?>">
+    <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?> <?= $week ?>">
       <a
         href="<?= $item->permalink ?>"
         target="<?= $link_target === '__custom' ? $link_target_custom : $link_target ?>"

@@ -155,9 +155,10 @@ function qms4_get_event_date($event_id){
 					( mt1.meta_key = 'qms4__parent_event_id' AND mt1.meta_value = %d ) ) AND
 					 p.post_type = 'fair__schedule' AND
 					  ((p.post_status = 'publish'))
-					  GROUP BY p.ID, m.meta_value
-					  LIMIT 0, 1", $event_id);
 
+					  GROUP BY p.ID, m.meta_value
+					  ORDER BY m.meta_value ASC
+					  LIMIT 0, 1", $event_id);
 
 	$result  = $wpdb->get_results($sql, ARRAY_A);
 	if($result){
@@ -173,6 +174,7 @@ function qms4_get_event_date($event_id){
 					 p.post_type = 'fair__schedule' AND
 					  ((p.post_status = 'publish'))
 					  GROUP BY p.ID, m.meta_value
+					  ORDER BY m.meta_value DESC
 					  LIMIT 0, 1", $event_id);
 
 
@@ -182,6 +184,6 @@ function qms4_get_event_date($event_id){
 	}
 }
 function debug_test(){
-	qms4_get_event_date(998);
+	qms4_get_event_date(991);
 }
 add_action('wp_footer','debug_test');

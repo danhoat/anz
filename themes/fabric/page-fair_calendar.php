@@ -3,20 +3,24 @@
  * Template Name: Fair_calendar
  */
 
-get_header();
+get_header();?>
+<main id="main_content" class="<?php Arkhe::main_class(); ?>">
+<?php
 while ( have_posts() ) :
 	the_post();
 	$the_id = get_the_ID();
+
 ?>
-	<main id="main_content" class="<?php Arkhe::main_class(); ?>">
+
 		<article <?php post_class( Arkhe::get_main_body_class() ); ?> data-postid="<?php echo esc_attr( $the_id ); ?>">
 			<?php
 				the_content();
 			?>
 		</article>
 
+<?php endwhile; ?>
+
 <?php
-endwhile;
 $param['count'] = -1;
 $h_tag         = isset( $args['h_tag'] ) ? $args['h_tag'] : 'h2';
 $list_class    = true;
@@ -87,8 +91,6 @@ $list = qms4_list( 'fair', $param );
 				</li>
 			<?php } ?>
 		  </ul>
-
-		  <?php the_posts_pagination( array( 'mid_size' => 2 ) ); ?>
 		</div>
 
 	</main>

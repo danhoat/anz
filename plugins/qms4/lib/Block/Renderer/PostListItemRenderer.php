@@ -189,14 +189,12 @@ class PostListItemRenderer
 
 			if($item->post_type == 'fair'){
 
-				$event_date   = qms4_get_event_date($item->ID);
-				if(!empty($event_date) ){
-					$event_date = new \DateTimeImmutable( $event_date, wp_timezone() );
-					$time_stamp = $event_date->getTimestamp();
+
+				if(!empty($item->event_date) ){
+					$time_stamp = $item->event_time_stamp;
 					$html.='<p class="card_date">';
 
 					if($custom_style == 'flat_style'){
-
 					 	$html.='<span class="ym"> ' . wp_date( 'y.m', $time_stamp ).' </span>
 						<span class="day"> ' . wp_date( 'd', $time_stamp ).' </span>
 						<span class="week"> ' . wp_date( 'l', $time_stamp ) . ' </span>';

@@ -11,9 +11,13 @@
   <div class="qms4__post-list__list <?= $className ?>  <?= $custom_style ?>">
 <?php foreach ( $list as $item ) { ?>
   <?php
-    $date_timestamp     = get_post_timestamp( $item->ID, 'date' );
+
     $week =  strtolower(date('D', $date_timestamp));
     $item->custom_style = $custom_style;
+    $item->event_date   = qms4_get_event_date($item->ID);
+    $event_date = new \DateTimeImmutable( $item->event_date, wp_timezone() );
+    $item->event_time_stamp = $event_date->getTimestamp();
+
     $item->excerpt_lenght = apply_filters($item->post_type.'_execept_lenght', 50);
   ?>
     <div class="qms4__post-list__list-item qms4__list_item_type_<?= $item->post_type ?> <?= $week ?>">

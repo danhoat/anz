@@ -30,11 +30,11 @@ function farbic_theme_enqueue_styles() {
     );
     $css_path = ARKHE_THEME_URI . '/dist/css';
 
-	if ( is_front_page() ) {
-		// カスタマイザー
-		wp_enqueue_style( 'arkhe-icon', $css_path . '/icon.css', array(), rand() );
+	// if ( is_front_page() ) {
+	// 	// カスタマイザー
+	// 	wp_enqueue_style( 'arkhe-icon', $css_path . '/icon.css', array(), rand() );
 
-	}
+	// }
 
 
 }
@@ -48,7 +48,7 @@ function farbic_list_categories_filter( $cur_url ){ ?>
 				<div class="widget qms4__term-list" data-taxonomy="fair__category" data-query-key="CAT">
 				<ul class="widget__main-list">
 					<?php
-					$categories = get_terms( 'fair__category' );
+					$categories = get_terms( array('taxonomy' => 'fair__category','hide_empty' => true) );
 					$slugs 		= isset($_GET['CAT']) ? $_GET['CAT'] : '';
 					if ( $categories && ! is_wp_error( $categories ) ) {
 						$list = explode('|', $slugs);

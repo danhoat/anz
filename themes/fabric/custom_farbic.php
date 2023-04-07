@@ -138,6 +138,8 @@ function farbic_show_categories($fair_id){
 }
 function farbic_list_fair_shortcode($atts){
 	$posts_per_page = isset($atts['number_items']) ? (int) $atts['number_items'] : 15;
+	$orderby = isset($atts['orderby']) ? trim($atts['orderby']) : '';
+
 	$list_type 		= 'card';
 
 	$args = array(
@@ -145,6 +147,8 @@ function farbic_list_fair_shortcode($atts){
 		'post_status' 		=> 'publish',
 		'posts_per_page' 	=> $posts_per_page,
 		);
+	if(!empty($orderby)) $args['orderby'] = $orderby;
+
 	$slugs = isset($_GET['CAT']) ? $_GET['CAT'] : '';
 	if($slugs){
 		$slugs = explode("|", $slugs);

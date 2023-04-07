@@ -79,11 +79,12 @@ $query 		= new WP_Query($args);
 		</div>
 	</main>
 	<script type="text/javascript">
-		    //window.scrollTo(0,9999);
-		    function scrollToBottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-    history.scrollRestoration = "manual";
-    window.onload = scrollToBottom;
+		var url = window.location.href;
+		if(url.split("?CAT=").length == 2){
+		    window.scrollTo({
+			  top: 1200,
+			  behavior: "smooth",
+			});
+		}
 	</script>
 <?php get_footer();

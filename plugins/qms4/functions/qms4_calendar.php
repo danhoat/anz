@@ -177,8 +177,8 @@ function debug_test(){
 		'posts_per_page' => 1
 	);
 	$query = new WP_Query($args);
-	echo '<pre>';
-	var_dump($query);
-	echo '</pre>';
+	// echo '<pre>';
+	// var_dump($query);
+	// echo '</pre>';
 }
 //add_action('wp_footer','debug_test');

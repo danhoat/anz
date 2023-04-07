@@ -41,13 +41,15 @@ function farbic_theme_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'farbic_theme_enqueue_styles' );
 
 
-function farbic_list_categories_filter( $cur_url ){ ?>
+function farbic_list_categories_filter(){ ?>
 	<div class="l-search">
 		<div class="wp-block-columns is-layout-flex wp-container-10">
 			<div class="wp-block-column is-layout-flow">
 				<div class="widget qms4__term-list" data-taxonomy="fair__category" data-query-key="CAT">
 				<ul class="widget__main-list">
 					<?php
+					global $post;
+					$cur_url = get_permalink($post->ID);
 					$categories = get_terms( array('taxonomy' => 'fair__category','hide_empty' => true) );
 					$slugs 		= isset($_GET['CAT']) ? $_GET['CAT'] : '';
 					if ( $categories && ! is_wp_error( $categories ) ) {
@@ -134,3 +136,67 @@ function farbic_show_categories($fair_id){
 		<?php
 	}
 }
+function farbic_list_fair_shortcode($atts){
+	$posts_per_page = isset($atts['number_items']) ? (int) $atts['number_items'] : 15;
+	$list_type 		= 'card';
+
+	$args = array(
+		'post_type' 		=> 'fair',
+		'post_status' 		=> 'publish',
+		'posts_per_page' 	=> $posts_per_page,
+		);
+	$slugs = isset($_GET['CAT']) ? $_GET['CAT'] : '';
+	if($slugs){
+		$slugs = explode("|", $slugs);
+		$args['tax_query'] =  array(
+			array(
+				'taxonomy' => 'fair__category',
+				'field'    => 'slug',
+				'terms'    => $slugs,
+				'operator' => 'IN',
+			)
+		);
+	}
+	$query 		= new WP_Query($args);
+	ob_start(); ?>
+	<?php farbic_list_categories_filter() ?>
+	<div class=" l-main__body p-archive page_fair_calendar">
+		<ul class="p-postList -type-list">
+			<?php if( $query->have_posts() ) { ?>
+
+				<?php while($query->have_posts() ){ ?>
+
+					<?php $query->the_post(); ?>
+					<?php global $post;  $item = fabric_load_item(); ?>
+
+					<li class="<?php echo esc_attr( trim( 'p-postList__item ' . $list_class ) ); ?>">
+						<a href="<?php the_permalink();?>" class="p-postList__link">
+							<?php
+								Arkhe::get_part( 'post_list/item/thumb', array(
+										'sizes' => 'card' === $list_type ? '(min-width: 600px) 400px, 100vw' : '(min-width: 600px) 400px, 40vw',
+									) );
+							?>
+							<div class="p-postList__body">
+								<h2 class="p-postList__title"> <?php the_title() ; ?> </h2>
+
+								<div class="p-postList__excerpt"> <?php the_excerpt(); ?></div>
+
+									<div class="c-postIcon">
+										<?php farbic_show_categories($item->ID) ?>
+										<?php farbic_show_fair_icons($item->ID);?>
+								  	</div>
+							</div>
+						</a>
+					</li>
+				<?php }?>
+			<?php } ?>
+			<?php wp_reset_query() ?>
+		</ul>
+	</div>
+	<?php
+
+ 	return ob_get_clean();
+	}
+?>
+<?php
+add_shortcode( 'block_fair_filter', 'farbic_list_fair_shortcode' );

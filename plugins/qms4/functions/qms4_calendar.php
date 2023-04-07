@@ -66,17 +66,7 @@ function qms4_list_events_by_date()
 
 }
 add_shortcode( 'events_date', 'qms4_list_events_by_date' );
-function qms4_list_fair(){
 
-	$list = qms4_list( 'fair' );
-
-
-
-
-	return ob_get_clean();
-
-}
-add_shortcode( 'list_fair', 'qms4_list_fair' );
 
 function filter_events_by_select_date($query){
 	if( is_admin() ) return ;

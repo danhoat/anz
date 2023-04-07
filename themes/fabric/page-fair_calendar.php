@@ -5,18 +5,16 @@
 
 get_header();?>
 <main id="main_content" class="<?php Arkhe::main_class(); ?>">
-<?php while ( have_posts() ){ ?>
-	<?php
-		the_post();
-		$the_id = get_the_ID();?>
+	<?php while ( have_posts() ){ ?>
+		<?php
+			the_post();
+			$the_id = get_the_ID();?>
 
-		<article <?php post_class( Arkhe::get_main_body_class() ); ?> data-postid="<?php echo esc_attr( $the_id ); ?>">
-			<?php the_content(); ?>
-		</article>
+			<article <?php post_class( Arkhe::get_main_body_class() ); ?> data-postid="<?php echo esc_attr( $the_id ); ?>">
+				<?php the_content(); ?>
+			</article>
 
-<?php } ?>
-
-
+	<?php } ?>
 </main>
 <script type="text/javascript">
 	var url = window.location.href;

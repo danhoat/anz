@@ -80,11 +80,22 @@ $query 		= new WP_Query($args);
 	</main>
 	<script type="text/javascript">
 		var url = window.location.href;
-		if(url.split("?CAT=").length == 2){
-		    window.scrollTo({
-			  top: 1200,
-			  behavior: "smooth",
-			});
-		}
+
+		<?php if( wp_is_mobile() ){?>
+			if(url.split("?CAT=").length == 2){
+			    window.scrollTo({
+				  top: 1050,
+				  behavior: "smooth",
+				});
+			}
+		<?php } else { ?>
+
+			if(url.split("?CAT=").length == 2){
+			    window.scrollTo({
+				  top: 1200,
+				  behavior: "smooth",
+				});
+			}
+	<?php } ?>
 	</script>
 <?php get_footer();

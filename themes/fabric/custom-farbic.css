@@ -85,6 +85,9 @@
     color: #03A9F4;
 
 }
+.recommend_style .time-around{
+    font-size: 1rem;
+}
 .recommend_style .card_date::before{
     width: 16px;
     height: 16px;

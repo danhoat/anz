@@ -26,7 +26,7 @@ function farbic_theme_enqueue_styles() {
     wp_enqueue_style( 'farbic-style',
         get_stylesheet_directory_uri() . '/custom-fabric.css',
         array( 'arkhe-main-style' ),
-        true
+        rand()
     );
 }
 add_action( 'wp_enqueue_scripts', 'farbic_theme_enqueue_styles' );

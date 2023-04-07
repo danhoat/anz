@@ -72,7 +72,8 @@ function filter_events_by_select_date($query){
 	if( is_admin() ) return ;
 	if( is_post_type_archive('fair') && $query->is_main_query() ){
 		$ymd = isset($_GET['ymd']) ? $_GET['ymd']: '';
-		if( !empty($ymd) ){
+		$check = is_valid_date($ymd);
+		if( !empty($ymd) && is_valid_date($ymd) ){
 
 			$meta_value = $ymd;
 			$meta_key = 'qms4__event_date';
@@ -91,23 +92,29 @@ function filter_events_by_select_date($query){
 		         	'qms4__parent_event_id',
 		         	'fair__schedule'
 		         );
-
 	        global $wpdb;
 	        $result = $wpdb->get_results($sql, ARRAY_A);
-	        $event_ids = array();
+	        $event_ids = array(-1);
 	        foreach($result as $id){
 	        	$event_ids[] = $id['parent_id'];
 	        }
 
-			if($event_ids)$query->set('post__in',$event_ids);
+			$query->set('post__in',$event_ids);
 
 		}
 	}
 
 }
-add_action( 'pre_get_posts', 'filter_events_by_select_date' );
+add_action( 'pre_get_posts', 'filter_events_by_select_date', 9999);
 
-function qms4_get_event_date($event_id){
+
+/**
+ * @param    int    $event_id
+ * @param
+ * @return    String - Date
+ */
+function qms4_get_event_date($event_id)
+{
 
 	global $wpdb;
 	$sql = $wpdb->prepare("
@@ -147,28 +154,14 @@ function qms4_get_event_date($event_id){
 		return ($result) ? $result[0]['event_date'] : 0;
 	}
 }
-function debug_test(){
-	$args = array(
-		'post_status' 	=> 'publish',
-		'post_type' 	=>'fair__schedule',
-		'meta_query' => array(
-				'relation' => 'AND',
-				array(
-					'key' => 'qms4__event_date',
-					'type'      => "DATE",
-					'value' => date("Y-m-d"),
-					'compare'   => '==',
-				),
-				array(
-					'key' => 'qms4__parent_event_id',
-					'value' => $event_id
-				)
-		),
-		'posts_per_page' => 1
-	);
-	$query = new WP_Query($args);
-	// echo '<pre>';
-	// var_dump($query);
-	// echo '</pre>';
+
+/**  $date ('Y-m-d')
+ * check date is valid or not
+ * @return true or false
+ */
+function is_valid_date($date, $format = 'Y-m-d')
+{
+    $d = DateTime::createFromFormat($format, $date);
+    // The Y ( 4 digits year ) returns TRUE for any integer with any number of digits so changing the comparison from == to === fixes the issue.
+    return $d && $d->format($format) === $date;
 }
-//add_action('wp_footer','debug_test');

@@ -2,7 +2,7 @@
  $page_title  ='イベント';
  $css   = '';
  $ymd   = isset($_GET['ymd']) ? $_GET['ymd'] :0;
- if($ymd){
+ if($ymd && is_valid_date($ymd)){
 
     $date = date_create($ymd);
     $page_title = 'Date: '. $date->format('Y年n月j日');

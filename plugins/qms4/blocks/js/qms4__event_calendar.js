@@ -11,7 +11,7 @@ jQuery( function ( $ ) {
 		var url= endpoint;
 		url.replace( '%year%', current.getFullYear() )
 				.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`;
-		console.log('fetch url: ', url);
+
 		return fetch(
 			endpoint
 				.replace( '%year%', current.getFullYear() )
@@ -34,9 +34,7 @@ jQuery( function ( $ ) {
 				if( schedules.length && schedules[0].terms.fair__special[0] ){
 					 set_color = ` style = " background:  ${schedules[0].terms.fair__special[0].color}" `;
 				}
-				console.log(date_str);
-				console.log('enable: ', enable);
-				console.log('archive_link: ', archive_link);
+
 				var date_info =  `${ enable && archive_link
 							? `<a   href= "${archive_link}?ymd=${ date.getFullYear() }-${ ("0" + (date.getMonth() + 1)).slice(-2) }-${  ("0" + date.getDate() ).slice(-2)  }"  ${set_color}> ${  date.getDate()} </a>`
 							: `<button  class="qms4__block__event-calendar__day-title 111" ${set_color} >
@@ -66,7 +64,6 @@ jQuery( function ( $ ) {
 
 		return schedules.map(
 			( { id, permalink, title, img, area, terms } ) => {
-				console.log( { area, terms } );
 
 				return `<div class="qms4__block__event-calendar__display-list-item">
 				<a href="${ permalink }?ymd=${ ymd }">
@@ -175,15 +172,11 @@ jQuery( function ( $ ) {
 			: [];
 
 		const param = new URLSearchParams( $unit.data( 'query-string' ) );
-		console.log('unit: ', $unit);
-		console.log('data-set-archive-link: ', archive_link );
 
 		param.set( 'fields[area]', showArea ? 1 : 0 );
 		param.set( 'fields[taxonomies]', taxonomies.join( ',' ) );
 
 		param.set('style',$unit.attr('data-set-style'));
-
-		console.log('param:', param.toString());
 		const $prev = $unit.find(
 			'.js__qms4__block__event-calendar__button-prev'
 		);
@@ -255,7 +248,6 @@ jQuery( function ( $ ) {
 		$prev.on( 'click.prevMonth', async function ( event ) {
 			param.set('style','1month');
 
-			console.log('param', param.toString());
 			event.preventDefault();
 			current.setMonth( current.getMonth() - 1 );
 
@@ -286,8 +278,6 @@ jQuery( function ( $ ) {
 				current.setFullYear(current.getFullYear() - 1);
 			}
 
-			console.log('param', param.toString());
-
 			var	calendar_month = await fetch_calendar_month(
 				endpoint,
 				param,
@@ -298,7 +288,6 @@ jQuery( function ( $ ) {
 			$month.text( left );
 			$month_name.text( month_names[ current.getMonth() ] );
 
-			console.log('archive_link left:',archive_link)
 			$calendar_body.html( calendar_content( calendar_month[0].data , archive_link));
 
 
@@ -309,7 +298,6 @@ jQuery( function ( $ ) {
 			if(right == 12){
 				$next_year.text( current.getFullYear() +1 );
 			}
-			console.log('archive_link right:',archive_link)
 			var  html = calendar_content( calendar_month[1].data ,archive_link);
 
 			$calendar_body_next.html( html );
@@ -335,7 +323,7 @@ jQuery( function ( $ ) {
 
 		$new_style_next.on( 'click.nextMonth', async function ( event ) {
 			param.set('event', 'next');
-			console.log('param:', param);
+
 			event.preventDefault();
 
 			left 	= valiate_next_month(left);
@@ -353,7 +341,6 @@ jQuery( function ( $ ) {
 				param,
 				current
 			);
-			console.log("fetch_calendar_month: ", fetch_calendar_month);
 
 			$year.text( current.getFullYear() );
 			if(left == 12 ) $year.text( current.getFullYear() -1 );

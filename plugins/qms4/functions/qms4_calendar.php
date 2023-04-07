@@ -181,4 +181,4 @@ function debug_test(){
 	var_dump($query);
 	echo '</pre>';
 }
-add_action('wp_footer','debug_test');
+//add_action('wp_footer','debug_test');

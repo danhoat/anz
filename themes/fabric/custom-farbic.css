@@ -73,14 +73,21 @@
 .p-topArea .c-pageTitle__main.calendar-day-list{
     font-size: 1.3em;
 }
-.recommend_style .sun .card_date span{
-
-        color: rgb(255 68 68);
+.recommend_style .sun .card_date,
+.recommend_style .sun .card_date  span{
+    color: rgb(255 68 68);
 }
+.recommend_style .sun .card_date:nth-child(2) {
+  background: red;
+}
+.card_date p::first-letter{
+    color:Red;
+    }
 .recommend_style .qms4__post-list__list-item.qms4__post-list__list-item .qms4__post-list__terms__icon{
     background-color: #9f821d;
     border:1px solid #9f821d;
 }
+.recommend_style .sat .card_date ,
 .recommend_style .sat .card_date span{
     color: #03A9F4;
 
@@ -103,4 +110,10 @@
 }
 .qms4__post-list__list-item .qms4__post-list__post-excerpt p{
     font-size1: 1rem;
+}
+.calendar-day-title{
+    text-align: center;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 0 20px 20px 20px;
 }

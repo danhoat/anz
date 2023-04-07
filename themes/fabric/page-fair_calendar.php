@@ -30,7 +30,7 @@ get_header();?>
 
 		if(url.split("?CAT=").length == 2){
 		    window.scrollTo({
-			  top: 1200,
+			  top: 1150,
 			  behavior: "smooth",
 			});
 		}

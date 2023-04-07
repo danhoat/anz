@@ -201,7 +201,8 @@ class PostListItemRenderer
 
 					} else{
 						//$html.=wp_date('m月d日', $time_stamp).' <span>'.wp_date('l', $time_stamp).'</span>';
-						$html.=wp_date($item->date_format, $time_stamp);
+						$date = wp_date($item->date_format, $time_stamp);
+						$html.=$date;
 					}
 				}
 

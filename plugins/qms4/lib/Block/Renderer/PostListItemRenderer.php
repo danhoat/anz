@@ -200,9 +200,14 @@ class PostListItemRenderer
 						<span class="week"> ' . wp_date( 'l', $time_stamp ) . ' </span>';
 
 					} else{
-						//$html.=wp_date('m月d日', $time_stamp).' <span>'.wp_date('l', $time_stamp).'</span>';
+						//$html.=wp_date('m月d日', $time_stamp).' <span clas="week">'.wp_date('l', $time_stamp).'</span>';
 						$date = wp_date($item->date_format, $time_stamp);
-						$html.=$date;
+						$skk =  explode(" ", $date);
+						if(count($skk) == 2){
+							$html.=$skk[0].=' <span class="week">'.$skk[1].'</span>';
+						} else{
+						 $html.=$date;
+						}
 					}
 				}
 

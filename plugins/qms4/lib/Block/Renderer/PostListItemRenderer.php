@@ -200,12 +200,13 @@ class PostListItemRenderer
 						<span class="week"> ' . wp_date( 'l', $time_stamp ) . ' </span>';
 
 					} else{
-						$html.=wp_date('d月m日', $time_stamp).' <span>'.wp_date('l', $time_stamp).'</span>';
+						//$html.=wp_date('m月d日', $time_stamp).' <span>'.wp_date('l', $time_stamp).'</span>';
+						$html.=wp_date($item->date_format, $time_stamp);
 					}
 				}
 
 			} else {
-				$html.=$item->post_date('d月m日').' <span>'.$item->post_date('l').'</span>';
+				$html.=$item->post_date().' <span>'.$item->post_date('l').'</span>';
 			}
 			$html.='</p>';
 		}

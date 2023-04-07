@@ -18,7 +18,8 @@ new Fabric\Coodinator\YoastSeoCoodinator();
 
 require_once( __DIR__ . '/functions/fabric_load_item.php' );
 require_once( __DIR__ . '/functions/fabric_load_setting.php' );
-require_once( __DIR__ . '/custom_fabric.php' );
+
+require_once( __DIR__ . '/custom_farbic.php' );
 
 // ========================================================================== //
 
@@ -206,4 +207,36 @@ add_filter( 'qms3_form_param', function( $param, $form_type ) {
 	return $param;
 }, 10, 2 );
 
+
+
+
+
+function change_posts_per_page($query) {
+	if ( is_admin() || ! $query->is_main_query() )
+			return;
+	if ( $query->is_post_type_archive('plan') ) { //カスタム投稿タイプを指定
+			$current_page = get_query_var('paged'); //現在のページ番号
+/*
+ * 1 ページの表示件数を取得
+ *
+ * get_post_meta() の第一引数の 8 は、QMS4 設定 > プラン の設定画面の Post ID
+*/
+			$number_of_display = (int) get_post_meta(8, 'qms4__output__posts_per_page', /* $single = */ true);
+			if ($current_page < 2) {
+				$set_per_page = $number_of_display+1;
+				$query->set( 'posts_per_page', $set_per_page ); //表示件数を指定
+			} else {
+				$query->set( 'posts_per_page', $number_of_display ); //表示件数を指定
+				$set_offset = ($current_page-1)*$number_of_display+1; //ずらす投稿数を計算
+				$query->set( 'offset', $set_offset ); //ずらす投稿数を指定
+			}
+	}
+}
+add_action( 'pre_get_posts', 'change_posts_per_page' );
+
+add_filter( 'body_class', function( $classes ) {
+	if( is_singular('fair') )
+		return array_merge( $classes, array( 'single-event' ) );
+	return $classes;
+} );
 

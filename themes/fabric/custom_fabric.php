@@ -24,19 +24,10 @@ function farbic_the__postdate( $post_date, $type  ='post', $date_format = '' )
 
 function farbic_theme_enqueue_styles() {
     wp_enqueue_style( 'farbic-style',
-        get_stylesheet_directory_uri() . '/custom-farbic.css',
+        get_stylesheet_directory_uri() . '/custom-fabric.css',
         array( 'arkhe-main-style' ),
-        rand()
+        true
     );
-    $css_path = ARKHE_THEME_URI . '/dist/css';
-
-	// if ( is_front_page() ) {
-	// 	// カスタマイザー
-	// 	wp_enqueue_style( 'arkhe-icon', $css_path . '/icon.css', array(), rand() );
-
-	// }
-
-
 }
 add_action( 'wp_enqueue_scripts', 'farbic_theme_enqueue_styles' );
 
@@ -215,6 +206,12 @@ function farbic_list_fair_shortcode($atts){
 
  	return ob_get_clean();
 	}
-?>
-<?php
+
 add_shortcode( 'block_fair_filter', 'farbic_list_fair_shortcode' );
+
+add_filter( 'body_class', function( $classes ) {
+	if( is_singular('fair') )
+		return array_merge( $classes, array( 'single-event' ) );
+	return $classes;
+} );
+

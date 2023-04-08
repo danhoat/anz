@@ -217,17 +217,17 @@ class PostListItemRenderer
 			$html.='</p>';
 		}
 		if($show_time){
-			if($item->custom_style == 'recommend_style'){
+			if($item->custom_style == 'recommend_style' || $item->custom_style == 'flat_style'){
 				$qms4__timetable = get_post_meta($item->ID, 'qms4__timetable', true);
 				$from = $to = '';
 				if( is_array($qms4__timetable)){
-					$soon_time = array_shift($qms4__timetable);
-					$late_time = array_pop($qms4__timetable);
-					$from 	= $soon_time['label'];
-					$to 	= isset($late_time['label']) ? ' ~ '.$late_time['label'] : '';
+					$soon_time 	= array_shift($qms4__timetable);
+					$late_time 	= array_pop($qms4__timetable);
+					$from 		= $soon_time['label'];
+					$to 		= isset($late_time['label']) ? ' ~ '.$late_time['label'] : '';
 				}
 				$html.= '<span class="time"> 時間: <span class="time-around">'.$from.$to.' </span></span>';
-			} else{
+			} else {
 				$html.= '<span class="time"> '. $item->post_date( 'h:m' ).'</span>';
 			}
 		}

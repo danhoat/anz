@@ -13,7 +13,7 @@
 
     "customStyle": {
       "type": "string",
-       "default": "style1"
+       "default": "default_style"
     },
 
     "orderby": {

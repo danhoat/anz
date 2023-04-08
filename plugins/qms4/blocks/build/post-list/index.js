@@ -89,7 +89,7 @@
                                         value: "flat_style"
                                     },
                                     {
-                                        label: "Recommend Fair",
+                                        label: "Home  Style",
                                         value: "recommend_style"
                                     }
                                     ],

@@ -26,9 +26,11 @@ $post_data = get_post();
 		<div class="p-postList__body">
 			<?php $item = fabric_load_item(); ?>
 			<!-- archiveにカテゴリ表示 -->
+<?php if (!is_empty($item->dept)) { ?>
 			<ul class="p-postList__icon">
 				<?= $item->dept ?>
 			</ul>
+<?php } ?>
 			<?php
 				echo '<' . esc_attr( $h_tag ) . ' class="p-postList__title">';
 				the_title();

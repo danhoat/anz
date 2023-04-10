@@ -41,9 +41,11 @@ $new_class = $item->new_class;
 					if ( $show_modified ) ark_the__postdate( $modified_timestamp, 'modified' );
 				?>
 			</div>
+<?php if (!is_empty($item->category)) { ?>
 			<ul class="p-postList__hash p-postList__icon">
 				<?= $item->category ?>
 			</ul>
+<?php } ?>
 			<?php
 				echo '<' . esc_attr( $h_tag ) . ' class="p-postList__title line-clamp">';
 				the_title();
@@ -59,7 +61,7 @@ $new_class = $item->new_class;
 				) );
 			?>
 
-				
+
 		</div>
 	</a>
 </li>

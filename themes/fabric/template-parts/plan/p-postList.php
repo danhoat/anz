@@ -26,26 +26,28 @@ $post_data = get_post();
 		<div class="p-postList__body">
 			<?php $item = fabric_load_item(); ?>
 			<!-- archiveにカテゴリ表示 -->
+<?php if (!is_empty($item->category)) { ?>
 			<ul class="p-postList__icon">
 				<?= $item->category ?>
 			</ul>
-
+<?php } ?>
 			<?php
 				echo '<' . esc_attr( $h_tag ) . ' class="p-postList__title line-clamp">';
 				the_title();
 				echo '</' . esc_attr( $h_tag ) . '>';
       ?>
-<?php if (!is_empty($item->price)||!is_empty($item->price_sub)) { ?>
+<?php if (!is_empty($item->price)||!is_empty($item->people)) { ?>
 			<div div class="qms4__post-list__post-price p-postList__price">
 <?php if (!is_empty($item->price)) { ?>
       	<?= $item->price ?>
 <?php } ?>
-<?php if (!is_empty($item->price)&&!is_empty($item->price_sub)) { ?>／<?php } ?>
-<?php if (!is_empty($item->price_sub)) { ?>
-      <?= $item->price_sub ?>
+<?php if (!is_empty($item->price)&&!is_empty($item->people)) { ?>／<?php } ?>
+<?php if (!is_empty($item->people)) { ?>
+      <?= $item->people ?>
 <?php } ?>
 			</div>
 <?php } ?>
+
 <?php if (!is_empty($item->privilege)) { ?>
 			<div div class="qms4__post-list__post-privilege p-postList__privilege"><?= $item->privilege ?></div>
 <?php } ?>

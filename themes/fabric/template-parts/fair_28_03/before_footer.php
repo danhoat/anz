@@ -9,7 +9,6 @@
 $param = array();
 $param['count'] = 2;
 $param['area'] = $item->area->slug;
-
 $list = qms4_list( 'fair', $param );
 ?>
 
@@ -30,7 +29,7 @@ $list = qms4_list( 'fair', $param );
           <div class="box-right">
             <h2 class="qms4__post-list__post-title line-clamp"><?= $item->title ?></h2>
             <div class="qms4__post-list__post-date">開催日：<?= $item->date_html ?></div>
-              <ul class="p-postList__icon 999">
+              <ul class="p-postList__icon">
 <?php if ( ok( $item->area ) ) { ?>
                 <li class="icon">
                   <?= $item->area->title ?>

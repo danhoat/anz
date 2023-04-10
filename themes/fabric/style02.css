@@ -1,0 +1,308 @@
+@charset "UTF-8";
+/**
+ * Theme Name: Atsumaru Custom Fabric Theme
+ * Version: 0.0.1
+ * Template: arkhe
+ */
+/** ==========================================================================
+*
+* id-1418 料理・デザート
+*
+========================================================================== **/
+.page-id-1418 .p-topArea .c-pageTitle__main::before {
+  content: "Cuisine・Dessert";
+}
+
+.page-id-1418 .l-wrapper .l-content {
+  padding-top: 628px;
+  position: relative;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-content {
+    padding-top: 65vw;
+  }
+}
+
+.page-id-1418 .l-wrapper .l-content:before {
+  background: url(https://roseun-charme.jp/test/wp-content/uploads/2023/04/cuisine_main-scaled.jpg) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  width: 100%;
+  height: 628px;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-content:before {
+    background: url(https://roseun-charme.jp/test/wp-content/uploads/2023/04/cuisine_main_sp.jpg) no-repeat center;
+    background-size: 100%;
+    height: 65vw;
+  }
+}
+
+.page-id-1418 .l-wrapper .arkb-columns--13 .ark-block-columns__inner {
+  width: 1080px;
+  margin: 0 auto;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .arkb-columns--13 .ark-block-columns__inner {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 979px) {
+  .page-id-1418 .l-wrapper .arkb-columns--13 .ark-block-columns__inner {
+    width: 100%;
+  }
+}
+
+.page-id-1418 .l-wrapper .l-cuisine-mind .l-cuisine-mind__text .wp-block-columns {
+  --wp-column-gap: 0.5rem;
+}
+
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-mind {
+    padding-left: var(--ark-padding--container);
+    padding-right: var(--ark-padding--container);
+  }
+}
+
+.page-id-1418 .l-wrapper .l-cuisine-mind.mind01,
+.page-id-1418 .l-wrapper .l-cuisine-mind.mind03 {
+  position: relative;
+}
+
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-anc .ark-block-columns__inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-anc .ark-block-columns__inner .l-cuisine-anc__photo {
+    margin: 0;
+  }
+  .page-id-1418 .l-wrapper .l-cuisine-anc .ark-block-columns__inner .l-cuisine-anc__text {
+    margin: 0;
+    margin-left: 5vw;
+  }
+  .page-id-1418 .l-wrapper .l-cuisine-anc .ark-block-columns__inner .l-cuisine-anc__titile_sp {
+    --wp-column-gap: 0;
+  }
+}
+.page-id-1418 .l-wrapper .l-cuisine-mind.mind01:before,
+.page-id-1418 .l-wrapper .l-cuisine-mind.mind03:before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 120px;
+  right: 0;
+  width: 1000px;
+  height: 555px;
+  background: #FAF7F2;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-mind.mind01:before,
+.page-id-1418 .l-wrapper .l-cuisine-mind.mind03:before {
+    bottom: -16vw;
+    width: 140%;
+    height: 150vw;
+    top: auto;
+    right: -10vw;
+  }
+}
+@media screen and (max-width: 979px) {
+  .page-id-1418 .l-wrapper .l-cuisine-mind.mind01:before,
+.page-id-1418 .l-wrapper .l-cuisine-mind.mind03:before {
+    top: 3vw;
+    right: 0;
+    width: 1000px;
+    height: 55vw;
+  }
+}
+
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-mind.mind02 .ark-block-columns__inner {
+    flex-direction: column-reverse;
+  }
+}
+
+@media print, screen and (min-width: 741px) {
+  .page-id-1418 .l-wrapper .l-cuisine-mind.mind02 .mind02__text {
+    padding-left: 6rem;
+  }
+}
+
+.page-id-1418 .l-wrapper .l-cuisine-chef {
+  padding: 90px 0 90px;
+  background: #FAF7F2;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-chef {
+    padding: 20vw 0;
+  }
+}
+
+.page-id-1418 .l-wrapper .l-cuisine-chef .ark-block-columns__inner {
+  max-width: 830px;
+  width: 90%;
+  margin: 0 auto;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-chef .ark-block-columns__inner {
+    width: 100%;
+  }
+}
+
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-chef .l-cuisine-chef__photo {
+    margin: 0 auto;
+  }
+}
+
+@media print, screen and (max-width: 740px) {
+  .page-id-1418 .l-wrapper .l-cuisine-chef .l-cuisine-chef__text {
+    margin: 0 auto;
+    width: 85%;
+  }
+}
+
+@media print, screen and (min-width: 741px) {
+  .l-cuisine-gallery {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 50px;
+  }
+}
+.l-cuisine-gallery.ark-block-slider .ark-block-slider__nav {
+  background: rgba(255, 255, 255, 0.7);
+}
+@media print, screen and (max-width: 740px) {
+  .l-cuisine-gallery.ark-block-slider .ark-block-slider__nav {
+    display: none;
+  }
+}
+.l-cuisine-gallery.ark-block-slider[data-direction=horizontal] .ark-block-slider__nav.-next {
+  right: 10px;
+}
+.l-cuisine-gallery.ark-block-slider[data-direction=horizontal] .ark-block-slider__nav.-prev {
+  left: 10px;
+}
+@media print, screen and (min-width: 741px) {
+  .l-cuisine-gallery .swiper-pagination {
+    display: none;
+  }
+}
+@media print, screen and (max-width: 740px) {
+  .l-cuisine-gallery .swiper-pagination {
+    bottom: 0;
+  }
+}
+@media print, screen and (max-width: 740px) {
+  .l-cuisine-gallery.swiper-horizontal > .swiper-pagination-bullets,
+.l-cuisine-gallery .swiper-pagination-bullets.swiper-pagination-horizontal,
+.l-cuisine-gallery .swiper-pagination-custom,
+.l-cuisine-gallery .swiper-pagination-fraction {
+    bottom: 0;
+  }
+}
+@media print, screen and (max-width: 740px) {
+  .l-cuisine-gallery.ark-block-slider .swiper.-thumb {
+    display: none;
+  }
+}
+
+/** ==========================================================================
+*
+* id-2140 少人数ウエディング
+*
+========================================================================== **/
+.page-id-2140 .p-topArea .c-pageTitle__main::before {
+  content: "PETIT WEDDING";
+}
+
+.page-id-2140 .l-wrapper .l-content {
+  padding-top: 628px;
+  position: relative;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-2140 .l-wrapper .l-content {
+    padding-top: 65vw;
+  }
+}
+
+.page-id-2140 .l-wrapper .l-content:before {
+  background: url(https://roseun-charme.jp/test/wp-content/uploads/2023/04/petit_main-scaled.jpg) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  width: 100%;
+  height: 628px;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-2140 .l-wrapper .l-content:before {
+    background: url(https://roseun-charme.jp/test/wp-content/uploads/2023/04/petit_main_sp.jpg) no-repeat center;
+    background-size: 100%;
+    height: 65vw;
+  }
+}
+
+.page-id-2140 .l-wrapper .l-petit-main .ark-block-columns__inner {
+  width: 1200px;
+  margin: 0 auto;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-2140 .l-wrapper .l-petit-main .ark-block-columns__inner {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 979px) {
+  .page-id-2140 .l-wrapper .l-petit-main .ark-block-columns__inner {
+    width: 100%;
+  }
+}
+
+.page-id-2140 .l-wrapper .l-petit-main .l-petit-main__photo {
+  margin: 0 auto;
+}
+
+.page-id-2140 .l-wrapper .l-petit-main01,
+.page-id-2140 .l-wrapper .l-petit-main03 {
+  background: #FAF7F2;
+  padding: 76px 0;
+}
+@media print, screen and (max-width: 740px) {
+  .page-id-2140 .l-wrapper .l-petit-main01,
+.page-id-2140 .l-wrapper .l-petit-main03 {
+    padding: 20vw 0;
+  }
+}
+
+.page-id-2140 .l-wrapper .l-petit-main02 .ark-block-columns__inner {
+  flex-direction: row-reverse;
+}
+
+.page-id-2140 .l-wrapper .l-petit-main03 .l-petit-main03__title span.arkb-format-1 {
+  color: #A0821D;
+}
+
+@media print, screen and (min-width: 741px) {
+  .page-id-2140 .l-page-faq__list .ark-block-column {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 1px dotted #C9C9C9;
+  }
+  .page-id-2140 .l-page-faq__list .ark-block-column:nth-child(-n+1) {
+    border-top: none;
+  }
+}
+
+/*# sourceMappingURL=style02.css.map */

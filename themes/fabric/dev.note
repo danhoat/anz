@@ -1,0 +1,24 @@
+Change 2 post fair in detail page:
+
+fabric/template-parts/fair/before_footer.php
+
+
+$param = array();
+
+$param[ 'count' ] = max( $num_posts_pc, $num_posts_sp );
+
+$param[ 'orderby' ] = $orderby;
+$param[ 'order' ] = $order;
+
+$param[ 'taxonomy_filters' ] = $taxonomy_filters;
+if ( ! empty( $_GET[ 'area' ] ) ) {
+	$param[ 'area' ] = $_GET[ 'area' ];
+}
+$param[ 'post__not_in' ] = trim( $exclude_post_ids ) == false
+	? array()
+	: array_map( 'trim', explode( ',', $exclude_post_ids ) );
+$param[ 'post__in' ] = trim( $include_post_ids ) == false
+	? array()
+	: array_map( 'trim', explode( ',', $include_post_ids ) );
+
+		$list = qms4_list( $post_type, $param );

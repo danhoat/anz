@@ -33,7 +33,7 @@ colors setting の変数ではなく
 *----------------------------------- */
 /*  slick-color
 *----------------------------------- */
-.en {
+/* .en {
   font-family: urw-din, sans-serif;
   font-weight: 700;
   letter-spacing: 0;
@@ -49,7 +49,7 @@ colors setting の変数ではなく
 
 .yakuhan {
   font-family: "YakuHanJP", source-han-sans-japanese, sans-serif;
-}
+} */
 
 /* Slider */
 .slick-slider {

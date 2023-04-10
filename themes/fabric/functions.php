@@ -19,7 +19,6 @@ new Fabric\Coodinator\YoastSeoCoodinator();
 require_once( __DIR__ . '/functions/fabric_load_item.php' );
 require_once( __DIR__ . '/functions/fabric_load_setting.php' );
 require_once( __DIR__ . '/custom_fabric.php' );
-
 // ========================================================================== //
 
 /**

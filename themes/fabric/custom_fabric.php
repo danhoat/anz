@@ -190,10 +190,12 @@ function farbic_list_fair_shortcode($atts){
 
 								<div class="p-postList__excerpt"> <?php the_excerpt(); ?></div>
 
-									<div class="c-postIcon">
-										<?php farbic_show_categories($item->ID) ?>
-										<?php farbic_show_fair_icons($item->ID);?>
-								  	</div>
+								<div class="c-postIcon">
+									<?php farbic_show_fair_icons($item->ID);?>
+								</div>
+								<div class="c-postIcon p-postList__hash">
+									<?php farbic_show_categories($item->ID) ?>
+								</div>
 							</div>
 						</a>
 					</li>

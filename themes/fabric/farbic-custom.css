@@ -1,0 +1,67 @@
+.qms4__post-list__list-item{
+	position: relative;
+}
+.block_style  .qms4__list_item_type_fair p.card_date {
+    width: 23%;
+    padding: 0.6rem 0;
+    font-size: 12px;
+    color: #FFF;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(124, 124, 124, 0.79);
+}
+.block_style  .qms4__list_item_type_fair .sun p.card_date {
+    background-color: rgba(198, 62, 62, 0.54);
+}
+.block_style .item-post-type-fair.sat p.card_date {
+    background-color: rgba(0, 116, 201, 0.68);
+}
+.block_style p.card_date span.day {
+    width: auto;
+    display: block;
+    font-size: 22px;
+    position: relative;
+}
+.block_style p.card_date span.week {
+    width: auto;
+    display: block;
+    padding: 8px 0 0 0;
+    font-size: 12px;
+}
+.block_style  p.card_date span.day:after {
+    content: "";
+    width: 30px;
+    height: 1px;
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.single-fair .qms4__block__timetable__example img{
+    max-width: 14px;
+}
+.qms4__post-list .qms4__post-list__list.row_style{
+    display: block;
+}
+.row_style .qms4__post-list__post-thumbnail{
+    lex-shrink: 0;
+    max-width: 280px;
+    width: 36%;
+}
+.row_style .qms4__post-list__list-item{
+    display: block;
+    width: 100%;
+    clear: both;
+}
+.page-template-page-fair_calendar .p-postList.-type-list .p-postList__item {
+    margin-bottom: 2rem;
+    margin-top: 0;
+    border: bo;
+    border: 1px solid #e0d8d8;
+    padding: 15px;
+}

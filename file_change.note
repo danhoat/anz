@@ -24,6 +24,9 @@ ms4/lib/Action/CustomBlock/EnqueueFrontScript.php
 qms4/blocks/build/event-calendar/index.js
 
 
+
 qms4/lib/Event/CalendarMonth/CalendarDate.php
 qms4/lib/Action/PostTyeps/SetValidEventFilter.php
 
+Fix post-list blog:
+qms4/lib/PostTypeMeta/PostTypeMeta.php

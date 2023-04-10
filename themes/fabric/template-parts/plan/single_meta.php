@@ -68,22 +68,30 @@ $caption = isset( $args['caption'] ) ? $args['caption'] : '';
 
 </div>
 
-<div class="c-postSpecialIcon">
-<?php if (!is_empty($item->special)) { ?>
-    <ul class="p-postList__special">
-<?php foreach ($item->special as $term) { ?>
-      <li>
-        <div class="ph <?= $term->slug ?>"></div>
-        <div class="text"><?= $term->name ?></div>
-      </li>
-<?php } ?>
-    </ul>
-<?php } ?>
-</div>
+
 
 <div class="p-entry__title c-pageTitle">
 	<h1 class="c-pageTitle__main"><?php the_title(); ?></h1>
   <div class="c-pageTitle__sub"><?= $item->sub_title ?></div>
+</div>
+
+
+<div class="c-pagePrice">
+<?php if (!is_empty($item->price)||!is_empty($item->people)) { ?>
+  <div class="c-pagePrice__main">
+<?php if (!is_empty($item->price)) { ?>
+    <?= $item->price ?>
+<?php } ?>
+<?php if (!is_empty($item->price)&&!is_empty($item->people)) { ?>／<?php } ?>
+<?php if (!is_empty($item->people)) { ?>
+  <?= $item->people ?>
+<?php } ?>
+  </div>
+<?php } ?>
+
+<?php if (!is_empty($item->price_sub)) { ?>
+	<div class="c-pagePrice__sub"><?= $item->price_sub ?></div>
+<?php } ?>
 </div>
 
 <div class="c-pageInfo">
@@ -101,9 +109,19 @@ $caption = isset( $args['caption'] ) ? $args['caption'] : '';
 <?php } ?>
 </div>
 
-<div class="c-pagePrice">
-  <div class="c-pagePrice__main"><?= $item->price ?></div>
-	<div class="c-pagePrice__sub"><?= $item->price_sub ?></div>
-	<div class="c-pagePrice__privilege"><?= $item->privilege ?></div>
+<div class="c-pagePrivilege">
+  <div  class="c-pagePrivilege__title">このプランの特典</div>
+  <div class="c-postSpecialIcon">
+<?php if (!is_empty($item->special)) { ?>
+      <ul class="p-postList__special">
+<?php foreach ($item->special as $term) { ?>
+        <li>
+          <div class="ph <?= $term->slug ?>"></div>
+          <div class="text"><?= $term->name ?></div>
+        </li>
+<?php } ?>
+      </ul>
+<?php } ?>
+  </div>
+  <div class="c-pagePrice__privilege"><?= $item->privilege ?></div>
 </div>
-

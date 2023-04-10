@@ -20,14 +20,26 @@ if ( $show_modified && $show_posted ) {
 }
 
 ?>
-<?php $item = fabric_load_item(); ?>
+<?php
+/**
+ * 投稿アイキャッチ画像
+ */
+$caption = isset( $args['caption'] ) ? $args['caption'] : '';
+?>
+<figure class="p-entry__thumb">
+	<?php
+		ark_the__thumbnail( array(
+			'class' => 'p-entry__thumb__img',
+			'sizes' => '(min-width: 800px) 800px, 100vw',
+		) );
+	?>
+	<?php if ( $caption ) : ?>
+		<figcaption class="p-entry__thumb__figcaption"><?php echo wp_kses( $caption, Arkhe::$allowed_text_html ); ?></figcaption>
+	<?php endif; ?>
+</figure>
+
+
 <div class="c-postMetas u-flex--aicw">
-	<div class="c-postTimes u-flex--aicw">
-		<?php
-			if ( $show_posted ) farbic_the__postdate( $item->date_html, 'posted' );
-			if ( $show_modified ) farbic_the__postdate( $item->date_html, 'modified' );
-		?>
-	</div>
 	<?php
 		// カテゴリー・タグ
 		Arkhe::get_part( 'single/item/term_list', array(
@@ -46,17 +58,21 @@ if ( $show_modified && $show_posted ) {
 		endif;
 	?>
   <?php $item = fabric_load_item(); ?>
-  <div class="c-postIcon">
-    <ul class="p-postList__icon 888 ">
-    <?php if ( ok( $item->area ) ) { ?>
-      <li class="icon">
-        <?= $item->area->title ?>
-
-        <?= $item->category ?>
-
-      </li>
-    <?php } ?>
+<div class="c-postIcon">
+<?php if ( ok( $item->special ) ) { ?>
+    <ul class="p-postList__icon ">
+        <?= $item->special ?>
     </ul>
+<?php } ?>
+  </div>
+  <div class="c-postIcon">
+<?php if ( ok( $item->category ) ) { ?>
+    <ul class="p-postList__icon p-postList__hash">
+        <?= $item->category ?>
+    </ul>
+<?php } ?>
   </div>
 
 </div>
+
+

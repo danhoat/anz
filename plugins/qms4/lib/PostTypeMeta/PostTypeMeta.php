@@ -41,18 +41,33 @@ class PostTypeMeta implements PostTypeMetaInterface
 	public static function from_name( array $names ): self
 	{
 
-		$query = new \WP_Query( array(
-			'post_type' => 'qms4',
-			'post_status' => 'publish',
-			'posts_per_page' => 1,
-			'meta_query' => array(
-				array(
-					'key' => 'qms4__post_type__name',
-					'value' => $names,
-					'compare' => 'IN',
+
+		$default_types = array('post','page','attachment','nav_menu_item','wp_block','wp_template');
+		$type = $names[0];
+
+		if(in_array($type, $default_types)){
+
+			$query = new \WP_Query( array(
+				'post_type' => $type,
+				'post_status' => 'publish',
+				'posts_per_page' => 1
+
+			) );
+		} else{
+
+			$query = new \WP_Query( array(
+				'post_type' => 'qms4',
+				'post_status' => 'publish',
+				'posts_per_page' => 1,
+				'meta_query' => array(
+					array(
+						'key' => 'qms4__post_type__name',
+						'value' => $names,
+						'compare' => 'IN',
+					),
 				),
-			),
-		) );
+			) );
+		}
 
 		if ( ! $query->found_posts ) {
 			return 0;
@@ -241,7 +256,7 @@ class PostTypeMeta implements PostTypeMetaInterface
 
 		$orderby = get_field( 'qms4__output__orderby', $this->wp_post->ID );
 
-		return $this->cache[ 'orderby' ] = $orderby;
+		return $this->cache[ 'orderby' ] =  !empty($orderby) ? $orderby : 'menu_order';
 	}
 
 	/**
@@ -255,7 +270,7 @@ class PostTypeMeta implements PostTypeMetaInterface
 
 		$order = get_field( 'qms4__output__order', $this->wp_post->ID );
 
-		return $this->cache[ 'order' ] = $order;
+		return $this->cache[ 'order' ] = !empty($order) ? $order: 'ASC';
 	}
 
 	/**
@@ -321,7 +336,7 @@ class PostTypeMeta implements PostTypeMetaInterface
 
 		$new_class = get_field( 'qms4__output__new_class', $this->wp_post->ID );
 
-		return $this->cache[ 'new_class' ] = $new_class;
+		return $this->cache[ 'new_class' ] = !empty($new_class) ? $new_class : '';
 	}
 
 	/**

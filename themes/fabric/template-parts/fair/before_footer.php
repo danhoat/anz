@@ -23,20 +23,17 @@ if(  empty($ymd)  || !is_valid_date($ymd ) ){
 $meta_key = 'qms4__event_date';
 global $wpdb;
 $sql =  $wpdb->prepare("
-SELECT SQL_CALC_FOUND_ROWS mt1.meta_value as event_id
-FROM $wpdb->posts p
-INNER JOIN $wpdb->postmeta m ON ( p.ID = m.post_id )
-INNER JOIN $wpdb->postmeta AS mt1 ON ( p.ID = mt1.post_id ) WHERE
-    ( ( m.meta_key = %s AND CAST(m.meta_value AS DATE) = %s ) AND( mt1.meta_key = %s ) )
-    AND p.post_type = %s AND (p.post_status = 'publish')
-GROUP BY mt1.meta_value",
-'qms4__event_date',
-$ymd,
-'qms4__parent_event_id',
-'fair__schedule'
-);
+    SELECT SQL_CALC_FOUND_ROWS mt1.meta_value as event_id
+    FROM $wpdb->posts p
+    INNER JOIN $wpdb->postmeta m ON ( p.ID = m.post_id )
+    INNER JOIN $wpdb->postmeta AS mt1 ON ( p.ID = mt1.post_id ) WHERE
+        ( ( m.meta_key = %s AND CAST(m.meta_value AS DATE) = %s ) AND( mt1.meta_key = %s ) )
+        AND p.post_type = %s AND (p.post_status = 'publish')
+    GROUP BY mt1.meta_value",
+    'qms4__event_date', $ymd, 'qms4__parent_event_id', 'fair__schedule' );
+
 $result = $wpdb->get_results($sql, ARRAY_A);
-$event_ids = array(-1);
+$event_ids = array();
 if($result){
     foreach($result as $reg){
         $id = (int) $reg['event_id'];
@@ -46,7 +43,7 @@ if($result){
 }
 $param['post__in'] = array(-1);
 
-if(!empty($event_ids)) $param['post__in'] = $event_ids;
+if( !empty($event_ids) ) $param['post__in'] = $event_ids;
 
 
 $args = array(

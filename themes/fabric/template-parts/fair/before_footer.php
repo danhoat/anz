@@ -10,11 +10,59 @@
 $param = array();
 $param['count'] = 2;
 $param['area'] = $item->area->slug;
-$list = qms4_list( 'fair', $param );
+//$list = qms4_list( 'fair', $param );
+
+$ymd = isset($_GET['ymd'])  ? $_GET['ymd'] : '';
+
+if(  empty($ymd)  || !is_valid_date($ymd ) ){
+    $ymd = qms4_get_event_date($item->ID);
+}
+
+
+
+$meta_key = 'qms4__event_date';
+global $wpdb;
+$sql =  $wpdb->prepare("
+SELECT SQL_CALC_FOUND_ROWS mt1.meta_value as event_id
+FROM $wpdb->posts p
+INNER JOIN $wpdb->postmeta m ON ( p.ID = m.post_id )
+INNER JOIN $wpdb->postmeta AS mt1 ON ( p.ID = mt1.post_id ) WHERE
+    ( ( m.meta_key = %s AND CAST(m.meta_value AS DATE) = %s ) AND( mt1.meta_key = %s ) )
+    AND p.post_type = %s AND (p.post_status = 'publish')
+GROUP BY mt1.meta_value",
+'qms4__event_date',
+$ymd,
+'qms4__parent_event_id',
+'fair__schedule'
+);
+$result = $wpdb->get_results($sql, ARRAY_A);
+$event_ids = array(-1);
+if($result){
+    foreach($result as $reg){
+        $id = (int) $reg['event_id'];
+        if($id !== $item->ID)
+            $event_ids[] = $id;
+    }
+}
+$param['post__in'] = array(-1);
+
+if(!empty($event_ids)) $param['post__in'] = $event_ids;
+
+
+$args = array(
+    'post_type'         => 'fair',
+    'post__in'          => $event_ids,
+    'post__not_in'      => $item->ID,
+    'post_status'       => 'publish',
+    'posts_per_page'    => 2
+);
+
+$list = new WP_Query($args);
+
 ?>
 
 <?php if ( ok( $list ) ) { ?>
-<div class="l-event-flow">
+<div class="l-event-flow 111">
   <div class="wp-block-group__inner-container c-postContent">
     <p class="has-text-align-center u-mt-0 is-style-en_title-heading">RESERVATION FLOW</p>
     <h2 class="has-text-align-center is-style-ja_title-heading">ご予約の流れ</h2>
@@ -71,7 +119,8 @@ $list = qms4_list( 'fair', $param );
   </div>
 
   <ul class="box-list">
-<?php foreach ( $list as $item ) { ?>
+<?php foreach ( $list->posts as $post ) { ?>
+    <?php $item = qms4_detail($post->ID); ?>
     <li class="box-list__item">
       <a href="<?= $item->permalink ?>">
         <div class="box-detail">

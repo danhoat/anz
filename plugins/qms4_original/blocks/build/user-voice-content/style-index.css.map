@@ -1,1 +1,0 @@
-{"version":3,"file":"user-voice-content/style-index.css","mappings":";;;AACC;EACC;AAAF,C","sources":["webpack://qms4/./blocks/src/user-voice-content/style.scss"],"sourcesContent":[".qms4__block__user-voice__content {\r\n\t.wp-block:not(:root) {\r\n\t\tmargin-top: var(--ark-mt--s);\r\n\t}\r\n}\r\n"],"names":[],"sourceRoot":""}

@@ -4,3 +4,7 @@ qms4/blocks/build/timetable/view.js
 
 qms3_form_brick/templates/option/select.input.php
 qms3_form_brick/output/qms3_form_init.php
+qms3_form_brick/lib/FieldsInit.php
+qms3_form_brick/custom.js
+
+qms3_form_brick/lib/ValuesInit.php // get fairName if _GET['id']

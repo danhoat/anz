@@ -32,8 +32,6 @@ class ValuesInit
                 if($post && !is_wp_error($post)){
 
                 $f_post['fairName'] = $post->post_title;
-                // $f_post['fairName'] = 'fairName okk';
-                // $f_post['fairTime'] = '20:00';
                 $df_get = $f_post;
             }
 

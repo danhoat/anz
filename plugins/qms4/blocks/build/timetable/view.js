@@ -134,7 +134,7 @@
                     reserveUrl: r
                 },
                 u = await o(`${d}?enable_schedule_only=1`).then((t => t.sort(((t, e) => t.date < e.date ? -1 : 1))));
-               // console.log('check schedules: ', u);
+               console.log('check schedules: ', u);
             if (console.info({
                     schedules: u
                 }), 0 === u.length) return;

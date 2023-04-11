@@ -29,15 +29,14 @@ class ValuesInit
         if(isset($_GET['id'])){
             $f_post = array();
             $post = get_post($_GET['id']);
-                if($post && !is_wp_error($post)){
+            if($post && !is_wp_error($post)){
 
                 $f_post['fairName'] = $post->post_title;
                 $df_get = $f_post;
             }
-
         }
         $request = new ServerRequest(
-            $df_get,
+            $df_get, // danng custom
             isset($_POST)  ? $_POST  : [],
             isset($_FILES) ? $_FILES : []
         );

@@ -5,7 +5,7 @@ qms4/blocks/build/timetable/view.js
 qms3_form_brick/templates/option/select.input.php // show date format - do not use. format via js render
 qms3_form_brick/output/qms3_form_init.php // no use.
 qms3_form_brick/lib/FieldsInit.php      // set value via php ( do not use  because set via js)
-qms3_form_brick/custom.js
+qms3_form_brick/custom-form.js
 qms3_form_brick/init.php  		 		add custom.js
 
 qms3_form_brick/lib/ValuesInit.php 		// get fairName if _GET['id']

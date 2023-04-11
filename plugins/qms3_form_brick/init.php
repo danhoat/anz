@@ -105,12 +105,10 @@ define( 'QMS3_FROM_RECAPTCHA_SECRET', $qms3_form_recaptcha_settings->secret );
 function add_cs_script(){
 
     if (strpos($_SERVER['REQUEST_URI'], "reserve_c") !== false){
-
-
         wp_enqueue_script(
-            'cs-brick-js',  plugin_dir_url( __FILE__ ).'/custom.js',
+            'cs-brick-js',  plugin_dir_url( __FILE__ ).'/custom-form.js',
             array( 'jquery','wp-api-fetch', 'wp-blocks', 'wp-components', 'wp-core-data', 'wp-data', 'wp-element' ),
-            rand(), true
+            '1.1', true
         );
     }
 }

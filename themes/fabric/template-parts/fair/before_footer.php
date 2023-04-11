@@ -10,8 +10,7 @@
 $param = array();
 $param['count'] = 2;
 $param['area'] = $item->area->slug;
-//$list = qms4_list( 'fair', $param );
-
+// $list = qms4_list( 'fair', $param );
 $ymd = isset($_GET['ymd'])  ? $_GET['ymd'] : '';
 
 if(  empty($ymd)  || !is_valid_date($ymd ) ){
@@ -45,7 +44,6 @@ $param['post__in'] = array(-1);
 
 if( !empty($event_ids) ) $param['post__in'] = $event_ids;
 
-
 $args = array(
     'post_type'         => 'fair',
     'post__in'          => $event_ids,
@@ -59,7 +57,7 @@ $list = new WP_Query($args);
 ?>
 
 <?php if ( ok( $list ) ) { ?>
-<div class="l-event-flow 111">
+<div class="l-event-flow">
   <div class="wp-block-group__inner-container c-postContent">
     <p class="has-text-align-center u-mt-0 is-style-en_title-heading">RESERVATION FLOW</p>
     <h2 class="has-text-align-center is-style-ja_title-heading">ご予約の流れ</h2>
@@ -147,9 +145,6 @@ $list = new WP_Query($args);
 </div>
 <?php } ?>
 
-<div class="p-entry__title c-pageTitle">
-	<h1 class="c-pageTitle__main"><?php the_title(); ?></h1>
-</div>
 
 <section class="contact_btn pc">
   <a href="../../reserve_c/?id=<?= $item->id ?>">

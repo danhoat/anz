@@ -8,7 +8,7 @@
 >
   <div class="qms4__block__timetable__dates js__qms4__block__timetable__dates">
     <label for="qms4__block__timetable__dates__<?= $uid ?>">日付をお選びください</label>
-    <select id="qms4__block__timetable__dates__<?= $uid ?>"></select>
+    <select id="qms4__block__timetable__dates" class="html_select"></select>
   </div>
   <!-- /.qms4__block__timetable__dates -->
 
@@ -32,11 +32,11 @@
   <!-- /.qms4__block__timetable__button -->
 
   <dl class="qms4__block__timetable__example">
-    <dt><img src="/wp-content/themes/fabric/images/icon_possible.png" alt="" /></dt>
+    <dt><img src="/test/wp-content/themes/fabric/images/icon_possible.png" alt="" /></dt>
     <dd>予約可</dd>
-    <dt><img src="/wp-content/themes/fabric/images/icon_few.png" alt="△" /></dt>
+    <dt><img src="/test/wp-content/themes/fabric/images/icon_few.png" alt="△" /></dt>
     <dd>残りわずか</dd>
-    <dt><img src="/wp-content/themes/fabric/images/icon_vacant.png" alt="×" /></dt>
+    <dt><img src="/test/wp-content/themes/fabric/images/icon_vacant.png" alt="×" /></dt>
     <dd>満席</dd>
   </dl>
   <!-- /.qms4__block__timetable__example -->

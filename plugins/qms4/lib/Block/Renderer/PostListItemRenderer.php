@@ -183,9 +183,10 @@ class PostListItemRenderer
 		$css = 'item-post-type-'.$item->post_type;
 
 
-
+		$format = $item->date_format;
 
 		if( $item->post_type !== 'fair' ){
+			$format = "Y年n月j日 (D)";
 			return trim( '
 				<div class="qms4__post-list__post-date">
 					' . $item->post_date( $format ) . '

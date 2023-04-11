@@ -7,16 +7,13 @@
 <?php if ( is_single() ) { ?>
 <?php $item = fabric_load_item(); ?>
 <?php
-
-global $post;
-$single  = $post;
+global $postID;
+$postID = $item->ID;
 // $param = array();
 //   $param['count'] = 2;
 //   $param['area'] = $item->area->slug;
 //   $list = qms4_list( 'fair', $param );
 
-$footer_url = '?event_name=03テスト&event_time=2023年4月12日（Wed）%207:30';
-//?event_name=03テスト&event_time=2023年4月12日（Wed）%207:30
 $ymd = isset($_GET['ymd'])  ? $_GET['ymd'] : '';
 $url_date = is_valid_date($ymd) ? '?ymd='.$ymd: '';
 
@@ -152,14 +149,14 @@ if( !is_valid_date($ymd) ){
 
 
 <section class="contact_btn pc">
-  <a href="../../reserve_c/?id=<?= $single->ID ?>">
-    <span class="tit en 333">1分で完了！</span>このフェアを<br>予約
+  <a href="../../reserve_c/?id=<?= $postID ?>">
+    <span class="tit en">1分で完了！</span>このフェアを<br>予約
   </a>
 </section>
 <section class="h_nav sp clearfix">
 	<ul>
     <li class="contact">
-      <span class="icon_f" 555>1分で<br>完了！</span>
+      <span class="icon_f">1分で<br>完了！</span>
       <a href="../../reserve_c/?id=<?= $item->id ?>">
         フェア予約はこちら
       </a>

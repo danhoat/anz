@@ -92,32 +92,26 @@ function qms4_list_schedules_of_fair($fair_id){
 
 
     global $wpdb;
-            $sql =  $wpdb->prepare("
-               SELECT SQL_CALC_FOUND_ROWS mt.meta_value as str_day
-               FROM $wpdb->posts p
-                INNER JOIN $wpdb->postmeta m ON ( p.ID = m.post_id )
-                INNER JOIN $wpdb->postmeta AS mt1 ON ( p.ID = mt1.post_id ) WHERE 1=1 AND
-                    ( ( m.meta_key = %s AND( mt1.meta_key = %s ) )
-                    AND p.post_type = %s AND p.post_status = 'publish' AND m1.meta_value = %d
-                    ",
-                    'qms4__event_date',
-                    'qms4__parent_event_id',
-                    'fair__schedule',
-                    $fair_id
-                 );
-                    echo $sql;
+    $sql =  $wpdb->prepare("
+    SELECT SQL_CALC_FOUND_ROWS m.meta_value as str_day
+    FROM qj_posts p INNER JOIN qj_postmeta m ON ( p.ID = m.post_id )
+    INNER JOIN qj_postmeta AS m1 ON ( p.ID = m1.post_id )
+    WHERE m.meta_key = %s AND m1.meta_key = %s
+    AND p.post_type = %s AND p.post_status = 'publish' AND m1.meta_value = %d ",
+    'qms4__event_date',
+    'qms4__parent_event_id',
+    'fair__schedule',
+    $fair_id);
+
 
     $result =$wpdb->get_results($sql, ARRAY_A);
-
+    $list= '';
     foreach($result as $r){
-        echo '<pre>';
-        var_dump($r);
-        echo '</pre>';
+       $list = $list.='
+       '.$r['str_day'];
     }
+    return $list;
 
 }
-function dev_debug(){
-    qms4_list_schedules_of_fair(2672);
-}
 
-//add_action('wp_footer','dev_debug');
+

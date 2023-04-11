@@ -7,6 +7,9 @@
 <?php if ( is_single() ) { ?>
 <?php $item = fabric_load_item(); ?>
 <?php
+
+global $post;
+$single  = $post;
 // $param = array();
 //   $param['count'] = 2;
 //   $param['area'] = $item->area->slug;
@@ -149,7 +152,7 @@ if( !is_valid_date($ymd) ){
 
 
 <section class="contact_btn pc">
-  <a href="../../reserve_c/?id=<?= $item->id ?>">
+  <a href="../../reserve_c/?id=<?= $single->ID ?>">
     <span class="tit en 333">1分で完了！</span>このフェアを<br>予約
   </a>
 </section>

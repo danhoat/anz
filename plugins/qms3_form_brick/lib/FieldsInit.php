@@ -28,30 +28,27 @@ class FieldsInit
         $fields = [];
         foreach ($structure as $name => $structure_row) {
 
-            if(isset($_GET['id'])){
-                $post = get_post($_GET['id']);
-                 if( $post && !is_wp_error($post)){
-                    if( $name == 'fairDate'){
+            // if(isset($_GET['id'])){
+            //     $post = get_post($_GET['id']);
+            //      if( $post && !is_wp_error($post)){
+            //         if( $name == 'fairDate'){
 
-                    $structure_row->options =  "
-                        ngay 1
-                        ngay 2
-                        ngay 3
-                        11:30";
-                    }
-                    if($name == 'fairTime'){
-                        $structure_row->options =  "
-                         10:00
-                        11:30
-                        15:00
-                        21:30";
-                    }
+            //             $structure_row->options =  qms4_list_schedules_of_fair($post->ID);
+
+            //         }
+            //         if($name == 'fairTime'){
+            //             $structure_row->options =  "
+            //              10:00
+            //             11:30
+            //             15:00
+            //             21:30";
+            //         }
 
 
-                }
+            //     }
 
 
-            }
+            // }
             $fields[$name] = $factory->create($structure_row, $values, $step);
         }
 

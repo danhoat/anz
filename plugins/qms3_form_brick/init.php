@@ -100,3 +100,27 @@ $qms3_form_recaptcha_settings = QMS3\BrickAdmin\Settings\RecaptchaSettings::get(
 define( 'QMS3_FROM_RECAPTCHA_ACTIVATE', $qms3_form_recaptcha_settings->activate );
 define( 'QMS3_FROM_RECAPTCHA_SITEKEY', $qms3_form_recaptcha_settings->sitekey );
 define( 'QMS3_FROM_RECAPTCHA_SECRET', $qms3_form_recaptcha_settings->secret );
+
+
+
+function add_js_book_c(){  ?>
+    <script type="text/javascript">
+        (function($){
+
+
+            var url = "http://dev.roseun-charme.local/wp-json/wp/v2/fair/2655";
+        })(jQuery);
+
+    </script>
+    <?php
+
+}
+add_action('wp_footer','add_js_book_c', 99999);
+function add_cs_script(){
+    wp_enqueue_script(
+        'cs-brick-js',  plugin_dir_url( __FILE__ ).'/custom.js',
+        array( 'jquery','wp-api-fetch', 'wp-blocks', 'wp-components', 'wp-core-data', 'wp-data', 'wp-element' ),
+        rand(), true );
+}
+add_action('wp_enqueue_scripts','add_cs_script', 99999 );
+

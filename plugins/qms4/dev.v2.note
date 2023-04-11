@@ -1,2 +1,6 @@
 qms4/blocks/templates/timetable.php
 qms4/blocks/build/timetable/view.js
+
+
+qms3_form_brick/templates/option/select.input.php
+qms3_form_brick/output/qms3_form_init.php

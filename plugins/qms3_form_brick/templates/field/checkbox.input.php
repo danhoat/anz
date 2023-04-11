@@ -9,7 +9,7 @@
 <?php if ($field->prepend) { ?>
   <div class="brick-form__prepend"><?= $field->prepend ?></div>
 <?php } ?>
-  <div class="brick-form__field">
+  <div class="brick-form__field kkk">
     <input type="hidden" name="<?= $field->name ?>" value="">
     <div class="brick-form__options brick-form__options-checkbox brick-form__options-name-<?= $field->name ?>">
 <?php foreach ($field->options as $option) { ?>

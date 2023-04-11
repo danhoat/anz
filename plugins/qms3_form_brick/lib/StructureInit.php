@@ -65,6 +65,9 @@ class StructureInit
 
             $names[] = $name;
         }
+        // echo '<pre>';
+        // var_dump($names);
+        // echo '</pre>';
 
         if (count($names) != count(array_unique($names))) {
             throw new InvalidArgumentException("重複した name 属性があります。各行の name 属性には一意な文字列を設定してください");

@@ -43,8 +43,11 @@ function qms3_form_init( $form_type, array $param = array() )
     $structure = $structure_init->init();
 
     $values_init = new ValuesInit();
+   // var_dump($param->default);
     $values = $values_init->init( $structure, $param->default );
-
+    // echo '<pre>';
+    // var_dump($values);
+    // echo '</pre>';
     $pre_process_init = new PreProcessInit( $param->pre_processes, $param );
     $pre_process = $pre_process_init->init();
     list( $structure, $values ) = $pre_process->process(
@@ -67,7 +70,6 @@ function qms3_form_init( $form_type, array $param = array() )
 
     $fields_init = new FieldsInit();
     $fields = $fields_init->init( $structure, $values, $step );
-
     $metadata = new Metadata( $fields, $param->recaptcha_sitekey );
 
     $form = new Form( $param->form_name, $fields, $values, $metadata, $step );
@@ -85,3 +87,37 @@ function qms3_form_init( $form_type, array $param = array() )
 
     return $form;
 }
+
+function qms4_list_schedules_of_fair($fair_id){
+
+
+    global $wpdb;
+            $sql =  $wpdb->prepare("
+               SELECT SQL_CALC_FOUND_ROWS mt.meta_value as str_day
+               FROM $wpdb->posts p
+                INNER JOIN $wpdb->postmeta m ON ( p.ID = m.post_id )
+                INNER JOIN $wpdb->postmeta AS mt1 ON ( p.ID = mt1.post_id ) WHERE 1=1 AND
+                    ( ( m.meta_key = %s AND( mt1.meta_key = %s ) )
+                    AND p.post_type = %s AND p.post_status = 'publish' AND m1.meta_value = %d
+                    ",
+                    'qms4__event_date',
+                    'qms4__parent_event_id',
+                    'fair__schedule',
+                    $fair_id
+                 );
+                    echo $sql;
+
+    $result =$wpdb->get_results($sql, ARRAY_A);
+
+    foreach($result as $r){
+        echo '<pre>';
+        var_dump($r);
+        echo '</pre>';
+    }
+
+}
+function dev_debug(){
+    qms4_list_schedules_of_fair(2672);
+}
+
+//add_action('wp_footer','dev_debug');

@@ -1,0 +1,29 @@
+.qms4__post-list__post-thumbnail.qms4__post-list__post-thumbnail:not(:root) {
+	margin: 0;
+	margin-top: 8px;
+
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+.qms4__post-list__post-thumbnail {
+	background-color: #eee;
+
+	img {
+		width: 100%;
+		vertical-align: top;
+		object-fit: cover;
+	}
+
+	&[data-aspect-ratio="16:9"] img { aspect-ratio: 16 / 9; }
+	&[data-aspect-ratio="3:2"] img { aspect-ratio: 3 / 2; }
+	&[data-aspect-ratio="4:3"] img { aspect-ratio: 4 / 3; }
+	&[data-aspect-ratio="1:1"] img { aspect-ratio: 1 / 1; }
+	&[data-aspect-ratio="3:4"] img { aspect-ratio: 3 / 4; }
+	&[data-aspect-ratio="2:3"] img { aspect-ratio: 2 / 3; }
+	&[data-aspect-ratio="9:16"] img { aspect-ratio: 9 / 16; }
+
+	&[data-object-fit=cover] img { object-fit: cover; }
+	&[data-object-fit=contain] img { object-fit: contain; }
+}

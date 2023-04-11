@@ -1,0 +1,1 @@
+(()=>{"use strict";const e=window.wp.element;window.React,(0,e.render)((0,e.createElement)((()=>(0,e.createElement)("div",null,"EventAdminCalendar")),null),document.getElementById("qms4__admin-event-calendar__container"))})();

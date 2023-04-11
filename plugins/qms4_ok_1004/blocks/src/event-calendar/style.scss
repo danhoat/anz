@@ -1,0 +1,254 @@
+.qms4__block__event-calendar {
+	&__container {
+		padding: 32px;
+	}
+
+	&__month-title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		font-weight: 700;
+
+		&__year {
+			margin-right: .5em;
+			font-size: 1.4em;
+			white-space: nowrap;
+			&::after { content: "."; }
+		}
+		&__month {
+			font-size: 2em;
+			white-space: nowrap;
+		}
+		&__month-name {
+			margin-left: .5em;
+			font-size: 1.4em;
+			white-space: nowrap;
+		}
+	}
+
+	&__calendar-header,
+	&__calendar-body {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+	}
+
+	&__calendar-header {
+		border-top: 1px solid var(--ark-color--border, #c6c6c6);
+		border-bottom: 1px solid var(--ark-color--border, #c6c6c6);
+	}
+
+	&__header-cell {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		padding: 8px 0;
+	}
+
+	&__calendar-body {
+		margin-top: 8px;
+	}
+}
+
+/* 個別のイベント情報を表示しない設定のとき */
+.qms4__block__event-calendar {
+	&[data-show-posts=false] {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 32px;
+	}
+
+	&[data-show-posts=false] &__body-cell {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		padding: 8px 0;
+
+		& a,
+		& button,
+		& span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			width: min(40px, 100%);
+			height: 40px;
+
+			border: none;
+			border-radius: 50%;
+
+			background: none;
+		}
+
+		& a:not(:root),
+		& button:not(:root) {
+			color: #fff;
+			text-decoration: none;
+			background-color: cornflowerblue;
+		}
+	}
+
+	&__body-cell--disable &__schedules-container {
+		display: none;
+	}
+
+	&[data-show-posts=false] &__body-cell--disable a:not(:root) {
+		pointer-events: none;
+		background-color: #ccc;
+	}
+
+	&__body-cell--out-of-month {
+		visibility: hidden;
+	}
+}
+
+@media ( max-width: 599px ) {
+	.qms4__block__event-calendar {
+		&[data-show-posts=false] {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+/* 個別のイベント情報を表示する設定のとき */
+.qms4__block__event-calendar {
+	&[data-show-posts=true] &__day-title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+.qms4__block__event-calendar {
+	&__month-header,
+	&__month-footer {
+		display: grid;
+
+		button {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			color: #999;
+			border: none;
+			background: none;
+			cursor: pointer;
+		}
+	}
+	&__month-header {
+		grid-template-columns: 3fr 2fr 3fr;
+	}
+	&__month-footer {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	&__button-prev {
+		justify-content: flex-start;
+
+		&::before {
+			content: "<";
+			margin-right: .5em;
+		}
+	}
+
+	&__button-next {
+		justify-content: flex-end;
+
+		&::after {
+			content: ">";
+			margin-left: .5em;
+		}
+	}
+}
+
+.qms4__block__event-calendar {
+	&__display {
+		position: relative;
+	}
+
+	&__display-inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
+
+		width: 100%;
+		height: 100%;
+		padding: 32px;
+
+		overflow-y: auto;
+	}
+
+	&__display-header {
+		margin-bottom: 16px;
+
+		font-size: 22px;
+		text-align: center;
+	}
+
+	&__display-list-item {
+		border-top: 1px solid var(--ark-color--border, #c6c6c6);
+
+		a, span {
+			padding: 20px 16px;
+
+			display: grid;
+			grid-template-columns: 124px 1fr;
+			gap: 16px;
+
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	&__display-list-item__thumbnail {
+		line-height: 0;
+
+		img {
+			width: 100%;
+			aspect-ratio: 3 / 2;
+			object-fit: cover;
+		}
+	}
+
+	&__display-list-item__icons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2px 4px;
+
+		margin: 0;
+		margin-top: 4px;
+		padding: 0 !important;
+
+		list-style: none !important;
+	}
+	&__display-list-item__icon {
+		margin: 0 !important;
+		padding: .25em .6em;
+		font-size: 12px;
+		line-height: 1.2;
+
+		color: #fff;
+		background-color: #666;
+	}
+
+	&__display-list-item__title {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		-webkit-line-clamp: 2;
+
+		margin-top: 8px;
+
+		font-size: 15px;
+		line-height: 1.4;
+	}
+}
+
+@media ( max-width: 599px ) {
+	.qms4__block__event-calendar__display {
+		height: 400px;
+	}
+}

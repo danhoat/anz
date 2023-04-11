@@ -1,0 +1,18 @@
+qms4/blocks/templates/post-list.php
+qms4/lib/Block/PostList.php
+qms4/lib/Block/Renderer/PostListItemRenderer.php
+
+
+https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/
+
+
+npm run dev but 
+
+should run 
+
+npm run build
+before zipping and deploying it. 
+https://www.npmjs.com/package/@wordpress/scripts
+https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/
+
+npm start

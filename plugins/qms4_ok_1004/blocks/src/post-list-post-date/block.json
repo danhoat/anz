@@ -1,0 +1,24 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+	"apiVersion": 2,
+	"name": "qms4/post-list-post-date",
+	"version": "0.1.0",
+	"title": "投稿日時",
+	"parent": [ "qms4/post-list" ],
+	"icon": "pets",
+	"attributes": {
+		"showDate": {
+			"type": "boolean",
+			"default": true
+		},
+		"showTime": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {},
+	"textdomain": "qms4",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

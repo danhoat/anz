@@ -1,0 +1,346 @@
+[
+	{
+		"key": "group_62675c88b71b1",
+		"title": "カスタム投稿タイプ 個別設定",
+		"fields": [
+			{
+				"key": "field_62675ce59dd3e",
+				"label": "スラッグ",
+				"name": "qms4__post_type__name",
+				"type": "text",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "",
+				"placeholder": "",
+				"prepend": "",
+				"append": "",
+				"maxlength": ""
+			},
+			{
+				"key": "field_62b17a2b316a7",
+				"label": "公開/非公開",
+				"name": "qms4__post_type__public",
+				"type": "true_false",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"message": "",
+				"default_value": 1,
+				"ui": 1,
+				"ui_on_text": "公開",
+				"ui_off_text": "非公開"
+			},
+			{
+				"key": "field_6319f43653514",
+				"label": "リビジョン保存数",
+				"name": "qms4__post_type__revisions_to_keep",
+				"type": "number",
+				"instructions": "0: リビジョンを保存しない\r\n-1: リビジョン保存数 無制限",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": 5,
+				"placeholder": "",
+				"prepend": "",
+				"append": "世代",
+				"min": -1,
+				"max": "",
+				"step": ""
+			},
+			{
+				"key": "field_626a5f7903f72",
+				"label": "詳細ページ パーマリンク",
+				"name": "qms4__post_type__permalink_type",
+				"type": "radio",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": [
+					[
+						{
+							"field": "field_62b17a2b316a7",
+							"operator": "==",
+							"value": "1"
+						}
+					]
+				],
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"postname": "スラッグ",
+					"post_id": "投稿ID"
+				},
+				"allow_null": 0,
+				"other_choice": 0,
+				"default_value": "postname",
+				"layout": "horizontal",
+				"return_format": "value",
+				"save_other_choice": 0
+			},
+			{
+				"key": "field_62675d091b496",
+				"label": "機能タイプ",
+				"name": "qms4__post_type__func_type",
+				"type": "radio",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"general": "一般投稿",
+					"event": "イベント投稿",
+					"calendar": "シンプルカレンダー"
+				},
+				"allow_null": 0,
+				"other_choice": 0,
+				"default_value": "general",
+				"layout": "horizontal",
+				"return_format": "value",
+				"save_other_choice": 0
+			},
+			{
+				"key": "field_632eb2162b1ec",
+				"label": "カレンダー起算日",
+				"name": "qms4__post_type__cal_base_date",
+				"type": "number",
+				"instructions": "0 → 当日以降のイベントのみ表示<br>\r\n1 → 翌日以降のイベントのみ表示<br>\r\n2 → 2日後以降のイベントのみ表示<br>\r\n...",
+				"required": 1,
+				"conditional_logic": [
+					[
+						{
+							"field": "field_62675d091b496",
+							"operator": "==",
+							"value": "event"
+						}
+					]
+				],
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": 0,
+				"min": "",
+				"max": "",
+				"placeholder": "",
+				"step": "",
+				"prepend": "",
+				"append": ""
+			},
+			{
+				"key": "field_632b1015731eb",
+				"label": "予約フォーム URL",
+				"name": "qms4__post_type__reserve_url",
+				"type": "text",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": [
+					[
+						{
+							"field": "field_62675d091b496",
+							"operator": "==",
+							"value": "event"
+						}
+					]
+				],
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "/reserve_e/",
+				"placeholder": "/reserve_e/",
+				"prepend": "home_url( ",
+				"append": " )",
+				"maxlength": ""
+			},
+			{
+				"key": "field_627f5834c89cc",
+				"label": "エディタ",
+				"name": "qms4__post_type__editor",
+				"type": "radio",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"block_editor": "ブロックエディタ",
+					"classic_editor": "クラシックエディタ"
+				},
+				"allow_null": 0,
+				"other_choice": 0,
+				"default_value": "",
+				"layout": "horizontal",
+				"return_format": "value",
+				"save_other_choice": 0
+			},
+			{
+				"key": "field_626a5e7403f71",
+				"label": "コンポーネント",
+				"name": "qms4__post_type__components",
+				"type": "checkbox",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"choices": {
+					"thumbnail": "アイキャッチ画像",
+					"content": "コンテンツ",
+					"area": "エリア登録",
+					"memo": "メモ"
+				},
+				"allow_custom": 0,
+				"default_value": [],
+				"layout": "vertical",
+				"toggle": 0,
+				"return_format": "value",
+				"save_custom": 0
+			},
+			{
+				"key": "field_62675d581b497",
+				"label": "カテゴリー機能",
+				"name": "qms4__post_type__taxonomies",
+				"type": "repeater",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"collapsed": "field_62675d6f1b498",
+				"min": 0,
+				"max": 0,
+				"layout": "table",
+				"button_label": "",
+				"sub_fields": [
+					{
+						"key": "field_62675d6f1b498",
+						"label": "ラベル",
+						"name": "label",
+						"type": "text",
+						"instructions": "",
+						"required": 1,
+						"conditional_logic": 0,
+						"wrapper": {
+							"width": "30",
+							"class": "",
+							"id": ""
+						},
+						"default_value": "",
+						"placeholder": "カテゴリー",
+						"prepend": "",
+						"append": "",
+						"maxlength": ""
+					},
+					{
+						"key": "field_62675d9e1b499",
+						"label": "タクソノミー",
+						"name": "name",
+						"type": "text",
+						"instructions": "",
+						"required": 1,
+						"conditional_logic": 0,
+						"wrapper": {
+							"width": "30",
+							"class": "",
+							"id": ""
+						},
+						"default_value": "",
+						"placeholder": "category",
+						"prepend": "",
+						"append": "",
+						"maxlength": ""
+					},
+					{
+						"key": "field_629c9deac34da",
+						"label": "絞り込みクエリ",
+						"name": "query",
+						"type": "text",
+						"instructions": "",
+						"required": 0,
+						"conditional_logic": 0,
+						"wrapper": {
+							"width": "30",
+							"class": "",
+							"id": ""
+						},
+						"default_value": "",
+						"placeholder": "",
+						"prepend": "",
+						"append": "",
+						"maxlength": ""
+					},
+					{
+						"key": "field_632c23736740b",
+						"label": "色 登録",
+						"name": "color_available",
+						"type": "true_false",
+						"instructions": "",
+						"required": 0,
+						"conditional_logic": 0,
+						"wrapper": {
+							"width": "10",
+							"class": "",
+							"id": ""
+						},
+						"message": "有効化",
+						"default_value": 1,
+						"ui_on_text": "有効",
+						"ui_off_text": "無効",
+						"ui": 0,
+						"parent_repeater": "field_62675d581b497"
+					}
+				]
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "qms4"
+				}
+			]
+		],
+		"menu_order": 200,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "left",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_rest": 0
+	}
+]

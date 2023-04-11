@@ -1,0 +1,6 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+	"apiVersion": 2,
+	"name": "qms4/wp-post",
+	"editorScript": "file:./index.js"
+}

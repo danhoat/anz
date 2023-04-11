@@ -3,7 +3,7 @@
 <?php
  $css   = '';
  $ymd   = isset($_GET['ymd']) ? $_GET['ymd'] :0;
- if( is_archive() && $ymd && is_valid_date($ymd) ){
+ if( is_archive() && $ymd && is_valid_date($ymd)){
 
     $date = date_create($ymd);
     // $page_title = $date->format('Y年n月j日'); //2023年4月21日

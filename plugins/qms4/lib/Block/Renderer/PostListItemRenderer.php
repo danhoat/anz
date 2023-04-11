@@ -182,39 +182,46 @@ class PostListItemRenderer
 
 		$css = 'item-post-type-'.$item->post_type;
 
+
+
+
+		if( $item->post_type !== 'fair' ){
+			return trim( '
+				<div class="qms4__post-list__post-date">
+					' . $item->post_date( $format ) . '
+				</div>
+			' );
+		}
+		$df_post_date = $item->post_date;
+
 		$html = ' <div class="qms4__post-list__post-date '.$css.'">';
 
-		$df_post_date = $item->post_date;
 		if( $show_date ){
+			$html.='<p class="card_date">';
+			if(!empty($item->event_date) ){
+				$time_stamp = $item->event_time_stamp;
 
-			if($item->post_type == 'fair'){
 
+				if($custom_style == 'flat_style'){
+				 	$html.='<span class="ym"> ' . wp_date( 'y.m', $time_stamp ).' </span>
+					<span class="day"> ' . wp_date( 'd', $time_stamp ).' </span>
+					<span class="week"> ' . wp_date( 'l', $time_stamp ) . ' </span>';
 
-				if(!empty($item->event_date) ){
-					$time_stamp = $item->event_time_stamp;
-					$html.='<p class="card_date">';
-
-					if($custom_style == 'flat_style'){
-					 	$html.='<span class="ym"> ' . wp_date( 'y.m', $time_stamp ).' </span>
-						<span class="day"> ' . wp_date( 'd', $time_stamp ).' </span>
-						<span class="week"> ' . wp_date( 'l', $time_stamp ) . ' </span>';
-
+				} else{
+					//$html.=wp_date('m月d日', $time_stamp).' <span clas="week">'.wp_date('l', $time_stamp).'</span>';
+					$date = wp_date($item->date_format, $time_stamp);
+					$skk =  explode(" ", $date);
+					if(count($skk) == 2){
+						$html.=$skk[0].=' <span class="week">'.$skk[1].'</span>';
 					} else{
-						//$html.=wp_date('m月d日', $time_stamp).' <span clas="week">'.wp_date('l', $time_stamp).'</span>';
-						$date = wp_date($item->date_format, $time_stamp);
-						$skk =  explode(" ", $date);
-						if(count($skk) == 2){
-							$html.=$skk[0].=' <span class="week">'.$skk[1].'</span>';
-						} else{
-						 $html.=$date;
-						}
+					 $html.=$date;
 					}
 				}
 
-			} else {
-				$html.=$item->post_date().' <span>'.$item->post_date('l').'</span>';
 			}
+			// $html.=$item->post_date().' <span>'.$item->post_date('l').'</span>';
 			$html.='</p>';
+
 		}
 		if($show_time){
 			if($item->custom_style == 'recommend_style' || $item->custom_style == 'flat_style'){

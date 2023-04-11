@@ -279,6 +279,13 @@
   background: #FAF7F2;
   padding: 76px 0;
 }
+@media print, screen and (max-width: 1000px) {
+  .page-id-2140 .l-wrapper .l-petit-main01,
+.page-id-2140 .l-wrapper .l-petit-main03 {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
 @media print, screen and (max-width: 740px) {
   .page-id-2140 .l-wrapper .l-petit-main01,
 .page-id-2140 .l-wrapper .l-petit-main03 {
@@ -292,6 +299,12 @@
 
 .page-id-2140 .l-wrapper .l-petit-main03 .l-petit-main03__title span.arkb-format-1 {
   color: #A0821D;
+}
+
+.page-id-2140 .l-wrapper .l-petit-main03 .ark-block-columns__inner {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 @media print, screen and (min-width: 741px) {

@@ -9,3 +9,9 @@ qms3_form_brick/custom-form.js
 qms3_form_brick/init.php  		 		add custom.js
 
 qms3_form_brick/lib/ValuesInit.php 		// get fairName if _GET['id']
+
+File changed:
+
+qms3_form_brick/custom-form.js
+qms3_form_brick/init.php
+fabric/template-parts/fair/before_footer.php

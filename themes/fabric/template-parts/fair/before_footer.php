@@ -14,7 +14,7 @@ $postID = $item->ID;
 //   $param['area'] = $item->area->slug;
 //   $list = qms4_list( 'fair', $param );
 
-$ymd = isset($_GET['ymd'])  ? $_GET['ymd'] : '';
+$ymd        = isset($_GET['ymd'])  ? $_GET['ymd'] : '';
 $url_date   = is_valid_date($ymd) ? '?ymd='.$ymd: '';
 $form_date  = is_valid_date($ymd) ? '&ymd='.$ymd: '';
 

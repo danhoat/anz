@@ -15,10 +15,10 @@ $postID = $item->ID;
 //   $list = qms4_list( 'fair', $param );
 
 $ymd = isset($_GET['ymd'])  ? $_GET['ymd'] : '';
-$url_date = is_valid_date($ymd) ? '?ymd='.$ymd: '';
+$url_date   = is_valid_date($ymd) ? '?ymd='.$ymd: '';
+$form_date  = is_valid_date($ymd) ? '&ymd='.$ymd: '';
 
 if( !is_valid_date($ymd) ){
-
   $ymd = qms4_get_event_date($item->ID);
 }
 
@@ -149,7 +149,7 @@ if( !is_valid_date($ymd) ){
 
 
 <section class="contact_btn pc">
-  <a href="../../reserve_c/?id=<?= $postID ?>">
+  <a href="../../reserve_c/?id=<?= $postID ?><?= $form_date ?>">
     <span class="tit en">1分で完了！</span>このフェアを<br>予約
   </a>
 </section>
@@ -157,7 +157,7 @@ if( !is_valid_date($ymd) ){
 	<ul>
     <li class="contact">
       <span class="icon_f">1分で<br>完了！</span>
-      <a href="../../reserve_c/?id=<?= $item->id ?>">
+      <a href="../../reserve_c/?id=<?= $item->id ?><?= $form_date ?>">
         フェア予約はこちら
       </a>
     </li>

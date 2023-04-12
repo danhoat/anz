@@ -108,7 +108,7 @@ function add_cs_script(){
         wp_enqueue_script(
             'cs-brick-js',  plugin_dir_url( __FILE__ ).'/custom-form.js',
             array( 'jquery','wp-api-fetch', 'wp-blocks', 'wp-components', 'wp-core-data', 'wp-data', 'wp-element' ),
-            '1.1', true
+            rand(), true
         );
     }
 }

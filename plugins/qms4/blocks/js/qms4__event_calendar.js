@@ -289,8 +289,8 @@ jQuery( function ( $ ) {
 
 		$new_prev.on( 'click.prevMonth', async function ( event ) {
 
-			if(countNext >=1 ){
-
+			if(countNext < 1 ){
+				return 0;
 			}
 
 			event.preventDefault();

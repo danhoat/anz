@@ -82,7 +82,7 @@ class DisplayColumnEventDate
 
 			if( $i == $total -1 && $total > 10 ){
 				$number_hidden = $total - 11;
-				$lis[] = '<li  class="btn_show_full_schedules"> ('.$number_hidden.'  件省略 ... )</li>';
+				$lis[] = '<li  class="btn_qms4_show_full_schedules"> ('.$number_hidden.'  件省略 ... )</li>';
 
 			}
 

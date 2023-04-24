@@ -186,7 +186,7 @@ function add_event_to_schedule_title($title)
 add_filter('the_title','add_event_to_schedule_title');
 
 
-function admin_inline_js(){ ?>
+function qms4_admin_inline_js(){ ?>
 	<script type="text/javascript">
 
 		(function($){
@@ -202,4 +202,4 @@ function admin_inline_js(){ ?>
 	</script>
    <?php
 }
-add_action( 'admin_print_scripts', 'admin_inline_js',999 );
+add_action( 'admin_print_scripts', 'qms4_admin_inline_js',999 );

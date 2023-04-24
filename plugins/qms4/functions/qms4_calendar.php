@@ -165,3 +165,22 @@ function is_valid_date($date, $format = 'Y-m-d')
     // The Y ( 4 digits year ) returns TRUE for any integer with any number of digits so changing the comparison from == to === fixes the issue.
     return $d && $d->format($format) === $date;
 }
+
+/**
+ * show event relate title in the list fair_schedule for amdin check.
+ **/
+function add_event_to_schedule_title($title)
+{
+	global $post;
+	if( $post->post_type == 'fair__schedule' && is_admin() ){
+
+		$event_id = get_post_meta($post->ID,'qms4__parent_event_id', true);
+		$event = get_post($event_id);
+		if($event){
+			$title = $title.=' |'.$event->post_title;
+		}
+	}
+	return $title;
+
+}
+add_filter('the_title','add_event_to_schedule_title');

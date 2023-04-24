@@ -177,7 +177,7 @@ function add_event_to_schedule_title($title)
 		$event_id = get_post_meta($post->ID,'qms4__parent_event_id', true);
 		$event = get_post($event_id);
 		if($event){
-			$title = $title.=' |'.$event->post_title;
+			$title.=$event->post_title;
 		}
 	}
 	return $title;

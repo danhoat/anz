@@ -934,7 +934,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 					if ( in_array( $column_name, $hidden, true ) ) {
 						$classes .= ' hidden';
 					}
-					echo "<$el class=\"$classes\" data-colname=\"$column_label\">";
+					echo "<$el class=\"$classes\" data-colname=\"$column_label\" 99999>";
 					switch ( $column_name ) {
 
 						// Checkbox.

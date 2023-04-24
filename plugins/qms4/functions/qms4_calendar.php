@@ -184,3 +184,22 @@ function add_event_to_schedule_title($title)
 
 }
 add_filter('the_title','add_event_to_schedule_title');
+
+
+function admin_inline_js(){ ?>
+	<script type="text/javascript">
+
+		(function($){
+			$(document).ready(function(){
+
+				$(".btn_qms4_show_full_schedules").click(function(event) {
+					console.log('click btn_qms4_show_full_schedules');
+					$(this).closest('ul').find('li').show();
+					$(this).hide();
+				});
+			})
+		})(jQuery)
+	</script>
+   <?php
+}
+add_action( 'admin_print_scripts', 'admin_inline_js',999 );

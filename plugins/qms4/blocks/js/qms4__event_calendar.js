@@ -225,7 +225,7 @@ jQuery( function ( $ ) {
 		const $new_prev = $unit.find(
 			'.js__qms4__block__event-calendar__button-prev-new'
 		);
-
+		$new_prev.addClass('disabled');
 
 
 		const endpoint = $unit.data( 'endpoint' );

@@ -30,3 +30,7 @@ qms4/lib/Action/PostTyeps/SetValidEventFilter.php
 
 Fix post-list blog:
 qms4/lib/PostTypeMeta/PostTypeMeta.php
+
+Fair BE
+qms4/lib/Action/Columns/DisplayColumnEventDate.php
+qms3_form_brick\custom-form.js

@@ -242,8 +242,8 @@ jQuery( function ( $ ) {
 			return date;
 		}
 
-		var countNext = 0;
-		var countPrev= 0;
+		var actiNext = 1;
+		var actPrev= 0;
 
 
 		// カレントの日付を生成
@@ -289,14 +289,15 @@ jQuery( function ( $ ) {
 
 		$new_prev.on( 'click.prevMonth', async function ( event ) {
 
-			if(countNext < 1 ){
+			if( ! actiPrev){
 				return 0;
 			}
+			actiPrev = 0;
+			actiNext = 1;
 
 			event.preventDefault();
 			left 	= valiate_pre_month(left);
 			right = valiate_pre_month(right);
-			countNext--;
 			month = left-1;
 			current.setMonth(month);
 
@@ -334,11 +335,12 @@ jQuery( function ( $ ) {
 		$new_style_next.on( 'click.nextMonth', async function ( event ) {
 			param.set('event', 'next');
 
-			if( countNext >= 1 ){
+			if( !actiNext ){
 				$new_style_next.toggleClass('disabled');
 				return 0;
 			}
-			countNext++;
+			actiNext  = 0;
+			actiPrev = 1;
 			event.preventDefault();
 
 			left 	= valiate_next_month(left);

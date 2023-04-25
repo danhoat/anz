@@ -73,7 +73,7 @@ class DisplayColumnEventDate
 		$total = count($dates);
 		foreach ( $dates as $schedule_id => $date ) {
 			$class_css = '';
-			if($i > 10 && $i < $total) $class_css = 'style= "display:none" ';
+			if($i > 5 && $i < $total && $total > 10) $class_css = 'style= "display:none" ';
 
 			$date = EventDate::get_post_meta( $schedule_id );
 			$lis[] = '<li  item-'.$i.' '.$class_css.'><a href="' . admin_url( "/post.php?post={$schedule_id}&action=edit" ) . '">'
@@ -81,7 +81,7 @@ class DisplayColumnEventDate
 				. '</a></li>';
 
 			if( $i == $total -1 && $total > 10 ){
-				$number_hidden = $total - 11;
+				$number_hidden = $total - 6;
 				$lis[] = '<li  class="btn_qms4_show_full_schedules"> ('.$number_hidden.'  件省略 ... )</li>';
 
 			}

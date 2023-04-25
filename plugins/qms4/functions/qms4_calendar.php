@@ -183,7 +183,7 @@ function add_event_to_schedule_title($title)
 	return $title;
 
 }
-add_filter('the_title','add_event_to_schedule_title');
+// add_filter('the_title','add_event_to_schedule_title');
 
 
 function qms4_admin_inline_js(){ ?>

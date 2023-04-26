@@ -272,7 +272,7 @@ jQuery( function ( $ ) {
 			param.set('style','1month');
 
 			event.preventDefault();
-			console.log('countNext:', countNext);
+
 			if(countNext == 1){
 				$prev.addClass('disabled');
 

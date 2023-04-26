@@ -2,3 +2,6 @@ File  php render html: qms4\lib\Block\Renderer\PostListItemRenderer.php
 File: qms4\blocks\templates\post-list.php
 
 qms4/lib/Action/Columns/DisplayColumnEventDate.php ==> show shorter if many schedulé date in the lis fair dashboard
+
+
+qms4\blocks\templates\event-calendar__show_left_month.php

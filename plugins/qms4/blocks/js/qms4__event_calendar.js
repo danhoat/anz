@@ -329,7 +329,7 @@ jQuery( function ( $ ) {
 
 			$calendar_body.html( calendar_content( calendar_lmonth, archive_link)  );
 			$calendar_body_next.html( calendar_content( calendar_rmonth, archive_link)  );
-			
+
 			$next_month.text( next1month.getMonth() + 1 );
 			$next_month_name.text( month_names[ next1month.getMonth() ] );
 			$next_year.text( next1month.getFullYear() );

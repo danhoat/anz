@@ -131,8 +131,8 @@ jQuery( function ( $ ) {
 		'December',
 	];
 	const dows = [ '日', '月', '火', '水', '木', '金', '土' ];
-	var left = new Date().getMonth() +1  ; // 0 -> 11
-	var right = left +1;
+	var leftMonth = new Date().getMonth() + 1  ; // 0 -> 11
+	var rightMonth = leftMonth +1;
 	function valiate_pre_month(month){
 		if( month > 2){
 			month = month - 2;
@@ -289,15 +289,15 @@ jQuery( function ( $ ) {
 
 		$new_prev.on( 'click.prevMonth', async function ( event ) {
 
-			if( ! actiPrev){
-				return 0;
-			}
+			// if( ! actiPrev){
+			// 	return 0;
+			// }
 			actiPrev = 0;
 			actiNext = 1;
 
 			event.preventDefault();
-			left 	= valiate_pre_month(left);
-			right = valiate_pre_month(right);
+			leftMonth 	= valiate_pre_month(leftMonth);
+			rightMonth = valiate_pre_month(rightMonth);
 			month = left-1;
 			current.setMonth(month);
 
@@ -335,23 +335,17 @@ jQuery( function ( $ ) {
 		$new_style_next.on( 'click.nextMonth', async function ( event ) {
 			param.set('event', 'next');
 
-			if( !actiNext ){
-				$new_style_next.toggleClass('disabled');
-				return 0;
-			}
+			// if( !actiNext ){
+			// 	$new_style_next.toggleClass('disabled');
+			// 	return 0;
+			// }
 			actiNext  = 0;
 			actiPrev = 1;
 			event.preventDefault();
 
-			left 	= valiate_next_month(left);
-			right 	= valiate_next_month(right);
-			current.setMonth( left -1 );
-
-			if(right <= 2){
-				current.setFullYear(current.getFullYear() + 1);
-
-			}
-			$next_year.text( current.getFullYear() );
+			leftMonth 	= valiate_next_month(leftMonth);
+			rightMonth 	= valiate_next_month(rightMonth);
+			current.setMonth( leftMonth -1 );
 
 			calendar_month = await fetch_calendar_month(
 				endpoint,
@@ -359,17 +353,23 @@ jQuery( function ( $ ) {
 				current
 			);
 
+
+			$next_year.text( current.getFullYear() );
 			$year.text( current.getFullYear() );
-			if(left == 12 ) $year.text( current.getFullYear() -1 );
 
+			if(rightMonth == 1 || rightMonth == 2){
+				let $next_number = current.getFullYear() + 1;
+				current.setFullYear($next_number);
+				$next_year.text( $next_number );
+			}
 
-			$month.text( left );
+			$month.text( leftMonth );
 
 			$month_name.text( month_names[ current.getMonth() ] );
 			$calendar_body.html( calendar_content( calendar_month[0].data, archive_link) );
-			$year.text( current.getFullYear() );
-			$next_month.text( right  );
-			$next_year.text( current.getFullYear() );
+
+			$next_month.text( rightMonth  );
+
 			$month_name.text( month_names[ current.getMonth() ] );
 			$calendar_body_next.html( calendar_content( calendar_month[1].data,archive_link ) );
 

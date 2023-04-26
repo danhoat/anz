@@ -297,13 +297,11 @@ jQuery( function ( $ ) {
 
 			event.preventDefault();
 			leftMonth 	= valiate_pre_month(leftMonth);
-			rightMonth = valiate_pre_month(rightMonth);
+			rightMonth  = valiate_pre_month(rightMonth);
 
 			current.setMonth(leftMonth - 1);
 
-			if(leftMonth == 11){
-				current.setFullYear(current.getFullYear() - 1);
-			}
+
 
 			var	calendar_month = await fetch_calendar_month(
 				endpoint,
@@ -311,7 +309,7 @@ jQuery( function ( $ ) {
 				current
 			);
 
-			$year.text( current.getFullYear() );
+
 			$month.text( leftMonth );
 			$month_name.text( month_names[ current.getMonth() ] );
 
@@ -323,6 +321,14 @@ jQuery( function ( $ ) {
 
 			$calendar_body.html( calendar_content( calendar_month[0].data , archive_link));
 			$calendar_body_next.html( calendar_content( calendar_month[1].data ,archive_link) );
+			$year.text( current.getFullYear() );
+
+			if(rightMonth == 1 || rightMonth == 2){
+				var prev_year = current.getFullYear() -1;
+				current.setFullYear(prev_year);
+				$year.text( prev_year );
+			}
+
 		} );
 
 

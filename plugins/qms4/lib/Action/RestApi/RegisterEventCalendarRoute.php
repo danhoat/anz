@@ -148,7 +148,7 @@ class RegisterEventCalendarRoute
 		$border_date_right = $factory_n->fist_date_of_right_month($ymd );
 
 		if( $event == 'prev'){
-			$border_date_left = $factory_n->prev_border_date_left();
+			$border_date_right = $factory_n->prev_border_date_right();
 		}
 
 		$calendar_term = CalendarTerm::from_base_date( $start_of_week, $border_date_right->date() );

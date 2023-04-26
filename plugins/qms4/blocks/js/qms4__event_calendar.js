@@ -11,7 +11,7 @@ jQuery( function ( $ ) {
 		var url= endpoint;
 		url = url.replace( '%year%', current.getFullYear() )
 				.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`;
-	    console.log('url: ', url);
+	    // console.log('url: ', url);
 		return fetch(
 			endpoint
 				.replace( '%year%', current.getFullYear() )
@@ -323,7 +323,7 @@ jQuery( function ( $ ) {
 					current
 				);
 			}
-
+			console.log("calendar_prev_screen: ", calendar_prev_screen);
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );

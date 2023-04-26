@@ -250,6 +250,11 @@ jQuery( function ( $ ) {
 
 		var actiNext = 1;
 		var actPrev= 0;
+		var calendar_currentmonth  = [];
+		var calendar_nexttmonth  = [];
+		var calendar_thirdmonth  = [];
+		var calendar_fourdmonth  = [];
+
 
 
 		// カレントの日付を生成
@@ -330,25 +335,28 @@ jQuery( function ( $ ) {
 			event.preventDefault();
 			param.set('style','1month');
 
+			if( calendar_currentmonth.length === 0 ){
+				calendar_currentmonth = await fetch_calendar_month(
+					endpoint,
+					param,
+					current
+				);
+			}
 
-			calendar_lmonth = await fetch_calendar_month(
-				endpoint,
-				param,
-				current
-			);
-
-			calendar_rmonth = await fetch_calendar_month(
-				endpoint,
-				param,
-				next1month
-			);
+			if( calendar_nexttmonth.length === 0){
+				calendar_nexttmonth = await fetch_calendar_month(
+					endpoint,
+					param,
+					next1month
+				);
+			}
 
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
 
-			$calendar_body.html( calendar_content( calendar_lmonth, archive_link)  );
-			$calendar_body_next.html( calendar_content( calendar_rmonth, archive_link)  );
+			$calendar_body.html( calendar_content( calendar_currentmonth, archive_link)  );
+			$calendar_body_next.html( calendar_content( calendar_nexttmonth, archive_link)  );
 
 			$next_month.text( next1month.getMonth() + 1 );
 			$next_month_name.text( month_names[ next1month.getMonth() ] );
@@ -374,20 +382,25 @@ jQuery( function ( $ ) {
 
 			param.set('style','1month');
 
+			if(calendar_thirdmonth.length === 0 ){
 
-			calendar_lmonth = await fetch_calendar_month(
-				endpoint,
-				param,
-				next2month
-			);
-			calendar_nmonth = await fetch_calendar_month(
-				endpoint,
-				param,
-				next3month
-			);
+				calendar_thirdmonth = await fetch_calendar_month(
+					endpoint,
+					param,
+					next2month
+				);
+			}
+			if( calendar_fourdmonth.length === 0 ){
+				console.log('empty: calendar_thirdmonth');
+				calendar_fourdmonth = await fetch_calendar_month(
+					endpoint,
+					param,
+					next3month
+				);
+			}
 
-			$calendar_body.html( calendar_content( calendar_lmonth, archive_link)  );
-			$calendar_body_next.html( calendar_content( calendar_nmonth, archive_link)  );
+			$calendar_body.html( calendar_content( calendar_thirdmonth, archive_link)  );
+			$calendar_body_next.html( calendar_content( calendar_fourdmonth, archive_link)  );
 			$year.text( next2month.getFullYear() );
 			$month.text( next2month.getMonth() + 1 );
 			$month_name.text( month_names[ next2month.getMonth() ] );

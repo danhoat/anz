@@ -39,3 +39,4 @@ qms3_form_brick\custom-form.js
 qms4\blocks\templates\event-calendar__show_left_month.php
 qms4\lib\PostTypeMeta\DefaultPostTypeMeta.php
 qms4\blocks\js\qms4__event_calendar.js
+qms4\lib\Event\BorderDateFactory.php

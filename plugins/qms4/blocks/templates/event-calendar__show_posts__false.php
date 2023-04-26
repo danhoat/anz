@@ -85,7 +85,7 @@ $next_2month =  $date->format("Y-m-d");
     <!-- /.qms4__block__event-calendar__calendar -->
 
     <div class="qms4__block__event-calendar__month-footer">
-      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev">
+      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev disabled">
         前の月
       </button>
 

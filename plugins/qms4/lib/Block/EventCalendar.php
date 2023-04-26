@@ -98,7 +98,7 @@ class EventCalendar
 
 		} else {
 
-				require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );
+			require( QMS4_DIR . '/blocks/templates/event-calendar__show_posts__false.php' );
 	}
 
 		return ob_get_clean();

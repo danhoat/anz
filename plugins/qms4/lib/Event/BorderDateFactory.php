@@ -39,18 +39,29 @@ class BorderDateFactory
 	function fist_date_of_left_month($ymd){
 
 		$date = new \DateTimeImmutable($ymd);
-		//$new_date = $date->modify('+ 2 months');
+		$new_date = $date->modify('+2 months');
 
-		return new BorderDate( $date );
+		return new BorderDate( $new_date );
 
 	}
 	function fist_date_of_right_month($ymd){
 
-		$date = new \DateTimeImmutable($ymd);
-		$new_date = $date->modify('+1 month');
+		$cdate = new \DateTimeImmutable($ymd);
+		$new_date = $cdate->modify('+3 months');
 
 		return new BorderDate( $new_date );
 
+	}
+
+
+	function prev_border_date_right(){
+		$next_month = new \DateTimeImmutable( 'first day of next month', wp_timezone() );
+
+		return new BorderDate( $next_month );
+	}
+	function prev_border_date_left(){
+		$today = new \DateTimeImmutable( 'now', wp_timezone() );
+		return new BorderDate( $today );
 	}
 
 	/**

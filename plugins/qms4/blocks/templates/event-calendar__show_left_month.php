@@ -35,7 +35,7 @@ $next1month = $next1month->format('Y-m-d');
 <div class="qms4__block__event-calendar__container   qms4__block__event-calendar_left">
 
     <div class="qms4__block__event-calendar__month-header">
-      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev">
+      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev disabled ">
         前の月
       </button>
 
@@ -105,7 +105,7 @@ $next1month = $next1month->format('Y-m-d');
     <!-- /.qms4__block__event-calendar__calendar -->
 
     <div class="qms4__block__event-calendar__month-footer">
-      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev-new">
+      <button class="qms4__block__event-calendar__button-prev js__qms4__block__event-calendar__button-prev-new disabled">
         前の月
       </button>
 

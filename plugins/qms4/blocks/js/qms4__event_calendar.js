@@ -263,11 +263,13 @@ jQuery( function ( $ ) {
 			param.set('style','1month');
 
 			event.preventDefault();
-
-			if(countNext < 1){
+			console.log('countNext:', countNext);
+			if(countNext == 1){
 				$prev.addClass('disabled');
-				return 0;
+
 			}
+			if(countNext < 1 ) return 0;
+			$next.removeClass('disabled');
 			countNext--;
 			current.setMonth( current.getMonth() - 1 );
 
@@ -287,11 +289,15 @@ jQuery( function ( $ ) {
 		$next.on( 'click.nextMonth', async function ( event ) {
 
 			param.set('style','1month');
-			if(countNext > 2){
+			if(countNext == 2){
 				$next.addClass('disabled');
+
+			}
+			if(countNext > 2 ){
 				return false;
 			}
-
+			$prev.removeClass('disabled');
+			console.log('countNext:', countNext);
 			countNext++;
 
 			event.preventDefault();

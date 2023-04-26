@@ -1,4 +1,7 @@
-<?php $archive_link = wp_is_mobile() ? $archive_link: ''; ?>
+<?php $archive_link = wp_is_mobile() ? $archive_link: '';
+$date = new DateTime("+2 months");
+$next_2month =  $date->format("Y-m-d");
+ ?>
 <div
   class="qms4__block__event-calendar js__qms4__block__event-calendar js_calendar_right_list_event"
   data-show-posts="false"
@@ -11,6 +14,7 @@
   data-query-string="<?= $query_string ?>"
   data-endpoint="<?= home_url( "/wp-json/qms4/v1/event/calendar/{$post_type}/%year%/%month%/" ) ?>"
   data-current="<?= $base_date->format( 'Y-m-d' ) ?>"
+  data-next-2month="<?= $next_2month  ?>"
 >
   <div class="qms4__block__event-calendar__container">
     <div class="qms4__block__event-calendar__month-header">

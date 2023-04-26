@@ -1,3 +1,18 @@
+<?php
+$date  =  new DateTime();
+$next_month = $date->modify('first day of +2 months');
+
+$time_left =  $next_month->format('Y-m-d');
+unset($date);
+$temp = new DateTime();
+
+$next_2month = $temp->modify('first day of +3 months');
+$time_right =  $next_2month->format('Y-m-d');
+$next1month = new DateTime('first day of next month');
+$next1month = $next1month->format('Y-m-d');
+
+
+?>
 <div
   class="qms4__block__event-calendar js__qms4__block__event-calendar qms4__block__event-calendar__custom js_calendar_no_posts"
   data-show-posts="false"
@@ -9,7 +24,13 @@
   data-taxonomies="<?= join( ',', $taxonomies ) ?>"
   data-query-string="<?= $query_string ?>"
   data-endpoint="<?= home_url( "/wp-json/qms4/v1/event/calendar/{$post_type}/%year%/%month%/" ) ?>"
-  data-current="<?= $base_date->format( 'Y-m-d' ) ?>">
+  data-current="<?= $base_date->format( 'Y-m-d' ) ?>"
+  data-next-1month="<?= $next1month  ?>"
+  data-next-2month="<?= $time_left  ?>"
+  data-next-3month="<?= $time_right  ?>"
+
+
+  >
 
 <div class="qms4__block__event-calendar__container   qms4__block__event-calendar_left">
 

@@ -9,7 +9,7 @@
       <div class="qms4__block__event-calendar__month-title">
         <div class="qms4__block__event-calendar__month-title__year js__qms4__block__event-calendar__month-title__next-year"><?= $base_date->format( 'Y' ) ?></div>
         <div class="qms4__block__event-calendar__month-title__month js-next-month-title h"><?= $base_date->format( 'n' ) ?></div>
-        <div class="qms4__block__event-calendar__month-title__month-name js__qms4__block__event-calendar__month-title__month-name"><?= $base_date->format( 'F' ) ?></div>
+        <div class="qms4__block__event-calendar__month-title__month-name js__qms4__block_right_month_name"><?= $base_date->format( 'F' ) ?></div>
       </div>
       <!-- /.qms4__block__event-calendar__month-title -->
   <!--

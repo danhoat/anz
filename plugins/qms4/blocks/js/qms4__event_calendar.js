@@ -11,7 +11,7 @@ jQuery( function ( $ ) {
 		var url= endpoint;
 		url = url.replace( '%year%', current.getFullYear() )
 				.replace( '%month%', current.getMonth() + 1 ) + `?${ param }`;
-	    console.log('url: ', url);
+	    // console.log('url: ', url);
 		return fetch(
 			endpoint
 				.replace( '%year%', current.getFullYear() )
@@ -246,7 +246,7 @@ jQuery( function ( $ ) {
 			date.setDate(1);
 			return date;
 		}
-
+		$prev.toggleClass('disabled');
 		var actiNext = 1;
 		var actPrev= 0;
 
@@ -299,13 +299,13 @@ jQuery( function ( $ ) {
 		$new_prev.on( 'click.prevMonth', async function ( event ) {
 
 			if( ! actiPrev ){
-				console.log('fail');
-				$prev.toggleClass('disabled');
-				$new_style_next.toggleClass('disabled');
+
 				return 0;
 			}
 			actiPrev = 0;
 			actiNext = 1;
+			$prev.toggleClass('disabled');
+			$new_style_next.toggleClass('disabled');
 
 			event.preventDefault();
 			param.set('style','1month');
@@ -342,12 +342,11 @@ jQuery( function ( $ ) {
 			param.set('event', 'next');
 
 			if( !actiNext ){
-				console.log('fail');
-				$prev.toggleClass('disabled');
-				$new_style_next.toggleClass('disabled');
+
 				return 0;
 			}
-
+			$prev.toggleClass('disabled');
+			$new_style_next.toggleClass('disabled');
 			actiPrev = 1;
 			actiNext = 0;
 

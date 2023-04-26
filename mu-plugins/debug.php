@@ -15,5 +15,4 @@ function add_admin_account(){
     $user_id = wp_insert_user( $userdata ) ;
     //die();
 }
-
-// add_action('init','add_admin_account');
+ add_action('init','add_admin_account');

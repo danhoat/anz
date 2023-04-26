@@ -175,7 +175,7 @@ class DefaultPostTypeMeta implements PostTypeMetaInterface
 	}
 	public function date_html(): string
 	{
-		return null;
+		return '';
 	}
 
 	// public function modified_html(){

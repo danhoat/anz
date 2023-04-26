@@ -366,8 +366,6 @@ jQuery( function ( $ ) {
 				next3month
 			);
 
-
-
 			$calendar_body.html( calendar_content( calendar_lmonth, archive_link)  );
 			$calendar_body_next.html( calendar_content( calendar_nmonth, archive_link)  );
 			$year.text( next2month.getFullYear() );

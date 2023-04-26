@@ -232,7 +232,7 @@ jQuery( function ( $ ) {
 			'.js__qms4__block__event-calendar__button-prev-new'
 		);
 		$new_prev.addClass('disabled');
-
+		$prev.addClass('disabled');
 
 		const endpoint = $unit.data( 'endpoint' );
 
@@ -298,16 +298,18 @@ jQuery( function ( $ ) {
 		$next.on( 'click.nextMonth', async function ( event ) {
 
 			param.set('style','1month');
+
+			if( countNext > 2 ){
+				return 0;
+			}
+
 			if(countNext == 2){
 				$next.addClass('disabled');
-
 			}
-			if(countNext > 2 ){
-				return false;
-			}
-			$prev.removeClass('disabled');
-			console.log('countNext:', countNext);
 			countNext++;
+
+
+			$prev.removeClass('disabled');
 
 			event.preventDefault();
 			current.setMonth( current.getMonth() + 1 );

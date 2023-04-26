@@ -252,7 +252,8 @@ jQuery( function ( $ ) {
 
 
 		// カレントの日付を生成
-		const current 			= getFirstDay( $unit.data( 'current' ) );
+		const current 		= getFirstDay( $unit.data( 'current' ) );
+		const currentMonth  = current.getMonth();
 		const next1month 	= getFirstDay( $unit.data('next-1month'));
 		const next2month 	= getFirstDay( $unit.data( 'next-2month' ) );
 		const next3month 	= getFirstDay( $unit.data( 'next-3month' ) );
@@ -297,47 +298,38 @@ jQuery( function ( $ ) {
 
 		$new_prev.on( 'click.prevMonth', async function ( event ) {
 
-			// if( ! actiPrev){
-			// 	return 0;
-			// }
+			if( ! actiPrev ){
+				console.log('fail');
+				$prev.toggleClass('disabled');
+				$new_style_next.toggleClass('disabled');
+				return 0;
+			}
 			actiPrev = 0;
 			actiNext = 1;
 
 			event.preventDefault();
-
 			param.set('style','1month');
 
-			event.preventDefault();
 
-			console.log('next1month: ', next1month);
-
-			calendar_month = await fetch_calendar_month(
+			calendar_lmonth = await fetch_calendar_month(
 				endpoint,
 				param,
 				current
+			);
+
+			calendar_rmonth = await fetch_calendar_month(
+				endpoint,
+				param,
+				next1month
 			);
 
 			$year.text( current.getFullYear() );
 			$month.text( current.getMonth() + 1 );
 			$month_name.text( month_names[ current.getMonth() ] );
 
-			$calendar_body.html( calendar_content( calendar_month, archive_link)  );
-
-
-
-
-			param.set('style','1month');
-
-			event.preventDefault();
-
-
-			calendar_month = await fetch_calendar_month(
-				endpoint,
-				param,
-				next1month
-			);
-
-			$calendar_body_next.html( calendar_content( calendar_month, archive_link)  );
+			$calendar_body.html( calendar_content( calendar_lmonth, archive_link)  );
+			$calendar_body_next.html( calendar_content( calendar_rmonth, archive_link)  );
+			
 			$next_month.text( next1month.getMonth() + 1 );
 			$next_month_name.text( month_names[ next1month.getMonth() ] );
 			$next_year.text( next1month.getFullYear() );
@@ -349,49 +341,41 @@ jQuery( function ( $ ) {
 		$new_style_next.on( 'click.nextMonth', async function ( event ) {
 			param.set('event', 'next');
 
-			// if( !actiNext ){
-			// 	$new_style_next.toggleClass('disabled');
-			// 	return 0;
-			// }
+			if( !actiNext ){
+				console.log('fail');
+				$prev.toggleClass('disabled');
+				$new_style_next.toggleClass('disabled');
+				return 0;
+			}
 
-			actiPrev = 0;
-			actiNext = 1;
+			actiPrev = 1;
+			actiNext = 0;
 
 			event.preventDefault();
 
 			param.set('style','1month');
 
-			event.preventDefault();
 
-			console.log('next2month: ', next2month);
-			console.log('next3month: ', next3month);
-			calendar_month = await fetch_calendar_month(
+			calendar_lmonth = await fetch_calendar_month(
 				endpoint,
 				param,
 				next2month
 			);
-
-			$year.text( next2month.getFullYear() );
-			$month.text( next2month.getMonth() + 1 );
-			$month_name.text( month_names[ next2month.getMonth() ] );
-
-			$calendar_body.html( calendar_content( calendar_month, archive_link)  );
-
-
-
-
-			param.set('style','1month');
-
-			event.preventDefault();
-
-
-			calendar_month = await fetch_calendar_month(
+			calendar_nmonth = await fetch_calendar_month(
 				endpoint,
 				param,
 				next3month
 			);
 
-			$calendar_body_next.html( calendar_content( calendar_month, archive_link)  );
+
+
+			$calendar_body.html( calendar_content( calendar_lmonth, archive_link)  );
+			$calendar_body_next.html( calendar_content( calendar_nmonth, archive_link)  );
+			$year.text( next2month.getFullYear() );
+			$month.text( next2month.getMonth() + 1 );
+			$month_name.text( month_names[ next2month.getMonth() ] );
+
+
 			$next_month.text( next3month.getMonth() + 1 );
 			$next_month_name.text( month_names[ next3month.getMonth() ] );
 			$next_year.text( next3month.getFullYear() );

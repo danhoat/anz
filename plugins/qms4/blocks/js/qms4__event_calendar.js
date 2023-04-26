@@ -133,6 +133,7 @@ jQuery( function ( $ ) {
 	const dows = [ '日', '月', '火', '水', '木', '金', '土' ];
 	var leftMonth = new Date().getMonth() + 1  ; // 0 -> 11
 	var rightMonth = leftMonth +1;
+	var countNext = 0;
 	function valiate_pre_month(month){
 		if( month > 2){
 			month = month - 2;
@@ -262,6 +263,12 @@ jQuery( function ( $ ) {
 			param.set('style','1month');
 
 			event.preventDefault();
+			console.log('countNext: ',countNext);
+			if(countNext < 1){
+				$prev.addClass('disabled');
+				return 0;
+			}
+			countNext--;
 			current.setMonth( current.getMonth() - 1 );
 
 			calendar_month = await fetch_calendar_month(
@@ -280,6 +287,13 @@ jQuery( function ( $ ) {
 		$next.on( 'click.nextMonth', async function ( event ) {
 
 			param.set('style','1month');
+			if(countNext > 2){
+				$next.addClass('disabled');
+				return false;
+			}
+			console.log('countNext: ',countNext );
+			countNext++;
+
 			event.preventDefault();
 			current.setMonth( current.getMonth() + 1 );
 

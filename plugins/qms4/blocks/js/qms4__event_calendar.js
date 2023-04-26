@@ -264,6 +264,10 @@ jQuery( function ( $ ) {
 		const next2month 	= getFirstDay( $unit.data( 'next-2month' ) );
 		const next3month 	= getFirstDay( $unit.data( 'next-3month' ) );
 
+
+
+
+
 		$prev.on( 'click.prevMonth', async function ( event ) {
 			param.set('style','1month');
 

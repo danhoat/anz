@@ -37,6 +37,9 @@ qms4/lib/Action/Columns/DisplayColumnEventDate.php
 qms3_form_brick\init.php
 qms3_form_brick\custom-form.js
 qms4\blocks\templates\event-calendar__show_left_month.php
+qms4/blocks/templates/event-calendar__show_posts__false.php
+qms4/lib/Block/EventCalendar.php
 qms4\lib\PostTypeMeta\DefaultPostTypeMeta.php
 qms4\blocks\js\qms4__event_calendar.js
 qms4\lib\Event\BorderDateFactory.php
+qms4\lib\Action\RestApi\RegisterEventCalendarRoute.php

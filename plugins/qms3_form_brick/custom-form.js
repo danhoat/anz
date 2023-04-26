@@ -20,9 +20,6 @@ window.wp.apiFetch( { path: 'wp/v2/fair/'+id+'?enable_schedule_only=1' } ).then(
 		window.json = result;
 		var qms4__schedules = result.qms4__schedules;
 		var html = selected = '';
-
-		console.log('qms4__schedules: ', qms4__schedules);
-
 		qms4__schedules.sort( ((t, e) => t.date < e.date ? -1 : 1) );
 
 		qms4__schedules.forEach(function(item, index){

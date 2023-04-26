@@ -246,7 +246,7 @@ jQuery( function ( $ ) {
 			date.setDate(1);
 			return date;
 		}
-		$prev.toggleClass('disabled');
+
 		var actiNext = 1;
 		var actPrev= 0;
 
@@ -304,7 +304,7 @@ jQuery( function ( $ ) {
 			}
 			actiPrev = 0;
 			actiNext = 1;
-			$prev.toggleClass('disabled');
+			$new_prev.toggleClass('disabled');
 			$new_style_next.toggleClass('disabled');
 
 			event.preventDefault();
@@ -345,7 +345,7 @@ jQuery( function ( $ ) {
 
 				return 0;
 			}
-			$prev.toggleClass('disabled');
+			$new_prev.toggleClass('disabled');
 			$new_style_next.toggleClass('disabled');
 			actiPrev = 1;
 			actiNext = 0;

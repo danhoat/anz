@@ -1,7 +1,7 @@
 <?php if ( !is_single() ) { ?>
 <div class="wp-block-buttons is-content-justification-center is-layout-flex wp-container-28">
-  <div class="wp-block-button has-custom-width wp-block-button__width-25 has-custom-font-size is-style-outline has-small-font-size" style="font-style:normal;font-weight:400"><a class="wp-block-button__link wp-element-button" href="https://roseun-charme.jp/test/fair_calendar/" style="padding-top:0.8rem;padding-right:0.8rem;padding-bottom:0.8rem;padding-left:0.8rem">カレンダーから探す</a></div>
-  <div class="wp-block-button has-custom-width wp-block-button__width-25 has-custom-font-size is-style-fill_action01 has-small-font-size" style="font-style:normal;font-weight:400"><a class="wp-block-button__link wp-element-button" href="https://roseun-charme.jp/test/reserve/" style="padding-top:0.8rem;padding-right:0.8rem;padding-bottom:0.8rem;padding-left:0.8rem">見学予約はこちら</a></div>
+  <div class="wp-block-button has-custom-width wp-block-button__width-25 has-custom-font-size is-style-outline has-small-font-size" style="font-style:normal;font-weight:400"><a class="wp-block-button__link wp-element-button" href="https://roseun-charme.jp/fair_calendar/" style="padding-top:0.8rem;padding-right:0.8rem;padding-bottom:0.8rem;padding-left:0.8rem">カレンダーから探す</a></div>
+  <div class="wp-block-button has-custom-width wp-block-button__width-25 has-custom-font-size is-style-fill_action01 has-small-font-size" style="font-style:normal;font-weight:400"><a class="wp-block-button__link wp-element-button" href="https://roseun-charme.jp/reserve/" style="padding-top:0.8rem;padding-right:0.8rem;padding-bottom:0.8rem;padding-left:0.8rem">見学予約はこちら</a></div>
 </div>
 <?php } ?>
 <?php if ( is_single() ) { ?>

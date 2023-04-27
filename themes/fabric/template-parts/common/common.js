@@ -28,15 +28,17 @@ jQuery(function ($) {
 jQuery(function ($) {
   const width = $(window).width();
   if(width <= 760){
-    $('.l-slide .qms4__post-list__list').slick({
+    $('.l-slide .qms4__post-list__list').not('.slick-initialized').slick({
       dots: true,
       arrows: true,
       speed: 300,
       autoplaySpeed: 4000,
       autoplay: true,
+      slidesToShow: 1,
     });
   }
 });
+
 
 
 /* faq

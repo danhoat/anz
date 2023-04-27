@@ -1,7 +1,7 @@
 /* 魅力
 -------------------------------------------------*/
 jQuery(function ($) {
-  $('.l-top-reason__gallery .ark-block-columns__inner').slick({
+  $('.l-top-reason__gallery .ark-block-columns__inner').not('.slick-initialized').slick({
     autoplay: true,
     autoplaySpeed: 0,
     speed: 10000,
@@ -24,31 +24,5 @@ jQuery(function ($) {
 
 
 
-/* slick
--------------------------------------------------*/
-jQuery(function ($) {
-  var width = $(window).width();
-  if(width <= 760){
-    $('.l-slide .qms4__post-list__list').slick({
-      dots: true,
-      arrows: true,
-      speed: 300,
-      autoplaySpeed: 4000,
-      autoplay: true,
-    });
-  }
-});
 
-jQuery(function ($) {
-  var width = $(window).width();
-  if(width <= 760){
-    $('.l-top-plan .qms4__post-list__list').slick({
-      dots: true,
-      arrows: true,
-      speed: 300,
-      autoplaySpeed: 4000,
-      autoplay: true,
-    });
 
-  }
-});

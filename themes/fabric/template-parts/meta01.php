@@ -21,13 +21,8 @@ if ( empty( $setting[ 'logo' ] ) ) { return; }
     "addressCountry": "JP"//国
   },
   "sameAs": [
-    "<?= $setting['fb_link'] ?>",//SNS等のURL
-    "<?= $setting['tw_link'] ?>",//SNS等のURL
     "<?= $setting['ig_link'] ?>",//SNS等のURL
     "<?= $setting['yt_link'] ?>",//SNS等のURL
-    "<?= $setting['pin_link'] ?>",//SNS等のURL
-    "<?= $setting['tt_link'] ?>",//SNS等のURL
-    "<?= $setting['note_link'] ?>",//SNS等のURL
     "<?= $setting['line_link'] ?>"//SNS等のURL（最後はカンマ無し）
   ]
 }

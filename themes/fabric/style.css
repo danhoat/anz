@@ -485,7 +485,7 @@ a:hover {
 }
 
 .page-id-2025 .l-wrapper .l-content:before {
-  background: url(https://roseun-charme.jp/test/wp-content/uploads/2023/04/bestrate_main-scaled.jpg) no-repeat center;
+  background: url(https://roseun-charme.jp/wp-content/uploads/2023/04/bestrate_main-scaled.jpg) no-repeat center;
   background-size: cover;
   position: absolute;
   z-index: -1;
@@ -498,7 +498,7 @@ a:hover {
 }
 @media print, screen and (max-width: 740px) {
   .page-id-2025 .l-wrapper .l-content:before {
-    background: url(https://roseun-charme.jp/test/wp-content/uploads/2023/04/bestrate_main_sp.jpg) no-repeat center;
+    background: url(https://roseun-charme.jp/wp-content/uploads/2023/04/bestrate_main_sp.jpg) no-repeat center;
     background-size: 100%;
     height: 65vw;
   }
@@ -2490,7 +2490,13 @@ a:hover {
 }
 @media print, screen and (max-width: 740px) {
   .l-slide .qms4__post-list .qms4__post-list__list-item {
-    display: block;
+    display: block !important;
+  }
+}
+
+@media print, screen and (max-width: 740px) {
+  .qms4__post-list .l-slide .qms4__post-list__list-item {
+    display: block !important;
   }
 }
 
@@ -2782,7 +2788,7 @@ a:hover {
     display: block;
   }
 }
-@media print, screen and (max-width: 1000px) {
+@media print, screen and (max-width: 1000px) and (min-width: 741px) {
   .l-top-fair__calendar .qms4__block__event-calendar[data-show-posts=false] {
     gap: 0;
     padding-left: 30px;
@@ -3040,6 +3046,11 @@ a:hover {
 .l-top-news .qms4__post-list__list-item.qms4__post-list__list-item .qms4__post-list__post-date {
   width: auto;
 }
+@media print, screen and (max-width: 740px) {
+  .l-top-news .qms4__post-list__list-item.qms4__post-list__list-item .qms4__post-list__post-date {
+    margin-right: 5px;
+  }
+}
 .l-top-news .qms4__post-list[data-layout=card][data-num-columns-pc="2"] .qms4__post-list__list {
   gap: 35px;
 }
@@ -3050,6 +3061,16 @@ a:hover {
 .l-top-news .qms4__post-list__terms.qms4__post-list__terms:not(:root) {
   margin-top: 0;
   padding-left: 10px;
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-news .qms4__post-list__terms.qms4__post-list__terms:not(:root) {
+    padding-left: 0;
+  }
+}
+@media print, screen and (max-width: 740px) {
+  .l-top-news .qms4__post-list__terms.qms4__post-list__terms:not(:root) .qms4__post-list__terms--taxonomy-news__category {
+    margin-top: 5px;
+  }
 }
 .l-top-news .qms4__post-list__terms.qms4__post-list__terms:not(:root) .icon,
 .l-top-news .qms4__post-list__terms.qms4__post-list__terms:not(:root) .qms4__post-list__terms__icon {
@@ -4885,6 +4906,12 @@ a:hover {
   display: block;
 }
 
+@media print, screen and (max-width: 740px) {
+  .single-fair .l-header__right {
+    visibility: hidden;
+  }
+}
+
 .single-fair.single .c-postMetas {
   margin-top: 1.5rem;
   margin-bottom: 10px;
@@ -5098,9 +5125,6 @@ a:hover {
   font-weight: bold;
 }
 @media screen and (max-width: 740px) {
-  .single-fair .l-wrapper {
-    margin-top: 4%;
-  }
   .single-fair .header {
     display: none;
   }
@@ -5994,6 +6018,30 @@ a:hover {
   max-width: 897px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.brick-buttons button {
+  position: relative;
+}
+.brick-buttons button::after {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  margin: auto;
+  transform: rotate(45deg);
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  vertical-align: middle;
+  content: "";
+}
+
+.brick-buttons .brick-buttons__button-back::after {
+  left: 25px;
+  right: auto;
+  transform: rotate(-135deg);
 }
 
 /** ==========================================================================
